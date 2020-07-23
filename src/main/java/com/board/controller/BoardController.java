@@ -1,6 +1,7 @@
 package com.board.controller;
 
 import com.board.domain.BoardDTO;
+import com.board.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,25 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.board.service.BoardService;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.Resource;
+
 @Controller
 public class BoardController {
 
     @Autowired
-    private BoardService boardService;
+    BoardMapper mBoardMapper;
 
 
     @GetMapping(value = "/board/write")
-    public String openBoardWrite(@RequestParam(value = "idx", required = false
-    ) Long idx, Model model) {
-        if (idx == null) {
-            model.addAttribute("board", new BoardDTO());
-        } else {
-            BoardDTO board = boardService.getBoardDetail(idx);
-            if (board == null) {
-                return "redirect:/board/list.do";
-            }
-            model.addAttribute("board", board);
-        }
+    public String boardController() throws Exception {
+
+        System.out.println(mBoardMapper.boardCount());
         return "write";
 
     }
