@@ -1,30 +1,82 @@
 package com.board.controller;
 
 import com.board.domain.BoardDTO;
-import com.board.mapper.BoardMapper;
+import com.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import javax.servlet.http.HttpServletRequest;
 
-import com.board.service.BoardService;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.annotation.Resource;
 
 @Controller
 public class BoardController {
 
     @Autowired
-    BoardMapper mBoardMapper;
+    BoardService mBoardService;
 
 
-    @GetMapping(value = "/board/write")
-    public String boardController() throws Exception {
+    @RequestMapping(value = "/write",method = {RequestMethod.GET, RequestMethod.POST})
+    public String boardList(Model model) throws Exception {
 
-        System.out.println(mBoardMapper.boardCount());
+       model.addAttribute("write", mBoardService.boardListService());
         return "write";
 
     }
+
+    @RequestMapping(value = "/detail/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
+    public String boardDetail(@PathVariable int bno, Model model) throws Exception{
+
+        model.addAttribute("detail", mBoardService.boardDetailService(bno));
+
+        return "detail";
+    }
+
+    @RequestMapping(value = "/insert",method = {RequestMethod.GET, RequestMethod.POST})
+    public String boardInsertForm() {
+        return "insert";
+    }
+
+    @RequestMapping(value = "/insertProc",method = {RequestMethod.GET, RequestMethod.POST})
+    public String boardInsertProc(HttpServletRequest request) throws Exception{
+
+        BoardDTO board = new BoardDTO();
+
+        board.setSubject(request.getParameter("subject"));
+        board.setContent(request.getParameter("content"));
+        board.setWriter(request.getParameter("writer"));
+
+        mBoardService.boardInsertService(board);
+
+        return "redirect:/write";
+    }
+
+    @RequestMapping(value = "/update/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
+    public String boardUpdateForm(@PathVariable int bno, Model model) throws Exception{
+
+        model.addAttribute("detail", mBoardService.boardDetailService(bno));
+
+        return "update";
+    }
+
+    @RequestMapping(value = "/updateProc",method = {RequestMethod.GET, RequestMethod.POST})
+    public int boardUpdateProc(HttpServletRequest request) throws Exception{
+
+        BoardDTO board = (BoardDTO) request.getParameterMap();
+
+        return mBoardService.boardUpdateService(board);
+
+    }
+
+    @RequestMapping(value = "/delete/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
+    public String boardDelete(@PathVariable int bno) throws Exception{
+
+        mBoardService.boardDeleteService(bno);
+
+        return "/redirect:/write";
+    }
+
 
 }

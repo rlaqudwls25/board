@@ -3,16 +3,42 @@ package com.board.service;
 import java.util.List;
 
 import com.board.domain.BoardDTO;
+import com.board.mapper.BoardMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
-public interface BoardService {
-    public boolean registerBoard(BoardDTO params);
+public class BoardService {
 
-    public BoardDTO getBoardDetail(Long idx);
+    @Autowired
+    BoardMapper mBoardMapper;
 
-    public boolean deleteBoard(Long idx);
+    public List<BoardDTO> boardListService() throws Exception{
 
-    public List<BoardDTO> getBoardList();
+        return mBoardMapper.boardList();
+    }
+
+    public BoardDTO boardDetailService(int bno) throws Exception{
+
+        return mBoardMapper.boardDetail(bno);
+    }
+
+    public int boardInsertService(BoardDTO board) throws Exception{
+
+        return mBoardMapper.boardInsert(board);
+    }
+
+    public int boardUpdateService(BoardDTO board) throws Exception{
+
+        return mBoardMapper.boardUpdate(board);
+    }
+
+    public int boardDeleteService(int bno) throws Exception{
+
+        return mBoardMapper.boardDelete(bno);
+    }
+
 
 }
