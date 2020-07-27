@@ -5,7 +5,7 @@
 
 <mapper namespace="com.board.mapper.BoardMapper">
 
-    <select id="boardCount" resultType="int">
+    <select id="boardCount" resultType="integer">
         SELECT
             COUNT(*)
         FROM BOARD
@@ -28,14 +28,14 @@
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
         INSERT INTO
         BOARD (BNO, SUBJECT, CONTENT, WRITER, REG_DATE)
-        VALUES (#{bno}, #{subject}, #{content}, #{writer}, now())
+        VALUES (#{bno}, #{subject}, #{content}, #{writer}, #{reg_date})
     </insert>
 
     <update id="boardUpdate" parameterType="com.board.domain.BoardDTO">
         UPDATE BOARD
         SET
         <if test="subject != null">
-            SUJECT = #{subject}
+            SUBJECT = #{subject}
         </if>
         <if test="subject != null and content != null"> ,</if>
          <if test="content != null">

@@ -25,9 +25,9 @@ public class BoardService {
         return mBoardMapper.boardDetail(bno);
     }
 
-    public int boardInsertService(BoardDTO board) throws Exception{
+    public void boardInsertService(BoardDTO board) throws Exception{
 
-        return mBoardMapper.boardInsert(board);
+        mBoardMapper.boardInsert(board);
     }
 
     public int boardUpdateService(BoardDTO board) throws Exception{
@@ -35,9 +35,9 @@ public class BoardService {
         return mBoardMapper.boardUpdate(board);
     }
 
-    public int boardDeleteService(int bno) throws Exception{
+    public void boardDeleteService(int bno) throws Exception{
 
-        return mBoardMapper.boardDelete(bno);
+        mBoardMapper.boardDelete(bno);
     }
 
 

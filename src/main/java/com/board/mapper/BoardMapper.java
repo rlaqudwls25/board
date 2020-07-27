@@ -22,11 +22,11 @@ public interface BoardMapper {
     public BoardDTO boardDetail(int bno) throws Exception;
 
     /** 게시글 작성 */
-    public int boardInsert(BoardDTO board) throws Exception;
+    public void boardInsert(BoardDTO board) throws Exception;
 
     /** 게시글 수정 */
     public int boardUpdate(BoardDTO board) throws Exception;
 
     /** 게시글 삭제제 */
-    public int boardDelete(int bno) throws Exception;
+    public void boardDelete(int bno) throws Exception;
 }

@@ -20,7 +20,6 @@ public class BoardController {
 
     @RequestMapping(value = "/write",method = {RequestMethod.GET, RequestMethod.POST})
     public String boardList(Model model) throws Exception {
-
        model.addAttribute("write", mBoardService.boardListService());
         return "write";
 
