@@ -6,9 +6,9 @@
 <mapper namespace="com.board.mapper.BoardMapper">
 
     <select id="boardCount" resultType="integer">
-        SELECT
-            COUNT(*)
+        SELECT AUTO_INCREMENT
         FROM BOARD
+        WHERE BNO
     </select>
 
     <select id="boardList" resultType="com.board.domain.BoardDTO">
