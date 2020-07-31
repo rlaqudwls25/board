@@ -16,7 +16,6 @@ public class BoardService {
     BoardMapper mBoardMapper;
 
     public List<BoardDTO> boardListService() throws Exception{
-
         return mBoardMapper.boardList();
     }
 

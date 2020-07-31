@@ -27,8 +27,8 @@
 
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
         INSERT INTO
-        BOARD (BNO, SUBJECT, CONTENT, WRITER, REG_DATE)
-        VALUES (#{bno}, #{subject}, #{content}, #{writer}, #{reg_date})
+        BOARD (BNO, SUBJECT, CONTENT, WRITER, REGDATE)
+        VALUES (#{bno}, #{subject}, #{content}, #{writer}, now())
     </insert>
 
     <update id="boardUpdate" parameterType="com.board.domain.BoardDTO">

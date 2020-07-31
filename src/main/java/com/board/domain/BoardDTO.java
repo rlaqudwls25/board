@@ -20,6 +20,6 @@ public class BoardDTO {
    private String subject;
    private String content;
    private String writer;
-   private Date reg_date;
+   private LocalDateTime regDate;
 
 }

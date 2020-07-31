@@ -61,11 +61,16 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/updateProc",method = {RequestMethod.GET, RequestMethod.POST})
-    public int boardUpdateProc(HttpServletRequest request) throws Exception{
+    public String boardUpdateProc(HttpServletRequest request) throws Exception{
 
-        BoardDTO board = (BoardDTO) request.getParameterMap();
+        BoardDTO board = new BoardDTO();
+        board.setSubject(request.getParameter("subject"));
+        board.setContent(request.getParameter("content"));
+        board.setBno(Integer.parseInt(request.getParameter("bno")));
 
-        return mBoardService.boardUpdateService(board);
+        mBoardService.boardUpdateService(board);
+
+        return "redirect:/detail/"+request.getParameter("bno");
 
     }
 

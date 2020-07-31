@@ -8,6 +8,9 @@
 </head>
 <body>
 <h2>게시글 상세</h2>
+
+<button class="btn btn-primaty" onclick="location.href='/update/${datail.bno}'">수정</button>
+<button class="btn btn-danger" onclick="location.href='/delete/${detial.bno}">삭제</button>
 <div class="container">
     <form action="/insertProc" method="post">
         <div class="form-group">
@@ -20,7 +23,7 @@
         </div>
         <div class="form-group">
             <label>작성날짜</label>
-            <p>${detail.reg_date}</p>
+            <p>${detail.regDate}</p>
         </div>
         <div class="form-group">
             <label>내용</label>

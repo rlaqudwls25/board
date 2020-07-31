@@ -25,7 +25,7 @@
                 <td>${e.bno}</td>
                 <td>${e.subject}</td>
                 <td>${e.writer}</td>
-                <td>${e.reg_date}</td>
+                <td>${e.regDate}</td>
             </tr>
         </c:forEach>
     </table>
