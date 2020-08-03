@@ -55,6 +55,7 @@ public class BoardController {
     @RequestMapping(value = "/update/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
     public String boardUpdateForm(@PathVariable int bno, Model model) throws Exception{
 
+
         model.addAttribute("detail", mBoardService.boardDetailService(bno));
 
         return "update";
@@ -74,12 +75,12 @@ public class BoardController {
 
     }
 
-    @RequestMapping(value = "/delete/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/delete/{bno}")
     public String boardDelete(@PathVariable int bno) throws Exception{
 
         mBoardService.boardDeleteService(bno);
 
-        return "/redirect:/write";
+        return "redirect:boardList";
     }
 
 

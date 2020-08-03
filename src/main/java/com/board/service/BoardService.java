@@ -36,7 +36,7 @@ public class BoardService {
 
     public void boardDeleteService(int bno) throws Exception{
 
-        mBoardMapper.boardDelete(bno);
+      mBoardMapper.boardDelete(bno);
     }
 
 

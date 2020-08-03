@@ -16,10 +16,11 @@ import org.springframework.stereotype.Service;
 public class BoardDTO {
 /** Controller 와 service 간에 주고 받을 객체 정의 */
 
-   private Integer bno;
+   private int bno;
    private String subject;
    private String content;
    private String writer;
    private LocalDateTime regDate;
+   private String show;
 
 }
