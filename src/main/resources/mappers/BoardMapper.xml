@@ -13,13 +13,14 @@
 
     <select id="boardList" resultType="com.board.domain.BoardDTO">
         SELECT
-        *
+        bno, subject, content, writer, regdate
         FROM BOARD
+        ORDER BY bno DESC
     </select>
 
     <select id="boardDetail" parameterType="int" resultType="com.board.domain.BoardDTO">
         SELECT
-        *
+        bno, subject, content, writer, regdate
         FROM BOARD
         WHERE
         BNO = #{bno}

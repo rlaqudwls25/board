@@ -30,15 +30,6 @@
         </c:forEach>
     </table>
 </div>
-<td colspan="2">
-    <table>
-        <tr>
-            <td><button type="button" onclick="location.href='boardUpdateForm.do?idx=${board.bno}'">글수정</button> </td>
-            <td><button type="button" onclick="location.href='boarddelete.do?idx=${board.bno}'">글삭제</button> </td>
-            <td><button>글목록</button></td>
-        </tr>
-    </table>
-</td>
 
 <%@ include file="bootstrap.jsp"%>
 </body>
