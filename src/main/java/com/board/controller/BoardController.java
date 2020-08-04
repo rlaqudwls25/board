@@ -75,12 +75,13 @@ public class BoardController {
 
     }
 
-    @RequestMapping(value = "/delete/{bno}")
+    @RequestMapping(value = "/delete/{bno}", method = RequestMethod.GET)
     public String boardDelete(@PathVariable int bno) throws Exception{
+
 
         mBoardService.boardDeleteService(bno);
 
-        return "redirect:boardList";
+        return "redirect:/write";
     }
 
 

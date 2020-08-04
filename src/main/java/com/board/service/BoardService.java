@@ -34,10 +34,13 @@ public class BoardService {
         return mBoardMapper.boardUpdate(board);
     }
 
-    public void boardDeleteService(int bno) throws Exception{
+    public boolean boardDeleteService(int bno) throws Exception{
 
-      mBoardMapper.boardDelete(bno);
+        return mBoardMapper.boardDelete(bno);
     }
+
+
+
 
 
 }

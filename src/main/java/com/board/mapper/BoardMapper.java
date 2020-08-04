@@ -29,5 +29,5 @@ public interface BoardMapper {
 
     /** 게시글 삭제
      * @return*/
-    public int boardDelete(int bno) throws Exception;
+    public boolean boardDelete(int bno) throws Exception;
 }

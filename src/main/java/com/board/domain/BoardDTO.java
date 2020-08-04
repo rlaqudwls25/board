@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class BoardDTO {
    private String content;
    private String writer;
    private LocalDateTime regDate;
-   private String show;
+
+
 
 }
