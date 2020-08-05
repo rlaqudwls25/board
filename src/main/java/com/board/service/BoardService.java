@@ -1,8 +1,10 @@
 package com.board.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.board.domain.BoardDTO;
+import com.board.domain.PageVO;
 import com.board.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,8 @@ public class BoardService {
     @Autowired
     BoardMapper mBoardMapper;
 
-    public List<BoardDTO> boardListService() throws Exception{
-        return mBoardMapper.boardList();
+    public List<BoardDTO> boardListService(PageVO page) throws Exception{
+        return mBoardMapper.boardList(page);
     }
 
     public BoardDTO boardDetailService(int bno) throws Exception{

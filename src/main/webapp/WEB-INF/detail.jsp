@@ -41,7 +41,7 @@
             <label>내용</label>
             <p>${detail.content}</p>
         </div>
-        <input type="button" onclick="location.href='/write/${board.bno}'"value="목록">
+        <input type="button" onclick="location.href='/list/${board.bno}'"value="목록">
 
     </form>
 </div>

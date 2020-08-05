@@ -19,8 +19,8 @@
             <th>Writer</th>
             <th>Date</th>
         </tr>
-        <jsp:useBean id="write" scope="request" type="java.util.List"/>
-        <c:forEach var ="e" items="${write}">
+        <jsp:useBean id="list" scope="request" type="java.util.List"/>
+        <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">
                 <td>${e.bno}</td>
                 <td>${e.subject}</td>

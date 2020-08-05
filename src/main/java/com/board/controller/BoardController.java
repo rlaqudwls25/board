@@ -1,14 +1,18 @@
 package com.board.controller;
 
 import com.board.domain.BoardDTO;
+import com.board.domain.PageVO;
+import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -18,12 +22,25 @@ public class BoardController {
     BoardService mBoardService;
 
 
-    @RequestMapping(value = "/write",method = {RequestMethod.GET, RequestMethod.POST})
-    public String boardList(Model model) throws Exception {
-       model.addAttribute("write", mBoardService.boardListService());
-        return "write";
+    @RequestMapping(value = "/list",method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView boardList(PageVO page) throws Exception {
+
+
+        ModelAndView mav = new ModelAndView("/list") ;
+        Pagination pagination = new Pagination();
+
+       pagination.setPage(page);
+       pagination.setTotalCount(100);
+
+       List<BoardDTO> list = mBoardService.boardListService(page);
+       mav.addObject("list",list);
+       mav.addObject("pagination",pagination);
+
+       return mav;
+
 
     }
+
 
     @RequestMapping(value = "/detail/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
     public String boardDetail(@PathVariable int bno, Model model) throws Exception{
@@ -49,7 +66,7 @@ public class BoardController {
 
         mBoardService.boardInsertService(board);
 
-        return "redirect:/write";
+        return "redirect:/list";
     }
 
     @RequestMapping(value = "/update/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
@@ -81,7 +98,7 @@ public class BoardController {
 
         mBoardService.boardDeleteService(bno);
 
-        return "redirect:/write";
+        return "redirect:/list";
     }
 
 
