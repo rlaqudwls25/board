@@ -2,7 +2,6 @@ package com.board.controller;
 
 import com.board.domain.BoardDTO;
 import com.board.domain.PageVO;
-import com.board.mapper.BoardMapper;
 import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 
 
 @Controller
@@ -33,10 +31,10 @@ public class BoardController {
        pagination.setPage(page);
        pagination.setTotalCount(100);
 
+       pagination.setTotalCount(mBoardService.countBoardListTotal());
        List<BoardDTO> list = mBoardService.boardListService(page);
        mav.addObject("list",list);
        mav.addObject("pagination",pagination);
-       pagination.setTotalCount(mBoardService.countBoardListTotal());
 
        return mav;
 

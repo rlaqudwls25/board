@@ -6,9 +6,9 @@
 <mapper namespace="com.board.mapper.BoardMapper">
 
     <select id="boardCount" resultType="integer">
-        SELECT AUTO_INCREMENT
+        SELECT
+        COUNT(*)
         FROM BOARD
-        WHERE BNO
     </select>
 
     <select id="boardList" resultType="com.board.domain.BoardDTO">
@@ -26,7 +26,7 @@ FROM
 board
 WHERE
 DEL_CHK ='N'
-ORDER BY IDX DESC
+ORDER BY BNO DESC
 LIMIT #{pageStart}, #{perPageNum}
 ]]>
     </select>
