@@ -2,6 +2,7 @@ package com.board.controller;
 
 import com.board.domain.BoardDTO;
 import com.board.domain.PageVO;
+import com.board.mapper.BoardMapper;
 import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +36,11 @@ public class BoardController {
        List<BoardDTO> list = mBoardService.boardListService(page);
        mav.addObject("list",list);
        mav.addObject("pagination",pagination);
+       pagination.setTotalCount(mBoardService.countBoardListTotal());
 
        return mav;
 
-
     }
-
 
     @RequestMapping(value = "/detail/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
     public String boardDetail(@PathVariable int bno, Model model) throws Exception{
@@ -100,6 +100,4 @@ public class BoardController {
 
         return "redirect:/list";
     }
-
-
 }

@@ -18,6 +18,7 @@ public class BoardService {
     BoardMapper mBoardMapper;
 
     public List<BoardDTO> boardListService(PageVO page) throws Exception{
+
         return mBoardMapper.boardList(page);
     }
 
@@ -39,6 +40,10 @@ public class BoardService {
     public boolean boardDeleteService(int bno) throws Exception{
 
         return mBoardMapper.boardDelete(bno);
+    }
+
+    public int countBoardListTotal() throws Exception {
+        return mBoardMapper.countBoardList();
     }
 
 

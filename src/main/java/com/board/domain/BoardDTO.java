@@ -56,9 +56,4 @@ public class BoardDTO {
       this.writer = writer;
    }
 
-   public int countBoardList() {
-
-      return (Integer) selectOne("board.countBoardList");
-   }
-
 }

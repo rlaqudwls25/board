@@ -33,13 +33,13 @@ LIMIT #{pageStart}, #{perPageNum}
 
     <select id="countBoardList" resultType="Integer">
         <![CDATA[
-SELECT
-count(*)
-FROM
-board
-WHERE
-DEL_CHK ='N'
-]]
+            SELECT
+            count(*)
+            FROM
+            board
+            WHERE
+            DEL_CHK ='N'
+        ]]>
     </select>
 
     <select id="boardDetail" parameterType="int" resultType="com.board.domain.BoardDTO">
@@ -69,4 +69,5 @@ DEL_CHK ='N'
         DELETE FROM BOARD WHERE BNO = #{bno}
     </delete>
 </mapper>
+
 

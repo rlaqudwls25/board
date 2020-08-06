@@ -13,8 +13,10 @@ import java.util.List;
 public interface BoardMapper {
 
 
+    public int countBoardListTotal() throws Exception;
+
     /** 게시글 개수 */
-    public int boardCount() throws Exception;
+    public int countBoardList() throws Exception;
 
     /** 게시글 목록
      * @param page*/
@@ -33,5 +35,5 @@ public interface BoardMapper {
      * @return*/
     public boolean boardDelete(int bno) throws Exception;
 
-     public int countBoardList() throws Exception;
+
 }
