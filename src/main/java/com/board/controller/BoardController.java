@@ -61,6 +61,7 @@ public class BoardController {
         board.setSubject(request.getParameter("subject"));
         board.setContent(request.getParameter("content"));
         board.setWriter(request.getParameter("writer"));
+        board.setDEL_CHK(request.getParameter("DEL_CHK"));
 
         mBoardService.boardInsertService(board);
 

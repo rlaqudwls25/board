@@ -23,37 +23,8 @@ public class BoardDTO {
    private String content;
    private String writer;
    private LocalDateTime regDate;
+   private String DEL_CHK;
 
-   public int getBno() {
-      return bno;
-   }
 
-   public void setBno(int bno){
-      this.bno = bno;
-   }
-
-   public String getSubject() {
-      return subject;
-   }
-
-   public void setSubject(String subject){
-      this.subject = subject;
-   }
-
-   public String getContent() {
-      return content;
-   }
-
-   public void setContent(String content){
-      this.content = content;
-   }
-
-   public String getwriter() {
-      return writer;
-   }
-
-   public void setWriter(String writer){
-      this.writer = writer;
-   }
 
 }

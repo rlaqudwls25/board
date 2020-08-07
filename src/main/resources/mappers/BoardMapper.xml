@@ -8,13 +8,17 @@
     <select id="boardCount" resultType="integer">
         SELECT
         COUNT(*)
-        FROM BOARD
+        FROM board
     </select>
 
     <select id="boardList" resultType="com.board.domain.BoardDTO">
         SELECT
-        bno, subject, content, writer, regdate
-        FROM BOARD
+        bno
+         ,subject
+         ,content
+         ,writer
+         ,regdate
+        FROM board
         ORDER BY bno DESC
     </select>
 
@@ -26,7 +30,7 @@ FROM
 board
 WHERE
 DEL_CHK ='N'
-ORDER BY BNO DESC
+ORDER BY bno DESC
 LIMIT #{pageStart}, #{perPageNum}
 ]]>
     </select>
@@ -44,29 +48,33 @@ LIMIT #{pageStart}, #{perPageNum}
 
     <select id="boardDetail" parameterType="int" resultType="com.board.domain.BoardDTO">
         SELECT
-        bno, subject, content, writer, regdate
-        FROM BOARD
+        bno
+         ,subject
+         ,content
+         ,writer
+         ,regdate
+        FROM board
         WHERE
-        BNO = #{bno}
+        bno = #{bno}
     </select>
 
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
         INSERT INTO
-        BOARD (BNO, SUBJECT, CONTENT, WRITER, REGDATE)
-        VALUES (#{bno}, #{subject}, #{content}, #{writer}, now())
+        board (bno, subject, content, writer, regdate, del_chk)
+        VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N')
     </insert>
 
     <update id="boardUpdate" parameterType="com.board.domain.BoardDTO">
-        UPDATE BOARD
+        UPDATE board
         <set>
-            <if test="subject != null and subject != ''">SUBJECT  =#{subject},</if>
-            <if test="content !=null and content != ''">CONTENT  =#{content}</if>
+            <if test="subject != null and subject != ''">subject  =#{subject},</if>
+            <if test="content !=null and content != ''">content  =#{content}</if>
         </set>
         WHERE bno = #{bno}
     </update>
 
     <delete id="boardDelete" parameterType="int">
-        DELETE FROM BOARD WHERE BNO = #{bno}
+        DELETE FROM board WHERE bno = #{bno}
     </delete>
 </mapper>
 
