@@ -37,7 +37,7 @@
 <body>
 <h2>게시판</h2>
 <div id="outter">
-    <div style="float: right;">
+    <div style="float: left;">
         <select id="perPageNum" name="sel" onchange="selChange()">
             <option value="5"
                     <c:if test="${pagevo.perPageNum == 5}">selected</c:if>>5줄 보기</option>
@@ -78,14 +78,6 @@
         <li>
             <a href='<c:url value="/list?page=${pageNum}"/>'><i class="fa">${pageNum}</i></a>
         </li>
-        <c:choose>
-            <c:when test="${pageNum == pagiantion.page}">
-                <b>${pageNum }</b>
-            </c:when>
-            <c:when test="${pageNum == pagination.page}">
-                <a href="list?page=${pageNum}&perPageNum=${pagination.perPageNum}">${pageNum}</a>
-            </c:when>
-        </c:choose>
     </c:forEach>
     <c:if test="${pagination.next && pagination.endPage >0}">
         <li>
@@ -95,7 +87,6 @@
         </li>
     </c:if>
 </ul>
-
 
 <%@ include file="bootstrap.jsp"%>
 </body>

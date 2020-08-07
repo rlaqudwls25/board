@@ -4,16 +4,18 @@ package com.board.mapper;
 import com.board.domain.BoardDTO;
 import com.board.domain.PageVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Mapper
 public interface BoardMapper {
 
 
-    public int countBoardListTotal() throws Exception;
+    public int countBoardListTotal();
 
     /** 게시글 개수 */
     public int countBoardList() throws Exception;
@@ -35,5 +37,6 @@ public interface BoardMapper {
      * @return*/
     public boolean boardDelete(int bno) throws Exception;
 
-
+    public List<BoardDTO> boardListService(PageVO page) throws Exception;
 }
+

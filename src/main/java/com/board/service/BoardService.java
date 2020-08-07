@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class BoardService {
 
@@ -18,7 +17,7 @@ public class BoardService {
 
     public List<BoardDTO> boardListService(PageVO page) throws Exception{
 
-        return mBoardMapper.boardList(page);
+        return mBoardMapper.boardListService(page);
     }
 
     public BoardDTO boardDetailService(int bno) throws Exception{
@@ -44,8 +43,6 @@ public class BoardService {
     public int countBoardListTotal() throws Exception {
         return mBoardMapper.countBoardList();
     }
-
-
 
 
 
