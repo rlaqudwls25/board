@@ -25,6 +25,4 @@ public class BoardDTO {
    private LocalDateTime regDate;
    private String DEL_CHK;
 
-
-
 }

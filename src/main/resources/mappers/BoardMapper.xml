@@ -17,21 +17,23 @@
          ,subject
          ,content
          ,writer
-         ,regdate
+         ,regDate
         FROM board
         ORDER BY bno DESC
     </select>
 
     <select id="boardListService" resultType="hashmap" parameterType="hashmap">
         <![CDATA[
-SELECT
-*
-FROM
-board
-WHERE
-DEL_CHK ='N'
-ORDER BY bno DESC
-LIMIT #{pageStart}, #{perPageNum}
+        SELECT
+        bno
+         ,subject
+         ,content
+         ,writer
+         ,regDate
+        FROM board
+        WHERE DEL_CHK ='N'
+        ORDER BY bno DESC
+        LIMIT #{pageStart}, #{perPageNum}
 ]]>
     </select>
 
@@ -52,7 +54,7 @@ LIMIT #{pageStart}, #{perPageNum}
          ,subject
          ,content
          ,writer
-         ,regdate
+         ,regDate
         FROM board
         WHERE
         bno = #{bno}
@@ -60,7 +62,7 @@ LIMIT #{pageStart}, #{perPageNum}
 
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
         INSERT INTO
-        board (bno, subject, content, writer, regdate, del_chk)
+        board (bno, subject, content, writer, regDate, del_chk)
         VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N')
     </insert>
 

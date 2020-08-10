@@ -35,61 +35,21 @@ public class Pagination {
 
     private void calcData() {
 
-        //제일 마지막 페이지
+        //끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 페이지 번호의 갯수) * 화면에 보여질 페이지 번호의 갯수)
         endPage = (int) (Math.ceil(page.getPage() / (double) displayPageNum) * displayPageNum);
-
 
         startPage = (endPage - displayPageNum) + 1;
         if (startPage <= 0) startPage = 1;
+
 
         int tempEndPage = (int) (Math.ceil(totalCount / (double) page.getPerPageNum()));
         if (endPage > tempEndPage) {
             endPage = tempEndPage;
         }
 
-        prev = startPage != 1;
-        next = endPage * page.getPerPageNum() < totalCount;
+        prev = startPage != 1?false : true;
+        next = endPage * page.getPerPageNum() > totalCount?true:false;
 
-    }
-
-    public int StartPage() {
-        return startPage;
-    }
-
-    public void StartPage(int startPage) {
-        this.startPage = startPage;
-    }
-
-    public int getEndPage() {
-        return endPage;
-    }
-
-    public void setEndPage(int endPage) {
-        this.endPage = endPage;
-    }
-
-    public boolean isPrev() {
-        return prev;
-    }
-
-    public void setPrev(boolean prev) {
-        this.prev = prev;
-    }
-
-    public boolean isNext() {
-        return next;
-    }
-
-    public void setNext(boolean next) {
-        this.next = next;
-    }
-
-    public int getDisplayPageNum() {
-        return displayPageNum;
-    }
-
-    public void setDisplayPageNum(int displayPageNum) {
-        this.displayPageNum = displayPageNum;
     }
 
 

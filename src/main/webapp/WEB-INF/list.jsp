@@ -25,6 +25,7 @@
     a{
         text-decoration: blue;
     }
+
 </style>
 
 <script>
@@ -59,18 +60,18 @@
                 <td>${e.bno}</td>
                 <td>${e.subject}</td>
                 <td>${e.writer}</td>
-                <td>${e.regDate}</td>
-
+                <td><fmt:formatDate value="${e.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
             </tr>
         </c:forEach>
     </table>
+
 </div>
 
-<ul class="btn-group pagiantion">
+<ul class="btn-group pagination" style="left: initial">
     <c:if test="${pagination.prev}">
         <li>
             <a href="<c:url value="/list?page=${pagination.startPage-1}"/>">
-                <i class="fa fa-chevron-left"></i>
+                <i class="fa fa-chevron-left">이전</i>
             </a>
         </li>
     </c:if>
@@ -82,8 +83,7 @@
     <c:if test="${pagination.next && pagination.endPage >0}">
         <li>
             <a href='<c:url value="/list?page=${pagination.endPage+1}"/>'>
-                <i class="fa fa-chevron-right"></i>
-            </a>
+                <i class="fa fa-chevron-right">다음</i></a>
         </li>
     </c:if>
 </ul>

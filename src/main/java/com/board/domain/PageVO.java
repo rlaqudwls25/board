@@ -31,12 +31,12 @@ public class PageVO {
     }
 
     public void setPerPageNum(int pageCount) { //페이지당 보여줄 게시글 수 변함 X
-        int cnt = this.perPageNum;
+        int cnt = perPageNum;
         if (pageCount != cnt) {
             //pageCount = 페이지 카운트  cnt = 갯수
-            this.perPageNum = cnt;
+            perPageNum = cnt;
         } else {
-            this.perPageNum = pageCount;
+            perPageNum = pageCount;
         }
     }
 
