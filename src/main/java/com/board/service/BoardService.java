@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.board.domain.BoardDTO;
 import com.board.domain.PageVO;
+import com.board.domain.ReplyVO;
 import com.board.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,26 @@ public class BoardService {
     public int countBoardListTotal() throws Exception {
         return mBoardMapper.countBoardList();
     }
+
+    public List<ReplyVO> getReplyList(int bid) throws Exception {
+        return mBoardMapper.getReplyList(bid);
+    }
+
+    public int saveReply(ReplyVO replyVO) throws Exception {
+        return mBoardMapper.saveReply(replyVO);
+    }
+
+    public int updateReply(ReplyVO replyVO) throws Exception {
+        return mBoardMapper.updateReply(replyVO);
+    }
+
+    public int deleteReply(int rid) throws Exception {
+        return mBoardMapper.deleteReply(rid);
+    }
+
+
+
+
 
 
 

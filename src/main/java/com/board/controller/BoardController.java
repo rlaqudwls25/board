@@ -2,6 +2,7 @@ package com.board.controller;
 
 import com.board.domain.BoardDTO;
 import com.board.domain.PageVO;
+import com.board.domain.ReplyVO;
 import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class BoardController {
 
 
     @RequestMapping(value = "/list",method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView boardList(PageVO page) throws Exception {
+    public ModelAndView boardList(PageVO page,Model model, @RequestParam(value = "bid" ,required=false) int bid) throws Exception {
 
 
         ModelAndView mav = new ModelAndView("/list") ;
@@ -33,6 +34,8 @@ public class BoardController {
 
        pagination.setTotalCount(mBoardService.countBoardListTotal());
        List<BoardDTO> list = mBoardService.boardListService(page);
+
+       model.addAttribute("replyVO", new ReplyVO());
        mav.addObject("list",list);
        mav.addObject("pagination",pagination);
 
@@ -99,4 +102,6 @@ public class BoardController {
 
         return "redirect:/list";
     }
+
+
 }

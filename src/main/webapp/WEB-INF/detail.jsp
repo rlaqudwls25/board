@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -44,6 +45,26 @@
         <input type="button" onclick="location.href='/list/${board.bno}'"value="목록">
 
     </form>
+</div>
+
+<div class="my-3 p-3 bg-white rounded shadow=sm" style="padding-top: 10px">
+    <%--@elvariable id="replyVO" type=""--%>
+    <form:form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
+        <form:hidden path="bid" id="bid"/>
+        <div class="row">
+            <div class="col-sm-10">
+                <form:textarea path="content" id="content" class="form-control" rows="3" placeholder="댓글을 입력해주세요"></form:textarea>
+            </div>
+            <div class="col-sm-2">
+                <form:input path="regid" class="form-control" id="regid" placeholder="댓글 작성자"></form:input>
+                <button type="button" class="btn btn-sm btn-primary" id="btnSaveReply" style="width: 100%; margin-top: 10px">저 장</button>
+            </div>
+            </div>
+    </form:form>
+        </div>
+    <div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
+        <h6 class="border-bottom pb-2 mb-0">Reply list</h6>
+        <div id="replyList"></div>
 </div>
 
 <%@include file="bootstrap.jsp"%>

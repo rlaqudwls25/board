@@ -47,8 +47,8 @@ public class Pagination {
             endPage = tempEndPage;
         }
 
-        prev = startPage != 1?false : true;
-        next = endPage * page.getPerPageNum() > totalCount?true:false;
+        prev = startPage == 1?false : true;
+        next = endPage * page.getPerPageNum() < totalCount?true:false;
 
     }
 
