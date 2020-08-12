@@ -1,15 +1,19 @@
 package com.board.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Timestamp;
 
-public class ReplyVO {
+@Setter
+@Getter
+public class CommentVO {
 
-    private int bid;
-    private String content;
     private int rid;
+    private int bno;
+    private String content;
     private String regid;
     private Timestamp regdt;
-    private Timestamp editdt;
 
 
 

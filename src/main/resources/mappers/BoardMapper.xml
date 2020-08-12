@@ -61,9 +61,9 @@
     </select>
 
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
-        INSERT INTO
-        board (bno, subject, content, writer, regDate, del_chk)
-        VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N')
+      INSERT INTO
+      board (bno, subject, content, writer, regDate, del_chk)
+      VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N')
     </insert>
 
     <update id="boardUpdate" parameterType="com.board.domain.BoardDTO">
