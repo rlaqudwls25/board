@@ -6,20 +6,12 @@
 <mapper namespace="com.board.mapper.CommentMapper">
     <select id="commentCount" resultType="int">
         SELECT
-          rid
-           ,bno
-           ,content
-           ,regid
-           ,regdt
-        FROM
-           comment
-        WHERE
-           bno = #{bno}
-        ORDER BY regdt desc
+          COUNT(*)
+        FROM comment
     </select>
 
-    <select id="commentList" resultType="com.board.domain.CommentVO">
-       <![CDATA[
+    <select id="commentList" parameterType="int" resultType="com.board.domain.CommentVO">
+
         SELECT
          rid
           ,bno
@@ -27,19 +19,21 @@
           ,regid
           ,now()
         FROM comment
-        ]]>
+        WHERE bno = #{bno}
+
     </select>
     
     <insert id="commentInsert" parameterType="com.board.domain.CommentVO">
       INSERT INTO
       comment (rid, bno, content, regid, regdt)
       VALUES (#{rid}, #{bno}, #{content}, #{regid}, now())
+
     </insert>
 
     <update id="commentUpdate" parameterType="com.board.domain.CommentVO">
         UPDATE comment
            SET
-           content = #{content}
+           CONTENT = #{content}
         WHERE rid = #{rid}
     </update>
 

@@ -78,6 +78,10 @@
     <delete id="boardDelete" parameterType="int">
         DELETE FROM board WHERE bno = #{bno}
     </delete>
+
+    <delete id="boardCommentDelete" parameterType="int">
+        DELETE FROM comment WHERE bno = #{bno}
+    </delete>
 </mapper>
 
 

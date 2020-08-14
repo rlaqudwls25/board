@@ -15,11 +15,13 @@ public interface CommentMapper {
 
     public int commentCount() throws Exception;
 
-    public List<CommentVO> commentList() throws Exception;
+    public List<CommentVO> commentList(int bno) throws Exception;
 
     public int commentInsert(CommentVO comment) throws Exception;
 
     public int commentUpdate(CommentVO comment) throws Exception;
 
-    public int commentDelete(int bno) throws Exception;
+    public int commentDelete(int rid) throws Exception;
+
+
 }

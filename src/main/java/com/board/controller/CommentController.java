@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.xml.soap.Text;
 import java.util.List;
 
 @Controller
@@ -29,8 +30,8 @@ public class CommentController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    private List<CommentVO> mCommentServiceList(Model model) throws Exception{
-        return mCommentService.commentListService();
+    private List<CommentVO> mCommentServiceList(Model model, int bno) throws Exception{
+        return mCommentService.commentListService(bno);
     }
 
     /**
@@ -42,7 +43,7 @@ public class CommentController {
      */
     @RequestMapping("/insert")
     @ResponseBody
-    private int mCommentInsertService(@RequestParam int bno, @RequestParam String content) throws Exception{
+    private int mCommentServiceInsert(@RequestParam int bno, @RequestParam String content) throws Exception{
         CommentVO comment = new CommentVO();
 
         comment.setBno(bno);
@@ -61,7 +62,7 @@ public class CommentController {
      */
     @RequestMapping("/update")
     @ResponseBody
-    private int mCommentUpdateServiceProc(@RequestParam int rid, @RequestParam String content) throws Exception{
+    private int mCommentServiceUpdateProc(@RequestParam int rid, @RequestParam String content) throws Exception{
 
         CommentVO comment = new CommentVO();
         comment.setRid(rid);
@@ -72,15 +73,15 @@ public class CommentController {
     }
 
     /**
-     * 댓글 삭제제
+     * 댓글 삭제
     * @param rid
      * @return
      * @throws Exception
      */
 
-    @RequestMapping("/delete")
+    @RequestMapping("/delete/{rid}")
     @ResponseBody
-    private int mCommentDeleteService(@PathVariable int rid) throws Exception{
+    private int mCommentServiceDelete(@PathVariable int rid) throws Exception{
 
         return mCommentService.commentDeleteService(rid);
     }

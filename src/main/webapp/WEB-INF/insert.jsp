@@ -7,8 +7,10 @@
     <title>Insert Form</title>
 </head>
 <body>
-
+<div style="text-align: center">
 <h2> 게시글 작성 </h2>
+</div>
+
 
 <div class="container">
     <form action="/insertProc" method="post">

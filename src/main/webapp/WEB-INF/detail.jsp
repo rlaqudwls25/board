@@ -6,6 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Detail</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
         function del(bno) {
             var chk = confirm("정말 삭제하시겠습니까?");
@@ -14,18 +15,17 @@
             }
 
         }
-        //단순 스크립트는 헤더 사이에 넣는다
+
+        // 단순 스크립트는 헤더 사이에 넣는다
     </script>
 </head>
-<body>
+
+<div style="text-align: center">
 <h2>게시글 상세</h2>
-
-<button class="btn btn-primaty" onclick="location.href='/update/${detail.bno}'">수정</button>
-<button class="btn btn-danger" onclick="del(${board.bno})">삭제</button>
-
+</div>
 
 <div class="container">
-    <form action="/insertProc" method="post">
+    <form action="/insertProc" method="post" >
         <div class="form-group">
             <label>제목</label>
             <p>${detail.subject}</p>
@@ -42,19 +42,24 @@
             <label>내용</label>
             <p>${detail.content}</p>
         </div>
-        <input type="button" onclick="location.href='/list/${board.bno}'"value="목록">
 
     </form>
+    <div class="btn-group btn-group-sm" role="group" style="float:right;">
+    <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
+    <button class="btn btn-danger" onclick="del(${detail.bno})">삭제</button>
+    <button class="btn btn-primary" onclick="location.href='/list'">목록</button>
+
+</div>
 </div>
 
 <div class="container">
     <label for="content">comment</label>
-    <form name="commentInsertForm">
+    <form name="commentInsertForm" method="post" >
         <div class="input-group">
             <input type="hidden" name="bno" value="${detail.bno}"/>
             <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
+                <button class="btn btn-primary" type="button" name="commentInsertBtn">등록</button>
             </span>
         </div>
     </form>

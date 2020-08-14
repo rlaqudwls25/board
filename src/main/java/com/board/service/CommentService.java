@@ -19,9 +19,11 @@ public class CommentService {
      *
      * @return
      * @throws Exception
+     * @param bno
      */
-    public List<CommentVO> commentListService() throws Exception{
-        return mCommentMapper.commentList();
+    public List<CommentVO> commentListService(int bno) throws Exception{
+        return mCommentMapper.commentList(bno);
+
     }
 
     /**

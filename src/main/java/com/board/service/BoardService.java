@@ -6,6 +6,7 @@ import com.board.domain.BoardDTO;
 import com.board.domain.PageVO;
 import com.board.domain.CommentVO;
 import com.board.mapper.BoardMapper;
+import com.board.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class BoardService {
 
     @Autowired
     BoardMapper mBoardMapper;
+    @Autowired
+    CommentMapper mCommentMapper;
+
 
 
     /**
@@ -69,7 +73,9 @@ public class BoardService {
     public boolean boardDeleteService(int bno) throws Exception{
 
         return mBoardMapper.boardDelete(bno);
+
     }
+
 
     /**
      *
@@ -79,6 +85,7 @@ public class BoardService {
     public int countBoardListTotal() throws Exception {
         return mBoardMapper.countBoardList();
     }
+
 
 
 }

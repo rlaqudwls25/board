@@ -5,6 +5,7 @@ import com.board.domain.PageVO;
 import com.board.domain.CommentVO;
 import com.board.paging.Pagination;
 import com.board.service.BoardService;
+import com.board.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,8 @@ public class BoardController {
 
     @Autowired
     BoardService mBoardService;
+    @Autowired
+    CommentService mCommentService;
 
 
     @RequestMapping(value = "/list",method = {RequestMethod.GET, RequestMethod.POST})
@@ -97,9 +100,12 @@ public class BoardController {
     @RequestMapping(value = "/delete/{bno}", method = RequestMethod.GET)
     public String boardDelete(@PathVariable int bno) throws Exception{
         mBoardService.boardDeleteService(bno);
+        mCommentService.commentDeleteService(bno);
 
         return "redirect:/list";
     }
+
+
 
 
 }

@@ -15,7 +15,6 @@
     }
     table {
         width: 100%;
-
     }
     #outter{
         display: block;
@@ -25,7 +24,9 @@
     a{
         text-decoration: blue;
     }
-
+    /*.table th {*/
+    /*    text-align:center;*/
+    /*}*/
 </style>
 
 <script>
@@ -37,33 +38,26 @@
 </script>
 <body>
 <h2>게시판</h2>
-<div id="outter">
-    <div style="float: left;">
-        <select id="perPageNum" name="sel" onchange="selChange()">
-            <option value="5"
-                    <c:if test="${pagevo.perPageNum == 5}">selected</c:if>>5줄 보기</option>
-        </select>
 
-    </div>
-</div>
-<button class ="btn btn-primary" onclick="location.href='/insert'">글쓰기</button>
 <div class="container">
     <table class="table table-hover">
-        <tr>
-            <th>No</th>
+
+            <th>No </th>
             <th>Subject</th>
             <th>Writer</th>
             <th>Date</th>
-        </tr>
+
         <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">
                 <td>${e.bno}</td>
                 <td>${e.subject}</td>
                 <td>${e.writer}</td>
-                <td><fmt:formatDate value="${e.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+                <td width="20%"><fmt:formatDate value="${e.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
             </tr>
         </c:forEach>
+
     </table>
+    <button class ="btn btn-primary" onclick="location.href='/insert'">글쓰기</button>
 </div>
 <div style="text-align: center">
 <ul class="btn-group pagination" style="margin: 0 auto">
