@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -24,6 +25,8 @@ public class BoardDTO {
    private String writer;
    private LocalDateTime regDate;
    private String DEL_CHK;
+   private String fileName;
+   private MultipartFile uploadFile;
 
 
 

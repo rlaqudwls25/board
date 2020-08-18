@@ -37,7 +37,11 @@
         WHERE rid = #{rid}
     </update>
 
-    <delete id="commentDelete" parameterType="int">
+    <delete id="commentDeleteByRid" parameterType="int">
         DELETE FROM comment WHERE rid = #{rid}
+    </delete>
+
+    <delete id="commentDeleteByBno" parameterType="int">
+        DELETE FROM comment WHERE bno = #{bno}
     </delete>
 </mapper>

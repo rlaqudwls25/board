@@ -47,12 +47,22 @@ public class CommentService {
     }
 
     /**
-     *
+     * Comment Seq (Rid) 파라미터로 댓글 지우기
      * @param rid
      * @return
      * @throws Exception
      */
-    public int commentDeleteService(int rid) throws Exception{
-        return mCommentMapper.commentDelete(rid);
+    public int commentDeleteServiceRid(int rid) throws Exception{
+        return mCommentMapper.commentDeleteByRid(rid);
+    }
+
+    /**
+     * Comment Seq (Rid) 파라미터로 댓글 지우기
+     * @param rid
+     * @return
+     * @throws Exception
+     */
+    public int commentDeleteServiceBno(int bno) throws Exception{
+        return mCommentMapper.commentDeleteByBno(bno);
     }
 }

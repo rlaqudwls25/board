@@ -6,14 +6,18 @@ import com.board.domain.CommentVO;
 import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import com.board.service.CommentService;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 
 @Controller
@@ -55,12 +59,13 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/insert",method = {RequestMethod.GET, RequestMethod.POST})
-    public String boardInsertForm() {
+    public String boardInsertForm() throws Exception {
+
         return "insert";
     }
 
     @RequestMapping(value = "/insertProc",method = {RequestMethod.GET, RequestMethod.POST})
-    public String boardInsertProc(HttpServletRequest request) throws Exception{
+    public String boardInsertProc(HttpServletRequest request, BoardDTO dto) throws Exception{
 
         BoardDTO board = new BoardDTO();
 
@@ -70,6 +75,27 @@ public class BoardController {
         board.setDEL_CHK(request.getParameter("DEL_CHK"));
 
         mBoardService.boardInsertService(board);
+
+        String fileName = null;
+        MultipartFile uploadFile = dto.getUploadFile();
+
+        /**
+         * 확장자 구하기
+         */
+        if(!uploadFile.isEmpty()) {
+            String originalFileName = uploadFile.getOriginalFilename();
+            String ext = FilenameUtils.getExtension(originalFileName);
+
+            /**
+             * uuid 구하기
+             */
+            UUID uuid = UUID.randomUUID();
+            fileName = uuid+"."+ext;
+            uploadFile.transferTo(new File("C:\\upload\\" + fileName));
+        }
+        dto.setFileName(fileName);
+        mBoardService.boardInsertService(dto);
+
 
         return "redirect:/list";
     }
@@ -100,7 +126,7 @@ public class BoardController {
     @RequestMapping(value = "/delete/{bno}", method = RequestMethod.GET)
     public String boardDelete(@PathVariable int bno) throws Exception{
         mBoardService.boardDeleteService(bno);
-        mCommentService.commentDeleteService(bno);
+        mCommentService.commentDeleteServiceBno(bno);
 
         return "redirect:/list";
     }

@@ -21,7 +21,9 @@ public interface CommentMapper {
 
     public int commentUpdate(CommentVO comment) throws Exception;
 
-    public int commentDelete(int rid) throws Exception;
+    public int commentDeleteByRid(int rid) throws Exception;
+
+    public int commentDeleteByBno(int bno) throws Exception;
 
 
 }

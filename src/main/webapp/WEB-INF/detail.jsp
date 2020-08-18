@@ -19,6 +19,7 @@
         // 단순 스크립트는 헤더 사이에 넣는다
     </script>
 </head>
+<body>
 
 <div style="text-align: center">
 <h2>게시글 상세</h2>
@@ -26,6 +27,8 @@
 
 <div class="container">
     <form action="/insertProc" method="post" >
+        <input name="seq" type="hidden" value="${board.idx}"/>
+        <table border="1">
         <div class="form-group">
             <label>제목</label>
             <p>${detail.subject}</p>
@@ -42,7 +45,18 @@
             <label>내용</label>
             <p>${detail.content}</p>
         </div>
+        <div>
+        <c:if test="${board.fileName ne null}">
+            <tr>
+                <td bgcolor="orange">첨부파일</td>
+                <td align="left"><a href="fileDownload.do?fileName=${board.fileName}">
+                    ${board.fileName}
+                </a> </td>
+            </tr>
+        </c:if>
+        </div>
 
+        </table>
     </form>
     <div class="btn-group btn-group-sm" role="group" style="float:right;">
     <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
