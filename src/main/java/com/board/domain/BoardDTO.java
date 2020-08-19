@@ -27,8 +27,7 @@ public class BoardDTO {
    private String DEL_CHK;
    private String fileName;
    private MultipartFile uploadFile;
-
-
+   private int viewCnt;
 
 
 }

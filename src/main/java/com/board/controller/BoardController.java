@@ -6,6 +6,7 @@ import com.board.domain.CommentVO;
 import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import com.board.service.CommentService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
-
+@Slf4j
 @Controller
 public class BoardController {
 
@@ -69,12 +70,12 @@ public class BoardController {
 
         BoardDTO board = new BoardDTO();
 
-        board.setSubject(request.getParameter("subject"));
-        board.setContent(request.getParameter("content"));
-        board.setWriter(request.getParameter("writer"));
-        board.setDEL_CHK(request.getParameter("DEL_CHK"));
-
-        mBoardService.boardInsertService(board);
+//        board.setSubject(request.getParameter("subject"));
+//        board.setContent(request.getParameter("content"));
+//        board.setWriter(request.getParameter("writer"));
+//        board.setDEL_CHK(request.getParameter("DEL_CHK"));
+//
+        //mBoardService.boardInsertService(board);
 
         String fileName = null;
         MultipartFile uploadFile = dto.getUploadFile();
@@ -94,8 +95,9 @@ public class BoardController {
             uploadFile.transferTo(new File("C:\\upload\\" + fileName));
         }
         dto.setFileName(fileName);
-        mBoardService.boardInsertService(dto);
 
+
+        mBoardService.boardInsertService(dto);
 
         return "redirect:/list";
     }

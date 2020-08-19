@@ -32,7 +32,7 @@
          ,regDate
         FROM board
         WHERE DEL_CHK ='N'
-        ORDER BY bno DESC
+        ORDER BY bno DESC, regDate DESC
         LIMIT #{pageStart}, #{perPageNum}
 ]]>
     </select>
@@ -55,6 +55,8 @@
          ,content
          ,writer
          ,regDate
+         ,del_chk
+         ,file_name
         FROM board
         WHERE
         bno = #{bno}

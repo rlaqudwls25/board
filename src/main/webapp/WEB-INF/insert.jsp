@@ -13,6 +13,7 @@
 
 <div class="container">
     <form action="/insertProc" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="DEL_CHK" value="N">
         <div class="form-group">
             <label for="subject">제목</label>
             <input type="text" class="form-control" id="subject" name="subject" placeholder="제목을 입력하세요.">
@@ -26,7 +27,8 @@
             <textarea class="form-control" id="content" name="content" rows="3"></textarea>
         </div>
         <div >
-            <td bgcolor="blue" width="100"></td><td align="left">
+            <td bgcolor="blue" width="100"></td>
+            <td align="left">
         <input type="file" name="uploadFile"/></td>
         </div>
             <div class="form-group"></div>
