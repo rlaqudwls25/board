@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.board.domain.BoardDTO;
 import com.board.domain.PageVO;
-import com.board.domain.CommentVO;
 import com.board.mapper.BoardMapper;
 import com.board.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,6 @@ public class BoardService {
     BoardMapper mBoardMapper;
     @Autowired
     CommentMapper mCommentMapper;
-
-
 
     /**
      *
@@ -55,6 +52,13 @@ public class BoardService {
 
     /**
      *
+     * @param bno
+     * @return
+     * @throws Exception
+     */
+
+    /**
+     *
      * @param board
      * @return
      * @throws Exception
@@ -76,7 +80,6 @@ public class BoardService {
 
     }
 
-
     /**
      *
      * @return
@@ -86,6 +89,10 @@ public class BoardService {
         return mBoardMapper.countBoardList();
     }
 
+    public BoardDTO viewCnt(int bno) throws Exception {
+        return mBoardMapper.viewCntUpdate(bno);
+
+    }
 
 
 }

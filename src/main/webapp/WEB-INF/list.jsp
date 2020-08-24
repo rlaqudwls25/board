@@ -39,6 +39,8 @@
 <body>
 <h2>게시판</h2>
 
+<p>조회수 : ${object.viewCnt}</p>
+
 <div class="container">
     <table class="table table-hover">
 
@@ -46,6 +48,7 @@
             <th>Subject</th>
             <th>Writer</th>
             <th>Date</th>
+            <th>조회수</th>
 
         <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">
@@ -53,6 +56,8 @@
                 <td>${e.subject}</td>
                 <td>${e.writer}</td>
                 <td width="20%"><fmt:formatDate value="${e.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+                <td>${e.viewCnt}</td>
+
             </tr>
         </c:forEach>
 

@@ -6,6 +6,8 @@ import com.board.domain.CommentVO;
 import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import com.board.service.CommentService;
+import com.mysql.cj.util.StringUtils;
+import jdk.internal.instrumentation.Logger;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +17,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Slf4j
@@ -48,11 +54,11 @@ public class BoardController {
        mav.addObject("pagination",pagination);
 
        return mav;
-
     }
 
     @RequestMapping(value = "/detail/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
     public String boardDetail(@PathVariable int bno, Model model) throws Exception{
+
 
         model.addAttribute("detail", mBoardService.boardDetailService(bno));
 
@@ -133,6 +139,38 @@ public class BoardController {
         return "redirect:/list";
     }
 
+    @RequestMapping(value = "/{bno}")
+    public String viewCntUpdate(HttpServletResponse response, HttpServletRequest request, @PathVariable int bno, Model model) throws Exception {
+        //저장된 쿠키 불러오기
+        Cookie cookies[] = request.getCookies();
+        Map mapCookie = new HashMap();
+
+        if(request.getCookies() != null){
+            for(int i=0; i<cookies.length; i++){
+                Cookie obj = cookies[i];
+                mapCookie.put(obj.getName(), obj.getValue());
+            }
+        }
+        // 저장된 쿠키중에 viewCnt만 불러오기
+        String cookie_viewCnt = (String) mapCookie.get("viewCnt");
+        //저장된 새로운 쿠키값 생성
+        String new_cookie_viewCnt = "|" + bno;
+
+        //저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
+        if(StringUtils.indexOfIgnoreCase(cookie_viewCnt, new_cookie_viewCnt) == -1){
+            //없을 경우 쿠키 생성
+            Cookie cookie = new Cookie("viewCnt", cookie_viewCnt + new_cookie_viewCnt);
+            response.addCookie(cookie);
+
+            //조회수 업데이트
+            this.mBoardService.viewCnt(bno);
+
+        }
+        BoardDTO object = this.mBoardService.viewCnt(bno);
+        model.addAttribute("object", object);
+        return "list";
+
+    }
 
 
 

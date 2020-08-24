@@ -51,9 +51,7 @@ public interface BoardMapper {
      */
     public List<BoardDTO> boardListService(PageVO page) throws Exception;
 
-    public void updateViewCnt(Integer bno) throws Exception;
 
-
-
+    public BoardDTO viewCntUpdate(int bno) throws Exception;
 }
 

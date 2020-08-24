@@ -17,6 +17,7 @@
          ,subject
          ,content
          ,writer
+         ,viewCnt
          ,regDate
         FROM board
         ORDER BY bno DESC
@@ -77,9 +78,20 @@
         WHERE bno = #{bno}
     </update>
 
+    <resultMap id="viewCnt" type="com.board.domain.BoardDTO">
+<result property="viewCnt" column="viewCnt"/>
+    </resultMap>
+
+    <update id="viewCntUpdate" parameterType="int">
+    UPDATE board SET
+    viewCnt = viewCnt+1
+    WHERE bno = #{bno} LIMIT 1
+    </update>
+
     <delete id="boardDelete" parameterType="int">
         DELETE FROM board WHERE bno = #{bno}
     </delete>
+
 
 </mapper>
 
