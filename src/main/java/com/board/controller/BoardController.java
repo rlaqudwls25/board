@@ -61,6 +61,10 @@ public class BoardController {
 
 
         model.addAttribute("detail", mBoardService.boardDetailService(bno));
+        model.addAttribute("board", mBoardService.viewCntUpdate(bno));
+
+        //조회소 + 1
+        mBoardService.viewCntUpdate(bno);
 
         return "detail";
     }
@@ -102,7 +106,6 @@ public class BoardController {
         }
         dto.setFileName(fileName);
 
-
         mBoardService.boardInsertService(dto);
 
         return "redirect:/list";
@@ -110,7 +113,6 @@ public class BoardController {
 
     @RequestMapping(value = "/update/{bno}",method = {RequestMethod.GET, RequestMethod.POST})
     public String boardUpdateForm(@PathVariable int bno, Model model) throws Exception{
-
 
         model.addAttribute("detail", mBoardService.boardDetailService(bno));
 
@@ -139,38 +141,38 @@ public class BoardController {
         return "redirect:/list";
     }
 
-    @RequestMapping(value = "/{bno}")
-    public String viewCntUpdate(HttpServletResponse response, HttpServletRequest request, @PathVariable int bno, Model model) throws Exception {
-        //저장된 쿠키 불러오기
-        Cookie cookies[] = request.getCookies();
-        Map mapCookie = new HashMap();
-
-        if(request.getCookies() != null){
-            for(int i=0; i<cookies.length; i++){
-                Cookie obj = cookies[i];
-                mapCookie.put(obj.getName(), obj.getValue());
-            }
-        }
-        // 저장된 쿠키중에 viewCnt만 불러오기
-        String cookie_viewCnt = (String) mapCookie.get("viewCnt");
-        //저장된 새로운 쿠키값 생성
-        String new_cookie_viewCnt = "|" + bno;
-
-        //저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
-        if(StringUtils.indexOfIgnoreCase(cookie_viewCnt, new_cookie_viewCnt) == -1){
-            //없을 경우 쿠키 생성
-            Cookie cookie = new Cookie("viewCnt", cookie_viewCnt + new_cookie_viewCnt);
-            response.addCookie(cookie);
-
-            //조회수 업데이트
-            this.mBoardService.viewCnt(bno);
-
-        }
-        BoardDTO object = this.mBoardService.viewCnt(bno);
-        model.addAttribute("object", object);
-        return "list";
-
-    }
+//    @RequestMapping(value = "/{bno}")
+//    public String viewCntUpdate(HttpServletResponse response, HttpServletRequest request, @PathVariable int bno, Model model) throws Exception {
+//        저장된 쿠키 불러오기
+//        Cookie cookies[] = request.getCookies();
+//        Map mapCookie = new HashMap();
+//
+//        if(request.getCookies() != null){
+//            for(int i=0; i<cookies.length; i++){
+//                Cookie obj = cookies[i];
+//                mapCookie.put(obj.getName(), obj.getValue());
+//            }
+//        }
+//         저장된 쿠키중에 viewCnt만 불러오기
+//        String cookie_viewCnt = (String) mapCookie.get("viewCnt");
+//        저장된 새로운 쿠키값 생성
+//        String new_cookie_viewCnt = "|" + bno;
+//
+//        저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
+//        if(StringUtils.indexOfIgnoreCase(cookie_viewCnt, new_cookie_viewCnt) == -1){
+//            없을 경우 쿠키 생성
+//            Cookie cookie = new Cookie("viewCnt", cookie_viewCnt + new_cookie_viewCnt);
+//            response.addCookie(cookie);
+//
+//            조회수 업데이트
+//            mBoardService.viewCntUpdate(bno);
+//
+//        }
+//        boolean object = mBoardService.viewCntUpdate(bno);
+//        model.addAttribute("object", object);
+//        return "list";
+//
+//    }
 
 
 

@@ -39,7 +39,6 @@ public class BoardService {
 
         return mBoardMapper.boardDetail(bno);
     }
-
     /**
      *aa
      * @param board
@@ -49,7 +48,6 @@ public class BoardService {
 
         mBoardMapper.boardInsert(board);
     }
-
     /**
      *
      * @param bno
@@ -67,7 +65,6 @@ public class BoardService {
 
         return mBoardMapper.boardUpdate(board);
     }
-
     /**
      *
      * @param bno
@@ -77,9 +74,7 @@ public class BoardService {
     public boolean boardDeleteService(int bno) throws Exception{
 
         return mBoardMapper.boardDelete(bno);
-
     }
-
     /**
      *
      * @return
@@ -89,10 +84,7 @@ public class BoardService {
         return mBoardMapper.countBoardList();
     }
 
-    public BoardDTO viewCnt(int bno) throws Exception {
+    public boolean viewCntUpdate(int bno) throws Exception{
         return mBoardMapper.viewCntUpdate(bno);
-
     }
-
-
 }
