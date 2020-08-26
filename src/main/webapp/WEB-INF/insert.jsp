@@ -2,10 +2,12 @@
          pageEncoding="UTF-8"%>
 <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert Form</title>
+
+
 </head>
 <body>
 <div style="text-align: center">
@@ -23,7 +25,7 @@
             <label for="writer">작성자</label>
             <input type="text" class="form-control" id="writer" name="writer" placeholder="내용을 입력하세요.">
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <label for="content">내용</label>
             <textarea class="form-control" id="content" name="content" rows="3"></textarea>
         </div>
@@ -36,10 +38,11 @@
 
         <button type="submit" class="btn btn-primary">작성</button>
         <button type="submit" class="btn btn-primary">목록</button>
+        <script src="${pageContext.request.contextPath}/ckeditor.js"></script>
     </form>
 </div>
 <%@ include file="bootstrap.jsp"%>
-<script src="${pageContext.request.contextPath}/ckeditor.js"></script>
+
 
 </body>
 </html>

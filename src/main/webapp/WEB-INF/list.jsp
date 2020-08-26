@@ -41,8 +41,6 @@
 <body>
 <h2>게시판</h2>
 
-<p>조회수 : ${viewCnt}</p>
-
 <div class="container">
     <table class="table table-hover">
 
@@ -58,7 +56,7 @@
                 <td>${e.subject}</td>
                 <td>${e.writer}</td>
                 <td width="20%"><fmt:formatDate value="${e.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-                <td>${e.viewCnt}</td>
+                <td>${e.view_cnt}</td>
 
             </tr>
         </c:forEach>

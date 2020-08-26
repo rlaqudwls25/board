@@ -17,7 +17,6 @@
          ,subject
          ,content
          ,writer
-         ,viewCnt
          ,regDate
         FROM board
         ORDER BY bno DESC
@@ -31,6 +30,7 @@
          ,content
          ,writer
          ,regDate
+         ,view_cnt
         FROM board
         WHERE DEL_CHK ='N'
         ORDER BY bno DESC, regDate DESC
@@ -57,6 +57,7 @@
          ,writer
          ,regDate
          ,del_chk
+         ,view_cnt
          ,file_name
         FROM board
         WHERE
@@ -65,8 +66,8 @@
 
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
       INSERT INTO
-      board (bno, subject, content, writer, regDate, del_chk, file_name)
-      VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N', #{fileName})
+      board (bno, subject, content, writer, regDate, del_chk, file_name, view_cnt)
+      VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N', #{fileName}, 0)
     </insert>
 
     <update id="boardUpdate" parameterType="com.board.domain.BoardDTO">

@@ -46,6 +46,10 @@
             <label>내용</label>
             <p>${detail.content}</p>
         </div>
+        <div class="form-group">
+            <label>조회수</label>
+            <p>${detail.viewCnt}</p>
+        </div>
 
             <c:if test="${detail.fileName ne null}">
             <tr>
