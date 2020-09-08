@@ -10,6 +10,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Detail</title>
     <script>
+        /**
+         *
+         * @param bno
+         */
         function del(bno) {
             var chk = confirm("정말 삭제하시겠습니까?");
             if (chk) {
@@ -25,7 +29,6 @@
 <div style="text-align: center">
 <h2>게시글 상세</h2>
 </div>
-
 
 
 <div class="container">
@@ -51,6 +54,7 @@
             <p>${detail.viewCnt}</p>
         </div>
 
+
             <c:if test="${detail.fileName ne null}">
             <tr>
                         <td bgcolor="white">
@@ -68,6 +72,7 @@
 
 </div>
 </div>
+
 
 <div class="container">
     <label for="content">comment</label>

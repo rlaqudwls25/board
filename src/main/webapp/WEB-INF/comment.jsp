@@ -3,7 +3,11 @@
 
 
 <script>
-    var bno = '${detail.bno}'; //게시글 번호
+    /**
+     *게시글 번호
+     * @type {string}
+     */
+    var bno = '${detail.bno}';
 
     $('[name=commentInsertBtn]').click(function () { //댓글 등록 버튼
         var insertData = $('[name=commentInsertForm]').serialize(); //commentinsertform에 내용을 가져옴
@@ -11,7 +15,9 @@
     });
 
 
-    //댓글 목록
+    /**
+     *댓글 목록
+     */
     function commentList() {
         $.ajax({
             url : '/comment/list',
@@ -33,7 +39,12 @@
         });
     }
 
-    //댓글 등록
+
+    /**
+     *댓글 등록
+     * @param insertData
+     */
+
     function commentInsert(insertData) {
         $.ajax({
             url : '/comment/insert',
@@ -48,9 +59,15 @@
         });
     }
 
-    //댓글 수정
+    /**
+     *댓글 수정
+     * @param rid
+     * @param content
+     */
+
     function commentUpdate(rid, content) {
         var a ='';
+
 
         a += '<div class="input-group">';
         a += '<input type="text" class="form-control" name="content_'+rid+'" value="'+content+'"/>';
@@ -61,7 +78,11 @@
 
     }
 
-    //댓글 수정
+    /**
+     *댓글 수정
+     * @param rid
+     */
+
     function commentUpdateProc(rid) {
         var updateContent = $('[name=content_'+rid+']').val();
 
@@ -77,7 +98,11 @@
 
     }
 
-    //댓글 삭제
+    /**
+     *댓글 삭제
+     * @param rid
+     */
+
     function commentDelete(rid) {
         $.ajax({
             url: '/comment/delete/' + rid,

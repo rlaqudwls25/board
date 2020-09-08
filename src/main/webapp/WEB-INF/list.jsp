@@ -8,10 +8,12 @@
 <html>
 <head>
 
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>List</title>
 </head>
 <style>
+
     h2 {
         text-align: center;
     }
@@ -32,6 +34,9 @@
 </style>
 
 <script>
+    /**
+     *
+     */
     function selChange() {
         var sel = document.getElementById('perPageNum').value;
         location.href="list?page=${pagination.page}&perPageNum="+sel;
@@ -49,6 +54,7 @@
             <th>Writer</th>
             <th>Date</th>
             <th>조회수</th>
+
 
         <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">

@@ -13,20 +13,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+
+/**
+ * 게시판 리스트
+ */
 @Getter
 @Setter
-// 데이터 전달 목적
 public class BoardDTO {
 /** Controller 와 service 간에 주고 받을 객체 정의 */
 
+   /**
+    * 게시글 번호
+    */
    private int bno;
+   /**
+    * 게시글 제목
+    */
    private String subject;
+   /**
+    * 게시글 내용
+    */
    private String content;
+   /**
+    * 작성자
+    */
    private String writer;
+   /**
+    * 작성 시간
+    */
    private LocalDateTime regDate;
+   /**
+    * 삭제 체크
+    */
    private String DEL_CHK;
+   /**
+    * 첨부파일 제목
+    */
    private String fileName;
+   /**
+    * 업로드 파일
+    */
    private MultipartFile uploadFile;
+
+   /**
+    * 조회수 카운트
+    */
    private int viewCnt;
 
 

@@ -5,6 +5,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
+
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 </head>
 <body>
 <div style="text-align: center">
@@ -18,12 +20,15 @@
             <input type="text" class="form-control" id="subject" name="subject">
 </div>
         <div class="form-group">
-            <label for="content">내용</label>
-            <textarea class="form-control" id="content" name="content" rows="3">${detail.content}</textarea>
+
+            <textarea name="editor1" id="editor1" rows="10" cols="80">${detail.content}</textarea>
         </div>
 
         <input type="hidden" name="bno" value="${bno}"/>
         <button type="submit" class="btn btn-primary">수정</button>
+
+        <script> CKEDITOR.replace('editor1');
+        </script>
     </form>
 </div>
 

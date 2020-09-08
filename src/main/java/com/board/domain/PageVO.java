@@ -1,9 +1,19 @@
 package com.board.domain;
 
+
+/**
+ * 페이지 리스트
+ */
 public class PageVO {
 
-    private int page;  //현재 페이지 번호
-    private int perPageNum; //한 페이지당 보여줄 게시글의 수
+    /**
+     * 현재 페이지 번호
+     */
+    private int page;
+    /**
+     * 한 페이지당 보여줄 게시글의 수
+     */
+    private int perPageNum;
 
     public int getPageStart() {
         return (this.page - 1) * perPageNum;
@@ -30,10 +40,13 @@ public class PageVO {
         return perPageNum;
     }
 
-    public void setPerPageNum(int pageCount) { //페이지당 보여줄 게시글 수 변함 X
+    /**
+     * 페이지당 보여줄 게시글 수 , pageCount = 페이지 카운트  cnt = 갯수
+     * @param pageCount
+     */
+    public void setPerPageNum(int pageCount) {
         int cnt = perPageNum;
         if (pageCount != cnt) {
-            //pageCount = 페이지 카운트  cnt = 갯수
             perPageNum = cnt;
         } else {
             perPageNum = pageCount;

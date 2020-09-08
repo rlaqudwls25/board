@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * 게시판 Mapper
+ */
 @Repository
 @Mapper
 public interface BoardMapper {
@@ -24,17 +27,20 @@ public interface BoardMapper {
      * @param page*/
     public List<BoardDTO> boardList(PageVO page) throws Exception;
     /**
+     * 게시판 상세
      * @param bno
      * @return
      * @throws Exception
      */
     public BoardDTO boardDetail(int bno) throws Exception;
     /**
+     * 게시판 작성
      * @param board
      * @throws Exception
      */
     public void boardInsert(BoardDTO board) throws Exception;
     /**
+     * 게시판 수정
      * @param board
      * @return
      * @throws Exception
@@ -45,6 +51,7 @@ public interface BoardMapper {
      * @return*/
     public boolean boardDelete(int bno) throws Exception;
     /**
+     *
      * @param page
      * @return
      * @throws Exception
@@ -52,6 +59,12 @@ public interface BoardMapper {
     public List<BoardDTO> boardListService(PageVO page) throws Exception;
 
 
+    /**
+     * 조회수
+     * @param bno
+     * @return
+     * @throws Exception
+     */
     public boolean viewCntUpdate(int bno) throws Exception;
 }
 

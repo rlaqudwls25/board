@@ -14,14 +14,26 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+
+/**
+ * 파일 다운로드 컨트롤러
+ */
 @Controller
 public class FileDownController {
-
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws Exception
+     */
     @RequestMapping(value = "fileDownload.do")
     public void fileDownload(HttpServletRequest request, HttpServletResponse response) throws Exception{
         String filename = request.getParameter("fileName");
         String realFilename="";
 
+        /**
+         * 파일 인코딩
+         */
         try{
             String browser = request.getHeader("User-Agent");
             //파일 인코딩
@@ -39,11 +51,17 @@ public class FileDownController {
         if(!file1.exists()){
             return;
         }
-        // 파일명 저장
+        /**
+         * 파일명 저장
+         */
         response.setContentType("application/octer-stream");
         response.setHeader("Content-Transfer-Encoding", "binary;");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
 
+
+        /**
+         * 파일 크기 저장
+         */
         try{
             OutputStream os = response.getOutputStream();
             FileInputStream fis = new FileInputStream(realFilename);

@@ -27,7 +27,6 @@
       INSERT INTO
       comment (rid, bno, content, regid, regdt)
       VALUES (#{rid}, #{bno}, #{content}, #{regid}, now())
-
     </insert>
 
     <update id="commentUpdate" parameterType="com.board.domain.CommentVO">

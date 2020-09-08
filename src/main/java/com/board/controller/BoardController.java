@@ -25,6 +25,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+
+/**
+ * 게시판 컨트롤러
+ */
 @Slf4j
 @Controller
 public class BoardController {
@@ -34,7 +38,13 @@ public class BoardController {
     @Autowired
     CommentService mCommentService;
 
-
+    /**
+     *
+     * @param page
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView boardList(PageVO page, Model model) throws Exception {
 
@@ -55,6 +65,15 @@ public class BoardController {
         return mav;
     }
 
+    /**
+     *
+     * @param bno
+     * @param model
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/detail/{bno}", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardDetail(@PathVariable int bno, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -87,12 +106,25 @@ public class BoardController {
         return "detail";
     }
 
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
+
     @RequestMapping(value = "/insert", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardInsertForm() throws Exception {
 
         return "insert";
     }
 
+    /**
+     *
+     * @param request
+     * @param dto
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/insertProc", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardInsertProc(HttpServletRequest request, BoardDTO dto) throws Exception {
 
@@ -129,6 +161,13 @@ public class BoardController {
         return "redirect:/list";
     }
 
+    /**
+     *
+     * @param bno
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/update/{bno}", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardUpdateForm(@PathVariable int bno, Model model) throws Exception {
 
@@ -137,6 +176,12 @@ public class BoardController {
         return "update";
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/updateProc", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardUpdateProc(HttpServletRequest request) throws Exception {
 
@@ -151,6 +196,12 @@ public class BoardController {
 
     }
 
+    /**
+     *
+     * @param bno
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/delete/{bno}", method = RequestMethod.GET)
     public String boardDelete(@PathVariable int bno) throws Exception {
         mBoardService.boardDeleteService(bno);
