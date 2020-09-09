@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+/*** 게시판 서비스 */
 @Service
 public class BoardService {
 
@@ -19,7 +20,7 @@ public class BoardService {
     CommentMapper mCommentMapper;
 
     /**
-     *
+     * 게시판 목록
      * @param page
      * @return
      * @throws Exception
@@ -30,7 +31,7 @@ public class BoardService {
     }
 
     /**
-     *
+     * 게시판 상세
      * @param bno
      * @return
      * @throws Exception
@@ -40,7 +41,7 @@ public class BoardService {
         return mBoardMapper.boardDetail(bno);
     }
     /**
-     *aa
+     * 게시판 작성
      * @param board
      * @throws Exception
      */
@@ -56,7 +57,7 @@ public class BoardService {
      */
 
     /**
-     *
+     * 게시판 수정
      * @param board
      * @return
      * @throws Exception
@@ -66,7 +67,7 @@ public class BoardService {
         return mBoardMapper.boardUpdate(board);
     }
     /**
-     *
+     * 게시판 삭제
      * @param bno
      * @return
      * @throws Exception
@@ -76,7 +77,7 @@ public class BoardService {
         return mBoardMapper.boardDelete(bno);
     }
     /**
-     *
+     * 게시판 총 목록
      * @return
      * @throws Exception
      */
@@ -84,6 +85,12 @@ public class BoardService {
         return mBoardMapper.countBoardList();
     }
 
+    /**
+     * 게시판 조회수
+     * @param bno
+     * @return
+     * @throws Exception
+     */
     public boolean viewCntUpdate(int bno) throws Exception{
         return mBoardMapper.viewCntUpdate(bno);
     }

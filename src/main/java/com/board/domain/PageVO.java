@@ -1,18 +1,13 @@
 package com.board.domain;
 
 
-/**
- * 페이지 리스트
- */
+/*** 페이지 리스트*/
 public class PageVO {
 
-    /**
-     * 현재 페이지 번호
-     */
+    // 현재 페이지 번호
     private int page;
-    /**
-     * 한 페이지당 보여줄 게시글의 수
-     */
+
+    // 한 페이지당 보여줄 게시글의 수
     private int perPageNum;
 
     public int getPageStart() {

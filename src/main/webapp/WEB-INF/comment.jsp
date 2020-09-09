@@ -15,9 +15,7 @@
     });
 
 
-    /**
-     *댓글 목록
-     */
+    /***댓글 목록 */
     function commentList() {
         $.ajax({
             url : '/comment/list',
@@ -44,7 +42,6 @@
      *댓글 등록
      * @param insertData
      */
-
     function commentInsert(insertData) {
         $.ajax({
             url : '/comment/insert',
@@ -64,7 +61,6 @@
      * @param rid
      * @param content
      */
-
     function commentUpdate(rid, content) {
         var a ='';
 
@@ -82,7 +78,6 @@
      *댓글 수정
      * @param rid
      */
-
     function commentUpdateProc(rid) {
         var updateContent = $('[name=content_'+rid+']').val();
 
@@ -102,20 +97,21 @@
      *댓글 삭제
      * @param rid
      */
-
     function commentDelete(rid) {
         $.ajax({
             url: '/comment/delete/' + rid,
             type: 'post',
             success: function (data) {
                 if (data == 1)
-                    commentList(bno); //댓글 삭제후 목록 출력
+                    //댓글 삭제후 목록 출력
+                    commentList(bno);
             }
         });
     }
 
     $(document).ready(function () {
-        commentList(); //페이지 로딩시 댓글 목록 출력
+        //페이지 로딩시 댓글 목록 출력
+        commentList();
     });
 
 </script>

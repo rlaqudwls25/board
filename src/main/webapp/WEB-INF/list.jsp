@@ -44,9 +44,12 @@
     }
 </script>
 <body>
+
 <h2>게시판</h2>
 
 <div class="container">
+    <button class ="btn btn-primary" onclick="location.href='/register'">회원가입</button>
+    <button class ="btn btn-primary" onclick="location.href='/login'">로그인</button>
     <table class="table table-hover">
 
             <th>No </th>

@@ -13,20 +13,20 @@
     <select id="commentList" parameterType="int" resultType="com.board.domain.CommentVO">
 
         SELECT
-         rid
-          ,bno
-          ,content
-          ,regid
-          ,now()
+          rid
+           ,bno
+           ,content
+           ,regid
+           ,now()
         FROM comment
         WHERE bno = #{bno}
 
     </select>
     
     <insert id="commentInsert" parameterType="com.board.domain.CommentVO">
-      INSERT INTO
-      comment (rid, bno, content, regid, regdt)
-      VALUES (#{rid}, #{bno}, #{content}, #{regid}, now())
+        INSERT INTO
+        comment (rid, bno, content, regid, regdt)
+        VALUES (#{rid}, #{bno}, #{content}, #{regid}, now())
     </insert>
 
     <update id="commentUpdate" parameterType="com.board.domain.CommentVO">

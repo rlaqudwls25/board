@@ -41,9 +41,8 @@
     <select id="countBoardList" resultType="Integer">
         <![CDATA[
             SELECT
-            count(*)
-            FROM
-            board
+                count(*)
+            FROM board
             WHERE
             DEL_CHK ='N'
         ]]>
@@ -51,23 +50,23 @@
 
     <select id="boardDetail" parameterType="int" resultType="com.board.domain.BoardDTO">
         SELECT
-        bno
-         ,subject
-         ,content
-         ,writer
-         ,regDate
-         ,del_chk
-         ,view_cnt
-         ,file_name
+            bno
+             ,subject
+             ,content
+             ,writer
+             ,regDate
+             ,del_chk
+             ,view_cnt
+             ,file_name
         FROM board
         WHERE
         bno = #{bno}
     </select>
 
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
-      INSERT INTO
-      board (bno, subject, content, writer, regDate, del_chk, file_name, view_cnt)
-      VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N', #{fileName}, 0)
+        INSERT INTO
+        board (bno, subject, content, writer, regDate, del_chk, file_name, view_cnt)
+        VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N', #{fileName}, 0)
     </insert>
 
     <update id="boardUpdate" parameterType="com.board.domain.BoardDTO">
@@ -80,12 +79,12 @@
     </update>
 
     <resultMap id="viewCnt" type="com.board.domain.BoardDTO">
-<result property="viewCnt" column="viewCnt"/>
+        <result property="viewCnt" column="viewCnt"/>
     </resultMap>
 
     <update id="viewCntUpdate" parameterType="int" >
-    UPDATE board SET
-    view_cnt = view_cnt + 1 WHERE bno = #{bno}
+        UPDATE board SET
+        view_cnt = view_cnt + 1 WHERE bno = #{bno}
     </update>
 
     <delete id="boardDelete" parameterType="int">

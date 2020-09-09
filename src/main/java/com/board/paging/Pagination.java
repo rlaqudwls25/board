@@ -7,75 +7,49 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Pagination {
-    /**
-     *
-     */
+
+    // 현재 페이지 번호
     private PageVO page;
-    /**
-     *
-     */
+
+    // 총 페이지 수
     private int totalCount;
-    /**
-     *
-     */
+
+    // 시작 페이지
     private int startPage;
-    /**
-     *
-     */
+
+    // 끝 페이지
     private int endPage;
-    /**
-     *
-     */
+
+    // 이전 페이지
     private boolean prev;
-    /**
-     *
-     */
+
+    // 다음 페이지
     private boolean next;
-    /**
-     * 화면 하단에 보여지는 페이지 버튼의 수
-     */
+
+    // 화면 하단에 보여지는 페이지 버튼의 수
     private int displayPageNum = 5;
 
 
-    /**
-     *
-     * @return
-     */
     public PageVO getPage() {
         return page;
     }
 
-    /**
-     *
-     * @param page
-     */
     public void setPage(PageVO page) {
         this.page = page;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getTotalCount() {
         return totalCount;
     }
 
-    /**
-     *
-     * @param totalCount
-     */
     public void setTotalCount(int totalCount) {
         this.totalCount = totalCount;
         this.calcData();
     }
 
 
-    /**
-     * 끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 페이지 번호의 갯수) * 화면에 보여질 페이지 번호의 갯수)
-     */
+    // 끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 페이지 번호의 갯수) * 화면에 보여질 페이지 번호의 갯수
     private void calcData() {
-
 
         endPage = (int) (Math.ceil(page.getPage() / (double) displayPageNum) * displayPageNum);
 

@@ -25,6 +25,8 @@ public class DBConfiguration {
 
     @Autowired
     private ApplicationContext applicationContext;
+
+
     /** prefix에 해당하는 spring.datasource.hikari로 시작하는 설정을
      * 모두 읽어 들여 해당 메서드에 매핑(바인딩)
      */
@@ -33,6 +35,8 @@ public class DBConfiguration {
     public HikariConfig hikariConfig() {
         return new HikariConfig();
     }
+
+
     /**
      * 데이터 소스 객체 생성
      * 데이터 소스 = 커넥션풀 지원하기 위한 인터페이스
@@ -41,6 +45,8 @@ public class DBConfiguration {
     public DataSource dataSource() {
         return new HikariDataSource(hikariConfig());
     }
+
+
     /**
      * SqlSessionFactory 객체 생성
      */
@@ -72,7 +78,7 @@ public class DBConfiguration {
     }
 
     /**
-     *
+     * mybatisConfig
      * @return
      */
 

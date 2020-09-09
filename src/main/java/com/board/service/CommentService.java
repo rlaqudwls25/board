@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*** 댓글 서비스 */
 @Service
 public class CommentService {
 
@@ -16,18 +17,17 @@ public class CommentService {
 
 
     /**
-     *
+     * 댓글 목록
      * @return
      * @throws Exception
      * @param bno
      */
     public List<CommentVO> commentListService(int bno) throws Exception{
         return mCommentMapper.commentList(bno);
-
     }
 
     /**
-     *
+     * 댓글 작성
      * @param comment
      * @return
      * @throws Exception
@@ -37,7 +37,7 @@ public class CommentService {
     }
 
     /**
-     *
+     * 댓글 수정
      * @param comment
      * @return
      * @throws Exception

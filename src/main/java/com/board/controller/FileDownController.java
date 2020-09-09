@@ -15,13 +15,11 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 
-/**
- * 파일 다운로드 컨트롤러
- */
+/*** 파일 다운로드 컨트롤러 */
 @Controller
 public class FileDownController {
     /**
-     *
+     * 파일 다운로드
      * @param request
      * @param response
      * @throws Exception
@@ -31,18 +29,15 @@ public class FileDownController {
         String filename = request.getParameter("fileName");
         String realFilename="";
 
-        /**
-         * 파일 인코딩
-         */
+        // 파일 인코딩
         try{
             String browser = request.getHeader("User-Agent");
-            //파일 인코딩
             if(browser.contains("MSIE") || browser.contains("Trident") || browser.contains("Chrome")) {
                 filename = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
             }else {
                 filename = new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
             }
-            }catch (UnsupportedEncodingException ex){
+        }catch (UnsupportedEncodingException ex){
             System.out.println("UnsupportedEncodingException");
         }
         realFilename = "C:\\upload\\" + filename;
@@ -51,17 +46,14 @@ public class FileDownController {
         if(!file1.exists()){
             return;
         }
-        /**
-         * 파일명 저장
-         */
+
+        // 파일명 저장
         response.setContentType("application/octer-stream");
         response.setHeader("Content-Transfer-Encoding", "binary;");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
 
 
-        /**
-         * 파일 크기 저장
-         */
+        // 파일 크기 저장
         try{
             OutputStream os = response.getOutputStream();
             FileInputStream fis = new FileInputStream(realFilename);
@@ -77,6 +69,6 @@ public class FileDownController {
         }catch (Exception e){
             System.out.println("FileNotFoundException : " + e);
         }
-        }
     }
+}
 

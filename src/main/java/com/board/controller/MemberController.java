@@ -10,31 +10,54 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import static java.awt.SystemColor.info;
 
-/**
- * 회원가입 컨트롤러
- */
+/*** 회원가입 컨트롤러 */
 @Controller
-public class MemberController {
+//@RequestMapping("/member/*")
+public class MemberController
+{
 
-    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+    private static final Logger Logger = LoggerFactory.getLogger(MemberController.class);
 
     @Autowired
-    MemberService service;
+    MemberService memberService;
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+        // 회원가입 get
+        @RequestMapping(value = "/register", method = RequestMethod.GET)
         public void getRegister() throws Exception{
+        Logger.info("get register");
+
+        }
+        // 회원가입 post
+        @RequestMapping(value = "/register", method = RequestMethod.POST)
+        public String postRegsiter(MemberVO vo) throws Exception{
+            Logger.info("post register");
+
+        memberService.register(vo);
+
+        return "redirect:/list";
 
         }
 
-        @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String postRegsiter(MemberVO vo) throws Exception{
+        // 로그인
+        @RequestMapping(value = "/login", method = RequestMethod.GET)
+        public String login(MemberVO vo, HttpServletRequest request) throws Exception{
+            Logger.info("post login");
 
-        service.register(vo);
+            HttpSession session = request.getSession();
 
-        return "/register";
+            MemberVO login = memberService.login(vo);
 
+            if(login == null){
+                session.setAttribute("member", null);
+            }else{
+                session.setAttribute("member", login);
+            }
+            return "redirect:/login";
         }
 
 }

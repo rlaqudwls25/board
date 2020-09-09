@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * 댓글 Mapper
- */
+/*** 댓글 Mapper */
 @Repository
 @Mapper
 public interface CommentMapper {

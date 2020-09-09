@@ -30,7 +30,7 @@
 <h2>게시글 상세</h2>
 </div>
 
-
+<!-- ahㅁㅎㄱ 싲가 -->
 <div class="container">
     <form action="/insertProc" method="post" >
         <div class="form-group">
@@ -66,13 +66,13 @@
 
     </form>
     <div class="btn-group btn-group-sm" role="group" style="float:right;">
-    <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
-    <button class="btn btn-danger" onclick="del(${detail.bno})">삭제</button>
-    <button class="btn btn-primary" onclick="location.href='/list'">목록</button>
+        <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
+        <button class="btn btn-danger" onclick="del(${detail.bno})">삭제</button>
+        <button class="btn btn-primary" onclick="location.href='/list'">목록</button>
 
+    </div>
 </div>
-</div>
-
+<!-- ahㅁㅎㄱ 싲가 -->
 
 <div class="container">
     <label for="content">comment</label>

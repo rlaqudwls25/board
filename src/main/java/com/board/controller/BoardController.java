@@ -26,9 +26,7 @@ import java.util.Map;
 import java.util.UUID;
 
 
-/**
- * 게시판 컨트롤러
- */
+/*** 게시판 컨트롤러 */
 @Slf4j
 @Controller
 public class BoardController {
@@ -90,9 +88,9 @@ public class BoardController {
             }
         }
 
-        //저장된 쿠키중에 viewCnt만 불러오기
+        // 저장된 쿠키중에 viewCnt만 불러오기
         String cookie_viewCnt = (String) mapCookie.get("viewCnt");
-        //저장될 새로운 쿠키값 생성
+        // 저장될 새로운 쿠키값 생성
         String new_cookie_viewCnt = "|" + bno;
 
         if(StringUtils.indexOfIgnoreCase(cookie_viewCnt, new_cookie_viewCnt) == -1){

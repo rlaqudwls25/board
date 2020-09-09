@@ -23,7 +23,7 @@
             <input type="text" class="form-control" id="subject" name="subject" placeholder="제목을 입력하세요.">
         </div>
         <div class="form-group">
-            <label for="writer">작성자</label>
+            <label for="writer">작성자</label>\
             <input type="text" class="form-control" id="writer" name="writer" placeholder="내용을 입력하세요.">
         </div>
 
@@ -39,7 +39,9 @@
         </div>
             <div class="form-group"></div>
 
-        <button type="submit" class="btn btn-primary">작성</button>
+        <button type="submit" class="btn btn-primary">작성</butt
+
+            on>
         <button type="submit" class="btn btn-primary">목록</button>
 
         <script> CKEDITOR.replace('editor1');
