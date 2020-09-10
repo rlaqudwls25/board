@@ -57,7 +57,7 @@ public class CommentService {
     }
 
     /**
-     * Comment Seq (Rid) 파라미터로 댓글 지우기
+     * Comment Seq (Bno) 파라미터로 댓글 지우기
      * @param rid
      * @return
      * @throws Exception

@@ -13,6 +13,7 @@
 <h2> 게시글 수정 </h2>
 </div>
 
+<!-- 게시판 수정 -->
 <div class="container">
     <form action="/updateProc" method="post">
         <div class="form-group">

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import static java.awt.SystemColor.info;
 
 /*** 회원가입 컨트롤러 */
 @Controller

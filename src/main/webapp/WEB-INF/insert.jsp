@@ -15,6 +15,8 @@
 <h2> 게시글 작성 </h2>
 </div>
 
+
+<!-- 게시판 작성 -->
 <div class="container">
     <form action="/insertProc" method="post" enctype="multipart/form-data">
         <input type="hidden" name="DEL_CHK" value="N">

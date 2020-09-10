@@ -37,7 +37,7 @@ public class BoardController {
     CommentService mCommentService;
 
     /**
-     *
+     * 게시판 리스트
      * @param page
      * @param model
      * @return
@@ -64,7 +64,7 @@ public class BoardController {
     }
 
     /**
-     *
+     * 게시판 상세
      * @param bno
      * @param model
      * @param request
@@ -105,7 +105,7 @@ public class BoardController {
     }
 
     /**
-     *
+     * 게시판 작성
      * @return
      * @throws Exception
      */
@@ -117,7 +117,7 @@ public class BoardController {
     }
 
     /**
-     *
+     * 게시판 작성
      * @param request
      * @param dto
      * @return
@@ -138,16 +138,12 @@ public class BoardController {
         String fileName = null;
         MultipartFile uploadFile = dto.getUploadFile();
 
-        /**
-         * 확장자 구하기
-         */
+        // 확장자 구하기
         if (!uploadFile.isEmpty()) {
             String originalFileName = uploadFile.getOriginalFilename();
             String ext = FilenameUtils.getExtension(originalFileName);
 
-            /**
-             * uuid 구하기
-             */
+            // uuid 구하기
             UUID uuid = UUID.randomUUID();
             fileName = uuid + "." + ext;
             uploadFile.transferTo(new File("C:\\upload\\" + fileName));
@@ -160,7 +156,7 @@ public class BoardController {
     }
 
     /**
-     *
+     * 게시판 수정
      * @param bno
      * @param model
      * @return
@@ -175,7 +171,7 @@ public class BoardController {
     }
 
     /**
-     *
+     * 게시판 수정
      * @param request
      * @return
      * @throws Exception
@@ -195,7 +191,7 @@ public class BoardController {
     }
 
     /**
-     *
+     * 게시판 삭제
      * @param bno
      * @return
      * @throws Exception

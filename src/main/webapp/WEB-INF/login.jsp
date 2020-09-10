@@ -8,6 +8,7 @@
 
 <body>
 
+<!-- 게시판 로그인-->
 <form role="form" method="get" autocomplete="off" action="/login">
 
     <p>

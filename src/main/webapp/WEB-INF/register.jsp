@@ -25,6 +25,7 @@
     </script>
 </head>
 
+<!-- 게시판 회원가입 -->
 <body>
 <form role="form" method="post" autocomplete="off">
     <p>

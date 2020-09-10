@@ -10,17 +10,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Detail</title>
     <script>
-        /**
-         *
-         * @param bno
-         */
         function del(bno) {
             var chk = confirm("정말 삭제하시겠습니까?");
             if (chk) {
                 location.href='/delete/${bno}';
             }
         }
-        // 단순 스크립트는 헤더 사이에 넣는다
     </script>
 
 </head>
@@ -30,7 +25,7 @@
 <h2>게시글 상세</h2>
 </div>
 
-<!-- ahㅁㅎㄱ 싲가 -->
+<!-- 게시판 상세 -->
 <div class="container">
     <form action="/insertProc" method="post" >
         <div class="form-group">
@@ -72,7 +67,6 @@
 
     </div>
 </div>
-<!-- ahㅁㅎㄱ 싲가 -->
 
 <div class="container">
     <label for="content">comment</label>

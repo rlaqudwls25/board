@@ -20,7 +20,7 @@
     table {
         width: 100%;
     }
-    #outter{
+    {
         display: block;
         width: 100%;
         margin: auto;
@@ -28,15 +28,10 @@
     a{
         text-decoration: blue;
     }
-    /*.table th {*/
-    /*    text-align:center;*/
-    /*}*/
+
 </style>
 
 <script>
-    /**
-     *
-     */
     function selChange() {
         var sel = document.getElementById('perPageNum').value;
         location.href="list?page=${pagination.page}&perPageNum="+sel;
@@ -47,6 +42,7 @@
 
 <h2>게시판</h2>
 
+<!-- 게시판 리스트 -->
 <div class="container">
     <button class ="btn btn-primary" onclick="location.href='/register'">회원가입</button>
     <button class ="btn btn-primary" onclick="location.href='/login'">로그인</button>

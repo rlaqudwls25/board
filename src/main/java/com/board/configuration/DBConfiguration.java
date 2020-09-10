@@ -16,9 +16,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 
-/**
- * DB Configuration
- */
+/*** DB Configuration */
 @Configuration
 @PropertySource("classpath:/application.properties")
 public class DBConfiguration {
@@ -47,14 +45,10 @@ public class DBConfiguration {
     }
 
 
-    /**
-     * SqlSessionFactory 객체 생성
-     */
+    /*** SqlSessionFactory 객체 생성*/
     @Bean
 
-    /**
-     * SqlSessionFactoryBean = 마이바티스와 스프링의 연동 모듈
-     */
+    /*** SqlSessionFactoryBean = 마이바티스와 스프링의 연동 모듈 */
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource());
@@ -78,7 +72,7 @@ public class DBConfiguration {
     }
 
     /**
-     * mybatisConfig
+     * mybatis Configration
      * @return
      */
 

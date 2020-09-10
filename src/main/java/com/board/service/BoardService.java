@@ -49,12 +49,6 @@ public class BoardService {
 
         mBoardMapper.boardInsert(board);
     }
-    /**
-     *
-     * @param bno
-     * @return
-     * @throws Exception
-     */
 
     /**
      * 게시판 수정

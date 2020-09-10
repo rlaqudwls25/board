@@ -4,6 +4,8 @@ import com.board.domain.PageVO;
 import lombok.Getter;
 import lombok.Setter;
 
+
+/*** 페이징 */
 @Getter
 @Setter
 public class Pagination {
