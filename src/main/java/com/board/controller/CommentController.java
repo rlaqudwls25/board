@@ -69,13 +69,13 @@ public class CommentController {
         return mCommentService.commentUpdateService(comment);
 
     }
+
     /**
      * 댓글 삭제
     * @param rid
      * @return
      * @throws Exception
      */
-
     @RequestMapping("/delete/{rid}")
     @ResponseBody
     private int mCommentServiceDeleteRid(@PathVariable int rid) throws Exception{

@@ -15,7 +15,6 @@
 <h2> 게시글 작성 </h2>
 </div>
 
-
 <!-- 게시판 작성 -->
 <div class="container">
     <form action="/insertProc" method="post" enctype="multipart/form-data">
@@ -25,7 +24,7 @@
             <input type="text" class="form-control" id="subject" name="subject" placeholder="제목을 입력하세요.">
         </div>
         <div class="form-group">
-            <label for="writer">작성자</label>\
+            <label for="writer">작성자</label>
             <input type="text" class="form-control" id="writer" name="writer" placeholder="내용을 입력하세요.">
         </div>
 
@@ -33,7 +32,6 @@
             <textarea name="editor1" id="editor1" row="10" clos="80"></textarea>
 
         </div>
-
         <div >
             <td bgcolor="blue" width="100"></td>
             <td align="left">
@@ -41,15 +39,14 @@
         </div>
             <div class="form-group"></div>
 
-        <button type="submit" class="btn btn-primary">작성</butt
-
-            on>
+        <button type="submit" class="btn btn-primary">작성</button>
         <button type="submit" class="btn btn-primary">목록</button>
 
         <script> CKEDITOR.replace('editor1');
         </script>
     </form>
 </div>
+<!-- 게시판 작성 끝 -->
 
 <%@ include file="bootstrap.jsp"%>
 

@@ -24,7 +24,6 @@ public class DBConfiguration {
     @Autowired
     private ApplicationContext applicationContext;
 
-
     /** prefix에 해당하는 spring.datasource.hikari로 시작하는 설정을
      * 모두 읽어 들여 해당 메서드에 매핑(바인딩)
      */
@@ -33,7 +32,6 @@ public class DBConfiguration {
     public HikariConfig hikariConfig() {
         return new HikariConfig();
     }
-
 
     /**
      * 데이터 소스 객체 생성
@@ -44,11 +42,12 @@ public class DBConfiguration {
         return new HikariDataSource(hikariConfig());
     }
 
-
-    /*** SqlSessionFactory 객체 생성*/
+    /**
+     * qlSessionFactory 객체 생성
+     * @return
+     * @throws Exception
+     */
     @Bean
-
-    /*** SqlSessionFactoryBean = 마이바티스와 스프링의 연동 모듈 */
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource());
@@ -61,8 +60,7 @@ public class DBConfiguration {
     }
 
     /**
-     * SqlSessionTemplate은 SqlSessionFactory를 통해 생성
-     * SQL 실행에 필요한 모든 메서드를 갖는 객체
+     * SqlSessionTemplate은 SqlSessionFactory를 통해 생성, SQL 실행에 필요한 모든 메서드를 갖는 객체
      * @return
      * @throws Exception
      */
@@ -75,7 +73,6 @@ public class DBConfiguration {
      * mybatis Configration
      * @return
      */
-
     @Bean
     @ConfigurationProperties(prefix = "mybatis.configuration")
     public org.apache.ibatis.session.Configuration mybatisConfg() {

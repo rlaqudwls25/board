@@ -15,7 +15,6 @@ public class CommentService {
     @Autowired
     CommentMapper mCommentMapper;
 
-
     /**
      * 댓글 목록
      * @return

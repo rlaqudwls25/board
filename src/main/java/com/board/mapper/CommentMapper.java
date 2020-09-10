@@ -12,13 +12,11 @@ import java.util.List;
 @Mapper
 public interface CommentMapper {
 
-
     /**
      * 댓글 카운트
      * @return
      * @throws Exception
      */
-
     public int commentCount() throws Exception;
 
     /**

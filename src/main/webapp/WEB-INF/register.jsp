@@ -40,13 +40,11 @@
         <label for="username">사용자</label>
         <input type="text" id="username" name="username"/>
     </p>
-    <p>
-        <button class="btn btn-primary" id="join" onclick="location.href='/login'">가입</button>
-    </p>
+    <!-- 게시판 회원가입 끝-->
 
-</form>
-<p>
+    <button class="btn btn-primary" id="join" onclick="location.href='/login'">가입</button>
     <button class="btn btn-primary" onclick="location.href='/list'">목록</button>
-</p>
+</form>
+
 </body>
 </html>

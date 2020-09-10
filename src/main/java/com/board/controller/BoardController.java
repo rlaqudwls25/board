@@ -46,7 +46,6 @@ public class BoardController {
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView boardList(PageVO page, Model model) throws Exception {
 
-
         ModelAndView mav = new ModelAndView("/list");
         Pagination pagination = new Pagination();
 
@@ -75,7 +74,6 @@ public class BoardController {
     @RequestMapping(value = "/detail/{bno}", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardDetail(@PathVariable int bno, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-
         model.addAttribute("detail", mBoardService.boardDetailService(bno));
         model.addAttribute("board", mBoardService.viewCntUpdate(bno));
 
@@ -100,7 +98,6 @@ public class BoardController {
             BoardDTO board = mBoardService.boardDetailService(bno);
 
         }
-
         return "detail";
     }
 
@@ -112,7 +109,6 @@ public class BoardController {
 
     @RequestMapping(value = "/insert", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardInsertForm() throws Exception {
-
         return "insert";
     }
 
@@ -127,13 +123,6 @@ public class BoardController {
     public String boardInsertProc(HttpServletRequest request, BoardDTO dto) throws Exception {
 
         BoardDTO board = new BoardDTO();
-
-//        board.setSubject(request.getParameter("subject"));
-//        board.setContent(request.getParameter("content"));
-//        board.setWriter(request.getParameter("writer"));
-//        board.setDEL_CHK(request.getParameter("DEL_CHK"));
-//
-        //mBoardService.boardInsertService(board);
 
         String fileName = null;
         MultipartFile uploadFile = dto.getUploadFile();

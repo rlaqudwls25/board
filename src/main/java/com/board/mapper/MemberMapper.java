@@ -12,11 +12,19 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface MemberMapper {
 
-
-    // 회원가입
+    /**
+     * 회원가입
+     * @param vo
+     * @throws Exception
+     */
     public void register(MemberVO vo) throws Exception;
 
-    // 로그인
+    /**
+     * 로그인
+     * @param vo
+     * @return
+     * @throws Exception
+     */
     public MemberVO login(MemberVO vo) throws Exception;
 }
 

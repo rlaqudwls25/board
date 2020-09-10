@@ -45,6 +45,4 @@ public class BoardDTO {
 
    // 조회수
    private int viewCnt;
-
-
 }

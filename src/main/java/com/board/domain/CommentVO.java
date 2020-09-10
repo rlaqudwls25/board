@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 @Getter
 public class CommentVO {
 
-
     // 댓글 번호
     private int rid;
 
@@ -26,8 +25,4 @@ public class CommentVO {
 
     // 댓글 작성 시간
     private Timestamp regdt;
-
-
-
-
 }

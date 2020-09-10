@@ -12,8 +12,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>List</title>
 </head>
-<style>
 
+<style>
     h2 {
         text-align: center;
     }
@@ -28,7 +28,6 @@
     a{
         text-decoration: blue;
     }
-
 </style>
 
 <script>
@@ -91,9 +90,8 @@
     </c:if>
 </ul>
 </div>
+
 <%@ include file="bootstrap.jsp"%>
-
-
 </body>
 </html>
 

@@ -18,6 +18,4 @@ public class MemberVO {
 
     //사용자 이름
     private String username;
-
-
 }

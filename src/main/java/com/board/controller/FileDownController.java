@@ -53,7 +53,6 @@ public class FileDownController {
         response.setHeader("Content-Transfer-Encoding", "binary;");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
 
-
         // 파일 크기 저장
         try{
             OutputStream os = response.getOutputStream();

@@ -3,19 +3,16 @@
 
 
 <script>
-    /**
-     *게시글 번호
-     * @type {string}
-     */
-    var bno = '${detail.bno}';
 
-    $('[name=commentInsertBtn]').click(function () { //댓글 등록 버튼
-        var insertData = $('[name=commentInsertForm]').serialize(); //commentinsertform에 내용을 가져옴
-        commentInsert(insertData); // insert 함수호출
+    // 댓글 번호
+    ${detail.bno};
+
+    $('[name=commentInsertBtn]').click(function () {
+        var insertData = $('[name=commentInsertForm]').serialize();
+        commentInsert(insertData);
     });
 
-
-    /***댓글 목록 */
+    // 댓글 리스트
     function commentList() {
         $.ajax({
             url : '/comment/list',
@@ -37,11 +34,7 @@
         });
     }
 
-
-    /**
-     *댓글 등록
-     * @param insertData
-     */
+    // 댓글 등록
     function commentInsert(insertData) {
         $.ajax({
             url : '/comment/insert',
@@ -56,14 +49,9 @@
         });
     }
 
-    /**
-     *댓글 수정
-     * @param rid
-     * @param content
-     */
+    // 댓글 수정
     function commentUpdate(rid, content) {
         var a ='';
-
 
         a += '<div class="input-group">';
         a += '<input type="text" class="form-control" name="content_'+rid+'" value="'+content+'"/>';
@@ -74,10 +62,7 @@
 
     }
 
-    /**
-     *댓글 수정
-     * @param rid
-     */
+    // 댓글 수정
     function commentUpdateProc(rid) {
         var updateContent = $('[name=content_'+rid+']').val();
 
@@ -86,31 +71,26 @@
             type : 'post',
             data : {'content' : updateContent, 'rid' : rid},
             success : function (data) {
-                if(data == 1) commentList(bno); //댓글 수정후 목록 출력
+                if(data == 1) commentList(bno);
 
             }
         });
 
     }
 
-    /**
-     *댓글 삭제
-     * @param rid
-     */
+    // 댓글 삭제
     function commentDelete(rid) {
         $.ajax({
             url: '/comment/delete/' + rid,
             type: 'post',
             success: function (data) {
                 if (data == 1)
-                    //댓글 삭제후 목록 출력
                     commentList(bno);
             }
         });
     }
 
     $(document).ready(function () {
-        //페이지 로딩시 댓글 목록 출력
         commentList();
     });
 

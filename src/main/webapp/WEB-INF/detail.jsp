@@ -25,7 +25,7 @@
 <h2>게시글 상세</h2>
 </div>
 
-<!-- 게시판 상세 -->
+<!-- 게시판 상세 시작 -->
 <div class="container">
     <form action="/insertProc" method="post" >
         <div class="form-group">
@@ -49,13 +49,10 @@
             <p>${detail.viewCnt}</p>
         </div>
 
-
             <c:if test="${detail.fileName ne null}">
             <tr>
-                        <td bgcolor="white">
-                            첨부파일</td>
-                        <td align="left"><a href="/fileDownload.do?fileName=${detail.fileName}"> ${detail.fileName}</a></td>
-
+                <td bgcolor="white">첨부파일</td>
+                <td align="left"><a href="/fileDownload.do?fileName=${detail.fileName}">${detail.fileName}</a></td>
             </tr>
             </c:if>
 
@@ -67,6 +64,7 @@
 
     </div>
 </div>
+<!-- 게시글 상세 끝 -->
 
 <div class="container">
     <label for="content">comment</label>

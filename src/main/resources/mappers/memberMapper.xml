@@ -3,26 +3,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<!-- 회원가입 -->
+
 <mapper namespace="com.board.mapper.MemberMapper" >
+    <!-- 회원가입 시작 -->
     <insert id="register" parameterType="com.board.domain.MemberVO">
-
-        INSERT INTO
-        member (userid, userpass, username)
-        VALUES (#{userid}, #{userpass}, #{username})
-
+        INSERT INTO member
+            (userid
+               ,userpass
+               ,username)
+        VALUES
+            (#{userid}
+               ,#{userpass}
+               ,#{username})
     </insert>
+    <!-- 회원가입 끝 -->
 
-    <!-- 로그인 -->
+    <!-- 로그인 시작 -->
     <select id="login" resultType="com.board.domain.MemberVO">
         SELECT
-           userid
-            , userpass
-            , username
+            userid
+              ,userpass
+              ,username
         FROM member
-        WHERE
-        userid = #{userid}
+        WHERE userid = #{userid}
     </select>
+    <!-- 로그인 끝 -->
 </mapper>
 
 

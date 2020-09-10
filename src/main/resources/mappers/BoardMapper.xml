@@ -8,18 +8,18 @@
     <!-- 게시판 수 -->
     <select id="boardCount" resultType="integer">
         SELECT
-        COUNT(*)
+           COUNT(*)
         FROM board
     </select>
 
     <!-- 게시판 목록 -->
     <select id="boardList" resultType="com.board.domain.BoardDTO">
         SELECT
-        bno
-         ,subject
-         ,content
-         ,writer
-         ,regDate
+           bno
+            ,subject
+            ,content
+            ,writer
+            ,regDate
         FROM board
         ORDER BY bno DESC
     </select>
@@ -28,27 +28,26 @@
     <select id="boardListService" resultType="hashmap" parameterType="hashmap">
         <![CDATA[
         SELECT
-        bno
-         ,subject
-         ,content
-         ,writer
-         ,regDate
-         ,view_cnt
+           bno
+            ,subject
+            ,content
+            ,writer
+            ,regDate
+            ,view_cnt
         FROM board
         WHERE DEL_CHK ='N'
         ORDER BY bno DESC, regDate DESC
         LIMIT #{pageStart}, #{perPageNum}
-]]>
+        ]]>
     </select>
 
     <!-- 게시판 페이징 -->
     <select id="countBoardList" resultType="Integer">
         <![CDATA[
             SELECT
-                count(*)
+               count(*)
             FROM board
-            WHERE
-            DEL_CHK ='N'
+            WHERE DEL_CHK ='N'
         ]]>
     </select>
 
@@ -56,31 +55,45 @@
     <select id="boardDetail" parameterType="int" resultType="com.board.domain.BoardDTO">
         SELECT
             bno
-             ,subject
-             ,content
-             ,writer
-             ,regDate
-             ,del_chk
-             ,view_cnt
-             ,file_name
+              ,subject
+              ,content
+              ,writer
+              ,regDate
+              ,del_chk
+              ,view_cnt
+              ,file_name
         FROM board
-        WHERE
-        bno = #{bno}
+        WHERE bno = #{bno}
     </select>
 
     <!-- 게시판 작성 -->
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
-        INSERT INTO
-        board (bno, subject, content, writer, regDate, del_chk, file_name, view_cnt)
-        VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N', #{fileName}, 0)
+        INSERT INTO board
+            (bno
+              ,subject
+              ,content
+              ,writer
+              ,regDate
+              ,del_chk
+              ,file_name
+              ,view_cnt)
+        VALUES
+            (#{bno}
+               ,#{subject}
+               ,#{content}
+               ,#{writer}
+               ,now()
+               ,'N'
+               ,#{fileName}
+               ,0)
     </insert>
 
     <!-- 게시판 수정 -->
     <update id="boardUpdate" parameterType="com.board.domain.BoardDTO">
         UPDATE board
         <set>
-            <if test="subject != null and subject != ''">subject  =#{subject},</if>
-            <if test="content !=null and content != ''">content  =#{content}</if>
+            subject  =#{subject},
+            content  =#{content}
         </set>
         WHERE bno = #{bno}
     </update>
@@ -100,7 +113,6 @@
     <delete id="boardDelete" parameterType="int">
         DELETE FROM board WHERE bno = #{bno}
     </delete>
-
 </mapper>
 
 

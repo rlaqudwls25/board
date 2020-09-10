@@ -35,10 +35,6 @@ public class PageVO {
         return perPageNum;
     }
 
-    /**
-     * 페이지당 보여줄 게시글 수 , pageCount = 페이지 카운트  cnt = 갯수
-     * @param pageCount
-     */
     public void setPerPageNum(int pageCount) {
         int cnt = perPageNum;
         if (pageCount != cnt) {

@@ -32,6 +32,7 @@
         </script>
     </form>
 </div>
+<!-- 게시판 수정 끝 -->
 
 <%@ include file="bootstrap.jsp"%>
 

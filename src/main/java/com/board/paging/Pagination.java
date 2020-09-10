@@ -49,8 +49,9 @@ public class Pagination {
         this.calcData();
     }
 
-
-    // 끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 페이지 번호의 갯수) * 화면에 보여질 페이지 번호의 갯수
+    /**
+     * 끝 페이지 번호
+     */
     private void calcData() {
 
         endPage = (int) (Math.ceil(page.getPage() / (double) displayPageNum) * displayPageNum);
@@ -63,11 +64,7 @@ public class Pagination {
         if (endPage > tempEndPage) {
             endPage = tempEndPage;
         }
-
         prev = startPage == 1?false : true;
         next = endPage * page.getPerPageNum() < totalCount?true:false;
-
     }
-
-
 }
