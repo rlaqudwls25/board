@@ -5,12 +5,14 @@
 
 <mapper namespace="com.board.mapper.BoardMapper">
 
+    <!-- 게시판 수 -->
     <select id="boardCount" resultType="integer">
         SELECT
         COUNT(*)
         FROM board
     </select>
 
+    <!-- 게시판 목록 -->
     <select id="boardList" resultType="com.board.domain.BoardDTO">
         SELECT
         bno
@@ -22,6 +24,7 @@
         ORDER BY bno DESC
     </select>
 
+    <!-- 게시판 목록 -->
     <select id="boardListService" resultType="hashmap" parameterType="hashmap">
         <![CDATA[
         SELECT
@@ -38,6 +41,7 @@
 ]]>
     </select>
 
+    <!-- 게시판 페이징 -->
     <select id="countBoardList" resultType="Integer">
         <![CDATA[
             SELECT
@@ -48,6 +52,7 @@
         ]]>
     </select>
 
+    <!-- 게시판 상세 -->
     <select id="boardDetail" parameterType="int" resultType="com.board.domain.BoardDTO">
         SELECT
             bno
@@ -63,12 +68,14 @@
         bno = #{bno}
     </select>
 
+    <!-- 게시판 작성 -->
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
         INSERT INTO
         board (bno, subject, content, writer, regDate, del_chk, file_name, view_cnt)
         VALUES (#{bno}, #{subject}, #{content}, #{writer}, now(), 'N', #{fileName}, 0)
     </insert>
 
+    <!-- 게시판 수정 -->
     <update id="boardUpdate" parameterType="com.board.domain.BoardDTO">
         UPDATE board
         <set>
@@ -78,15 +85,18 @@
         WHERE bno = #{bno}
     </update>
 
+    <!-- 게시판 조회수 -->
     <resultMap id="viewCnt" type="com.board.domain.BoardDTO">
         <result property="viewCnt" column="viewCnt"/>
     </resultMap>
 
+    <!-- 게시판 조회수 -->
     <update id="viewCntUpdate" parameterType="int" >
         UPDATE board SET
         view_cnt = view_cnt + 1 WHERE bno = #{bno}
     </update>
 
+    <!-- 게시판 삭제 -->
     <delete id="boardDelete" parameterType="int">
         DELETE FROM board WHERE bno = #{bno}
     </delete>
