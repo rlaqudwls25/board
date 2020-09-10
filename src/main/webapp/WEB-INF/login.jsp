@@ -9,7 +9,7 @@
 
 <body>
 
-<!-- 게시판 로그인-->
+<!-- 게시판 로그인 시작 -->
 <c:if test="${member == null}">
 <form role="form" method="get" autocomplete="off" action="/login">
 

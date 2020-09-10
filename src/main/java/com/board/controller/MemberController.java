@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
-/*** 회원가입 컨트롤러 */
+/**
+ * 회원가입 컨트롤러
+ */
 @Controller
 public class MemberController {
 
@@ -37,7 +39,6 @@ public class MemberController {
 
     /**
      * 회원가입 post
-     *
      * @param vo
      * @return
      * @throws Exception
@@ -59,7 +60,7 @@ public class MemberController {
      * @return
      * @throws Exception
      */
-        @RequestMapping(value = "/login", method = RequestMethod.POST)
+        @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
         public String postLogin(MemberVO vo, HttpServletRequest request, RedirectAttributes rttr) throws Exception{
             Logger.info("post login");
 

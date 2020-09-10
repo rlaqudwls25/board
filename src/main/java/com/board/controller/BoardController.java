@@ -7,6 +7,7 @@ import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import com.board.service.CommentService;
 import com.mysql.cj.util.StringUtils;
+import com.sun.media.jfxmedia.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +28,9 @@ import java.util.Map;
 import java.util.UUID;
 
 
-/*** 게시판 컨트롤러 */
+/**
+ * 게시판 컨트롤러
+ */
 @Slf4j
 @Controller
 public class BoardController {
@@ -191,5 +195,10 @@ public class BoardController {
         mCommentService.commentDeleteServiceBno(bno);
 
         return "redirect:/list";
+    }
+
+    @RequestMapping(value = "/write", method = RequestMethod.GET)
+    public void getWrite(HttpSession session, Model model) throws Exception{
+        Logger.info
     }
 }

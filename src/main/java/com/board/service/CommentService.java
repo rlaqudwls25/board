@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/*** 댓글 서비스 */
+/**
+ * 댓글 Service
+ */
 @Service
 public class CommentService {
 

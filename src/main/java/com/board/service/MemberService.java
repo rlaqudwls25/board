@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-/*** 회원가입 서비스 */
+/**
+ * 회원가입 Service
+ */
 @Service
 public class MemberService {
     @Autowired

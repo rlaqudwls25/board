@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-/*** 게시판 서비스 */
+/**
+ * 게시판 Service
+ */
 @Service
 public class BoardService {
 

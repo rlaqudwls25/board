@@ -4,9 +4,7 @@
 
 <script>
 
-    // 댓글 번호
-    ${detail.bno};
-
+    // 댓글 저장
     $('[name=commentInsertBtn]').click(function () {
         var insertData = $('[name=commentInsertForm]').serialize();
         commentInsert(insertData);

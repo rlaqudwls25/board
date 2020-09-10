@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-/*** 페이징 */
+/**
+ * 페이징
+ */
 @Getter
 @Setter
 public class Pagination {

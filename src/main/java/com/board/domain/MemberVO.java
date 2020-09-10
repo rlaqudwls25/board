@@ -4,7 +4,9 @@ package com.board.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-/*** 회원가입 리스트*/
+/**
+ * 회원가입 리스트
+ */
 @Setter
 @Getter
 

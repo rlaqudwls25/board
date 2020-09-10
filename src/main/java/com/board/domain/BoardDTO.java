@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 
-/*** 게시판 리스트 */
+/**
+ * 게시판 리스트
+ */
 @Getter
 @Setter
 public class BoardDTO {

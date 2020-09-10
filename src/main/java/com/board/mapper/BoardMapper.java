@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/*** 게시판 Mapper */
+/**
+ * 게시판 Mapper
+ */
 @Repository
 @Mapper
 public interface BoardMapper {

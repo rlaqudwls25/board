@@ -15,7 +15,7 @@
 <h2> 게시글 작성 </h2>
 </div>
 
-<!-- 게시판 작성 -->
+<!-- 게시판 작성 시작-->
 <div class="container">
     <form action="/insertProc" method="post" enctype="multipart/form-data">
         <input type="hidden" name="DEL_CHK" value="N">
@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
             <label for="writer">작성자</label>
-            <input type="text" class="form-control" id="writer" name="writer" placeholder="내용을 입력하세요.">
+            <input type="text" class="form-control" id="writer" name="writer" placeholder="내용을 입력하세요." value="${username}" readonly="readonly">
         </div>
 
         <div class="form-group">

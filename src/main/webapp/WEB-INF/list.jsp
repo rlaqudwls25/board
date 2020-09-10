@@ -41,7 +41,7 @@
 
 <h2>게시판</h2>
 
-<!-- 게시판 리스트 -->
+<!-- 게시판 리스트 시작 -->
 <div class="container">
     <button class ="btn btn-primary" onclick="location.href='/register'">회원가입</button>
     <button class ="btn btn-primary" onclick="location.href='/login'">로그인</button>
@@ -90,6 +90,8 @@
     </c:if>
 </ul>
 </div>
+
+<!-- 게시판 리스트 끝 -->
 
 <%@ include file="bootstrap.jsp"%>
 </body>

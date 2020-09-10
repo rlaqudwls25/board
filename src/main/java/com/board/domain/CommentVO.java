@@ -6,7 +6,9 @@ import lombok.Setter;
 import javax.xml.soap.Text;
 import java.sql.Timestamp;
 
-/*** 댓글 리스트*/
+/**
+ * 댓글 리스트
+ */
 @Setter
 @Getter
 public class CommentVO {

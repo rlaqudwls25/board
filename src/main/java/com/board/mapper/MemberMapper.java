@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
-/*** 회원가입 Mapper */
+/**
+ * 회원가입 Mapper
+ */
 @Repository
 @Mapper
 public interface MemberMapper {

@@ -1,7 +1,9 @@
 package com.board.domain;
 
 
-/*** 페이지 리스트*/
+/**
+ * 페이지 리스트
+ */
 public class PageVO {
 
     // 현재 페이지 번호

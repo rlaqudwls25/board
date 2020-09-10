@@ -15,7 +15,9 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 
-/*** 파일 다운로드 컨트롤러 */
+/**
+ * 파일 다운로드 컨트롤러
+ */
 @Controller
 public class FileDownController {
 
