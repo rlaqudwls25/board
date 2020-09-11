@@ -132,8 +132,10 @@ public class MemberController {
     public String postModify(HttpSession session, MemberVO vo) throws Exception{
 
         Logger.info("post modify");
-        MemberVO a = (MemberVO) session.getAttribute("member");
-        a.getUserid();
+        MemberVO a = (MemberVO)session.getAttribute("member");
+        //불순물이 껴서 (MemberVO)를 써준다.
+
+        vo.setUserid(a.getUserid());
         memberService.modify(vo);
 
         session.invalidate();
