@@ -28,6 +28,19 @@
         WHERE userid = #{userid}
     </select>
 
+    <!-- 회원정보 수정 -->
+    <update id="modify">
+        update member SET
+            username = #{username}
+                ,userpass = #{userpass}
+        WHERE userid = #{userid}
+    </update>
+    
+    <delete id="withdraw">
+        DELETE FROM member
+        WHERE userid = #{userid}
+              userpass = #{userpass}
+    </delete>
 </mapper>
 
 

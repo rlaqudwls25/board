@@ -32,6 +32,7 @@
         });
     }
 
+
     // 댓글 등록
     function commentInsert(insertData) {
         $.ajax({

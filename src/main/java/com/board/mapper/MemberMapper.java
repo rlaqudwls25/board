@@ -28,7 +28,23 @@ public interface MemberMapper {
      * @throws Exception
      */
     public MemberVO login(MemberVO vo) throws Exception;
+
+    /**
+     * 회원정보 수정
+     * @param vo
+     * @throws Exception
+     */
+    public void modify(MemberVO vo) throws Exception;
+
+    /**
+     * 회원탈퇴
+     * @param vo
+     * @throws Exception
+     */
+    public void withdraw(MemberVO vo) throws Exception;
 }
+
+
 
 
 

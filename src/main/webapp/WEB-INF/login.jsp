@@ -34,6 +34,10 @@
 
 <c:if test="${member != null}">
     <p>${member.username}님 환영합니다</p>
+
+    <a href="/logout">로그아웃</a>
+    <a href="/modify">회원정보 수정</a>
+    <a href="/logout">로그아웃</a>
 </c:if>
 
 <button class="btn btn-primary" onclick="location.href='/list'">돌아가기</button>

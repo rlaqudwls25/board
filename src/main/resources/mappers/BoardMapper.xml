@@ -106,7 +106,8 @@
     <!-- 게시판 조회수 -->
     <update id="viewCntUpdate" parameterType="int" >
         UPDATE board SET
-        view_cnt = view_cnt + 1 WHERE bno = #{bno}
+        view_cnt = view_cnt + 1
+        WHERE bno = #{bno}
     </update>
 
     <!-- 게시판 삭제 -->

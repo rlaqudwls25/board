@@ -32,4 +32,22 @@ public class MemberService {
     public MemberVO login(MemberVO vo) throws Exception{
         return mmemberMapper.login(vo);
     }
+
+    /**
+     * 회원정보 수정
+     * @param vo
+     * @throws Exception
+     */
+    public void modify(MemberVO vo) throws Exception{
+        mmemberMapper.modify(vo);
+    }
+
+    /**
+     * 회원 탈퇴
+     * @param vo
+     * @throws Exception
+     */
+    public void withdraw(MemberVO vo) throws Exception{
+        mmemberMapper.withdraw(vo);
+    }
 }

@@ -197,8 +197,8 @@ public class BoardController {
         return "redirect:/list";
     }
 
-    @RequestMapping(value = "/write", method = RequestMethod.GET)
-    public void getWrite(HttpSession session, Model model) throws Exception{
-        Logger.info
-    }
+//    @RequestMapping(value = "/write", method = RequestMethod.GET)
+//    public void getWrite(HttpSession session, Model model) throws Exception{
+//        Logger.info
+//    }
 }
