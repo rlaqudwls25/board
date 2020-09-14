@@ -23,6 +23,11 @@ public class MemberService {
         mmemberMapper.register(vo);
     }
 
+    public MemberVO idcheck(String userid) throws Exception{
+        return mmemberMapper.idcheck(userid);
+
+    }
+
     /**
      * 로그인
      * @param vo

@@ -17,6 +17,13 @@
                ,#{username})
     </insert>
 
+    <!-- 아이디 중복검사 -->
+    <select id="idcheck" resultType="com.board.domain.MemberVO">
+        SELECT
+             userid
+        FROM member
+        WHERE userid = #{userid}
+    </select>
 
     <!-- 로그인  -->
     <select id="login" resultType="com.board.domain.MemberVO">

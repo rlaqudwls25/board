@@ -22,6 +22,14 @@ public interface MemberMapper {
     public void register(MemberVO vo) throws Exception;
 
     /**
+     * 회원가입 중복
+     * @param userid
+     * @return
+     * @throws Exception
+     */
+    public MemberVO idcheck(String userid) throws Exception;
+
+    /**
      * 로그인
      * @param vo
      * @return
