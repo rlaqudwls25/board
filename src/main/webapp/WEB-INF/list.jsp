@@ -2,13 +2,15 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="sun.text.normalizer.Utility" %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>List</title>
 </head>
@@ -39,6 +41,9 @@
 </script>
 <body>
 
+<% int total = 0;
+%>
+
 <h2>게시판</h2>
 
 <!-- 게시판 리스트 시작 -->
@@ -46,12 +51,13 @@
     <button class ="btn btn-primary" onclick="location.href='/register'">회원가입</button>
     <button class ="btn btn-primary" onclick="location.href='/login'">로그인</button>
     <table class="table table-hover">
-
+          <tr>
             <th>No </th>
             <th>Subject</th>
             <th>Writer</th>
             <th>Date</th>
             <th>조회수</th>
+          </tr>
 
 
         <c:forEach var ="e" items="${list}">
@@ -61,9 +67,16 @@
                 <td>${e.writer}</td>
                 <td width="20%"><fmt:formatDate value="${e.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
                 <td>${e.view_cnt}</td>
-
+                <td>${e.recent}</td>
+                <c:if test="${e.recent == true}" ><td>새로운 게시글임다</td></c:if>
+<%--                <fmt:formatDate value="${now}"--%>
             </tr>
+
+
         </c:forEach>
+
+
+
 
     </table>
     <button class ="btn btn-primary" onclick="location.href='/insert'">글쓰기</button>
@@ -84,6 +97,8 @@
     </c:forEach>
     <c:if test="${pagination.next && pagination.endPage >0}">
         <li>
+
+
             <a href='<c:url value="/list?page=${pagination.endPage+1}"/>'>
                 <i class="fa fa-chevron-right"></i></a>
         </li>

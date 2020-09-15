@@ -25,7 +25,7 @@
     </select>
 
     <!-- 게시판 목록 -->
-    <select id="boardListService" resultType="hashmap" parameterType="hashmap">
+    <select id="boardListService" resultType="BoardDTO" parameterType="hashmap">
         <![CDATA[
         SELECT
            bno

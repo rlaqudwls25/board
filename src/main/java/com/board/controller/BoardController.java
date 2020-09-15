@@ -22,10 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 /**
@@ -113,6 +111,7 @@ public class BoardController {
 
     @RequestMapping(value = "/insert", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardInsertForm() throws Exception {
+
         return "insert";
     }
 

@@ -28,7 +28,11 @@ public class BoardService {
      * @throws Exception
      */
     public List<BoardDTO> boardListService(PageVO page) throws Exception{
-        return mBoardMapper.boardListService(page);
+        List<BoardDTO> boardDTOS = mBoardMapper.boardListService(page);
+        for(BoardDTO boardDTO : boardDTOS){
+            boardDTO.isRecent();
+        }
+        return boardDTOS;
     }
 
     /**

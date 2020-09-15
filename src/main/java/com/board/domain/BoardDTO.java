@@ -1,11 +1,10 @@
 package com.board.domain;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -47,4 +46,19 @@ public class BoardDTO {
 
    // 조회수
    private int viewCnt;
+
+   // 최근 게시물
+   private boolean recent;
+
+   public void isRecent() {
+      this.recent = true;
+//      LocalDateTime currentTime = LocalDateTime.now();
+//      System.out.println(currentTime);
+//      if(currentTime.getHour()== 0){
+//         return this.recent = true;
+//      }else {
+//         System.out.println(currentTime.getHour() - this.regDate.getHour());
+//         return this.recent = false;
+//      }
+   }
 }

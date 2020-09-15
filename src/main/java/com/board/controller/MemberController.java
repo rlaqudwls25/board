@@ -6,7 +6,6 @@ import com.board.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +27,7 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-    @Autowired
-    BCryptPasswordEncoder passEncoder;
+
 
     /**
      * 회원가입 get
@@ -47,13 +45,14 @@ public class MemberController {
      * @return
      * @throws Exception
      */
+
+
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String postRegsiter(MemberVO vo) throws Exception {
         Logger.info("post register");
 
         String inputPass = vo.getUserpass();
-        String pass = passEncoder.encode(inputPass);
-        vo.setUserpass(pass);
 
         memberService.register(vo);
 
