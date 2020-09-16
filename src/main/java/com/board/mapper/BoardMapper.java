@@ -34,12 +34,12 @@ public interface BoardMapper {
      * @throws Exception
      */
     public BoardDTO boardDetail(int bno) throws Exception;
+
     /**
      * 게시판 작성
      * @param board
      * @throws Exception
      */
-
     public void boardInsert(BoardDTO board) throws Exception;
 
     /**

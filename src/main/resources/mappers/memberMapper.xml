@@ -9,12 +9,12 @@
     <insert id="register" parameterType="com.board.domain.MemberVO">
         INSERT INTO member
             (userid
-               ,userpass
-               ,username)
+               , userpass
+               , username)
         VALUES
             (#{userid}
-               ,#{userpass}
-               ,#{username})
+               , #{userpass}
+               , #{username})
     </insert>
 
     <!-- 아이디 중복검사 -->
@@ -29,17 +29,17 @@
     <select id="login" resultType="com.board.domain.MemberVO">
         SELECT
             userid
-              ,userpass
-              ,username
+              , userpass
+              , username
         FROM member
         WHERE userid = #{userid}
     </select>
 
     <!-- 회원정보 수정 -->
     <update id="modify">
-        update member SET
+        UPDATE member SET
             username = #{username}
-                ,userpass = #{userpass}
+            ,userpass = #{userpass}
         WHERE userid = #{userid}
     </update>
     

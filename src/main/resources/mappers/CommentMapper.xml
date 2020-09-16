@@ -30,16 +30,16 @@
     <insert id="commentInsert" parameterType="com.board.domain.CommentVO">
         INSERT INTO comment
             (rid
-               ,bno
-               ,content
-               ,regid
-               ,regdt)
+               , bno
+               , content
+               , regid
+               , regdt)
         VALUES
             (#{rid}
-               ,#{bno}
-               ,#{content}
-               ,#{regid}
-               ,now())
+               , #{bno}
+               , #{content}
+               , #{regid}
+               , now())
     </insert>
 
     <!-- 댓글 수정 -->

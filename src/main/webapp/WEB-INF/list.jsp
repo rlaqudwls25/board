@@ -2,9 +2,8 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="sun.text.normalizer.Utility" %>
+
+
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,8 +40,6 @@
 </script>
 <body>
 
-<% int total = 0;
-%>
 
 <h2>게시판</h2>
 
@@ -63,22 +60,14 @@
         <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">
                 <td>${e.bno}</td>
-                <td>${e.subject}</td>
+                <td>${e.subject} <c:if test="${e.recent == true}"><span style="color: red">New</span> </c:if > </td>
                 <td>${e.writer}</td>
-                <td width="20%"><fmt:formatDate value="${e.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-                <td>${e.view_cnt}</td>
-                <td>${e.recent}</td>
-                <c:if test="${e.recent == true}" ><td>새로운 게시글임다</td></c:if>
-<%--                <fmt:formatDate value="${now}"--%>
+                <td width="20%"><fmt:parseDate value="${e.regDate}" var="regDate" pattern="yyyymmdd"/> <fmt:formatDate value="${regDate}" type="date" pattern="dd.MM.yyyy"/></td>
+                <td>${e.viewCnt}</td>
             </tr>
-
-
         </c:forEach>
-
-
-
-
     </table>
+
     <button class ="btn btn-primary" onclick="location.href='/insert'">글쓰기</button>
 </div>
 <div style="text-align: center">

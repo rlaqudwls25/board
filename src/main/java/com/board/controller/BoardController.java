@@ -112,6 +112,7 @@ public class BoardController {
     @RequestMapping(value = "/insert", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardInsertForm() throws Exception {
 
+
         return "insert";
     }
 
@@ -123,7 +124,7 @@ public class BoardController {
      * @throws Exception
      */
     @RequestMapping(value = "/insertProc", method = {RequestMethod.GET, RequestMethod.POST})
-    public String boardInsertProc(HttpServletRequest request, BoardDTO dto) throws Exception {
+    public String boardInsertProc(BoardDTO dto) throws Exception {
 
         BoardDTO board = new BoardDTO();
 

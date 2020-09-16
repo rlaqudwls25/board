@@ -55,13 +55,13 @@
     <select id="boardDetail" parameterType="int" resultType="com.board.domain.BoardDTO">
         SELECT
             bno
-              ,subject
-              ,content
-              ,writer
-              ,regDate
-              ,del_chk
-              ,view_cnt
-              ,file_name
+              , subject
+              , content
+              , writer
+              , regDate
+              , del_chk
+              , view_cnt
+              , file_name
         FROM board
         WHERE bno = #{bno}
     </select>
@@ -70,22 +70,22 @@
     <insert id="boardInsert" parameterType="com.board.domain.BoardDTO">
         INSERT INTO board
             (bno
-              ,subject
-              ,content
-              ,writer
-              ,regDate
-              ,del_chk
-              ,file_name
-              ,view_cnt)
+              , subject
+              , content
+              , writer
+              , regDate
+              , del_chk
+              , file_name
+              , view_cnt)
         VALUES
             (#{bno}
-               ,#{subject}
-               ,#{content}
-               ,#{writer}
-               ,now()
-               ,'N'
-               ,#{fileName}
-               ,0)
+               , #{subject}
+               , #{content}
+               , #{writer}
+               , now()
+               , 'N'
+               , #{fileName}
+               , 0)
     </insert>
 
     <!-- 게시판 수정 -->

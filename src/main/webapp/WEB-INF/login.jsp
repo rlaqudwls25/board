@@ -22,9 +22,9 @@
         <lable for="userpass">비밀번호</lable>
         <input type="password" name="userpass" id="usesrpass"/>
     </p>
-    <button type="submit">로그인</button>
+        <button type="submit">로그인</button>
 </form>
-    <button class="btn btn-primary" onclick="location.href='/register'">회원가입</button>
+        <button class="btn btn-primary" onclick="location.href='/register'">회원가입</button>
 
 </c:if>
 
@@ -40,7 +40,7 @@
     <a href="/logout">로그아웃</a>
 </c:if>
 
-<button class="btn btn-primary" onclick="location.href='/list'">돌아가기</button>
+    <button class="btn btn-primary" onclick="location.href='/list'">돌아가기</button>
 <!-- 게시판 로그인 끝 -->
 
 </body>
