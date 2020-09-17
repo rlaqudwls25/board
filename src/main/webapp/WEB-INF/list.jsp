@@ -61,8 +61,9 @@
             <tr onclick="location.href='/detail/${e.bno}'">
                 <td>${e.bno}</td>
                 <td width="320">${e.subject} <c:if test="${e.recent == true}"><span style="color: red">[N]</span> </c:if></td>
-                <td width="200">${e.writer}</td>
-                <td width="300"><fmt:parseDate  value="${e.regDate}" var="parseDate" pattern="yyyymmdd"/> <fmt:formatDate value="${parseDate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                <td width="200">${e.writer}
+                </td><fmt:parseDate value="${ e.regDate }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="date" />
+                <td width="300"> <fmt:formatDate pattern=".yyyy.MM.dd HH:mm" value="${ parsedDateTime }" /></td>
                 <td width="70">${e.viewCnt}</td>
             </tr>
         </c:forEach>
