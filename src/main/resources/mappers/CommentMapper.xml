@@ -24,6 +24,7 @@
              ,now()
         FROM comment
         WHERE bno = #{bno}
+        ORDER BY rid DESC;
     </select>
 
     <!-- 댓글 작성 -->

@@ -48,7 +48,6 @@ public class BoardDTO {
    public boolean isRecent() {
       this.recent = true;
       LocalDateTime currentTime = LocalDateTime.now();
-      System.out.println(currentTime);
       if (regDate.getHour() - currentTime.getHour() < 24) {
          return this.recent = true;
       } else {

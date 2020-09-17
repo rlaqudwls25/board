@@ -20,12 +20,13 @@
             ,content
             ,writer
             ,regDate
+            ,view_cnt
         FROM board
         ORDER BY bno DESC
     </select>
 
     <!-- 게시판 목록 -->
-    <select id="boardListService" resultType="BoardDTO" parameterType="hashmap">
+    <select id="boardListService" resultType="BoardDTO" parameterType="com.board.domain.BoardDTO">
         <![CDATA[
         SELECT
            bno

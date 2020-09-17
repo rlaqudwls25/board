@@ -1,5 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8"%>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 
 <script>
@@ -12,6 +13,7 @@
 
     // 댓글 리스트
     function commentList() {
+        var bno = '${detail.bno}';
         $.ajax({
             url : '/comment/list',
             type : 'get',
@@ -38,8 +40,9 @@
             url : '/comment/insert',
             type : 'post',
             data : insertData,
-            success : function (data) {
-                if(data ==1){
+            success : function(data) {
+                if(data == 1){
+                    alert("댓글이 등록되었습니다")
                     commentList();
                     $('[name=content]').val('');
                 }
@@ -60,7 +63,7 @@
 
     }
 
-    // 댓글 수정
+    // 댓글 수정s
     function commentUpdateProc(rid) {
         var updateContent = $('[name=content_'+rid+']').val();
 
@@ -69,8 +72,9 @@
             type : 'post',
             data : {'content' : updateContent, 'rid' : rid},
             success : function (data) {
-                if(data == 1) commentList(bno);
-
+                if(data == 1)
+                alert("댓글이 수정되었습니다.")
+                commentList(rid);
             }
         });
 
@@ -78,11 +82,13 @@
 
     // 댓글 삭제
     function commentDelete(rid) {
+        var bno = '${detail.bno}';
         $.ajax({
             url: '/comment/delete/' + rid,
             type: 'post',
             success: function (data) {
                 if (data == 1)
+                    alert("댓글이 삭제되었습니다")
                     commentList(bno);
             }
         });

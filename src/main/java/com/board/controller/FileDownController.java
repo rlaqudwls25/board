@@ -41,10 +41,9 @@ public class FileDownController {
                 filename = new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
             }
         }catch (UnsupportedEncodingException ex){
-            System.out.println("UnsupportedEncodingException");
+
         }
         realFilename = "C:\\upload\\" + filename;
-        System.out.println(realFilename);
         File file1 = new File(realFilename);
         if(!file1.exists()){
             return;
@@ -69,7 +68,7 @@ public class FileDownController {
             fis.close();
             os.close();
         }catch (Exception e){
-            System.out.println("FileNotFoundException : " + e);
+
         }
     }
 }

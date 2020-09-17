@@ -47,7 +47,7 @@
 <div class="container">
     <button class ="btn btn-primary" onclick="location.href='/register'">회원가입</button>
     <button class ="btn btn-primary" onclick="location.href='/login'">로그인</button>
-    <table class="table table-hover">
+    <table  class="table table-hover">
           <tr>
             <th>No </th>
             <th>Subject</th>
@@ -60,10 +60,10 @@
         <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">
                 <td>${e.bno}</td>
-                <td>${e.subject} <c:if test="${e.recent == true}"><span style="color: red">New</span> </c:if > </td>
-                <td>${e.writer}</td>
-                <td width="20%"><fmt:parseDate value="${e.regDate}" var="regDate" pattern="yyyymmdd"/> <fmt:formatDate value="${regDate}" type="date" pattern="dd.MM.yyyy"/></td>
-                <td>${e.viewCnt}</td>
+                <td width="320">${e.subject} <c:if test="${e.recent == true}"><span style="color: red">[N]</span> </c:if></td>
+                <td width="200">${e.writer}</td>
+                <td width="300"><fmt:parseDate  value="${e.regDate}" var="parseDate" pattern="yyyymmdd"/> <fmt:formatDate value="${parseDate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                <td width="70">${e.viewCnt}</td>
             </tr>
         </c:forEach>
     </table>

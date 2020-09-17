@@ -29,8 +29,7 @@
         </div>
 
         <div class="form-group">
-            <textarea name="editor1" id="editor1" row="10" clos="80"></textarea>
-
+            <textarea  name="content" id="editor1" row="10" clos="80"></textarea>
         </div>
         <div >
             <td bgcolor="blue" width="100"></td>
