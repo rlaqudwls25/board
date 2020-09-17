@@ -27,8 +27,6 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-
-
     /**
      * 회원가입 get
      * @throws Exception
@@ -36,7 +34,6 @@ public class MemberController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public void getRegister() throws Exception {
         Logger.info("get register");
-
     }
 
     /**
@@ -45,8 +42,6 @@ public class MemberController {
      * @return
      * @throws Exception
      */
-
-
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String postRegsiter(MemberVO vo) throws Exception {

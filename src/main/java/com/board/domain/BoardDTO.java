@@ -44,7 +44,6 @@ public class BoardDTO {
    // 최근 게시물
    private boolean recent;
 
-
    public boolean isRecent() {
       this.recent = true;
       LocalDateTime currentTime = LocalDateTime.now();

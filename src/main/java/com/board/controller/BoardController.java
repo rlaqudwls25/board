@@ -108,7 +108,6 @@ public class BoardController {
      * @return
      * @throws Exception
      */
-
     @RequestMapping(value = "/insert", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardInsertForm() throws Exception {
 
