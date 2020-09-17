@@ -4,7 +4,6 @@
 
 
 <script>
-
     // 댓글 저장
     $('[name=commentInsertBtn]').click(function () {
         var insertData = $('[name=commentInsertForm]').serialize();
@@ -55,7 +54,7 @@
         var a ='';
 
         a += '<div class="input-group">';
-        a += '<input type="text" class="form-control" name="content_'+rid+'" value="'+content+'"/>';
+        a += '<input type="text" class="form-control" id="up" name="content_'+rid+'" value="'+content+'"/>';
         a += '<span class="input-group-btn"><button class="btn btn-primary" type="button" onclick="commentUpdateProc('+rid+');">수정</button> </span>';
         a += '</div>';
 
@@ -63,10 +62,14 @@
 
     }
 
-    // 댓글 수정s
+    // 댓글 수정
     function commentUpdateProc(rid) {
         var updateContent = $('[name=content_'+rid+']').val();
-
+        var udt = document.getElementById("up").value;
+        if(!udt){
+            alert("댓글을 수정 해주세요");
+            return false;
+        }
         $.ajax({
             url : '/comment/update',
             type : 'post',

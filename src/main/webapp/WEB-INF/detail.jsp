@@ -65,7 +65,6 @@
     </div>
 </div>
 <!-- 게시글 상세 끝 -->
-
 <div class="container">
     <label for="content">comment</label>
     <form name="commentInsertForm" method="post" >

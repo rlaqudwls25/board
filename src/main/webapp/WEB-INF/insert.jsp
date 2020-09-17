@@ -9,6 +9,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert Form</title>
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
+    <script>
+        var insertCechk = document.getElementById("check").value;
+        if(insertCechk == true){
+            alert("게시글이 저장되었습니다");
+        }
+    </script>
 </head>
 <body>
 <div style="text-align: center">
@@ -29,7 +36,7 @@
         </div>
 
         <div class="form-group">
-            <textarea  name="content" id="editor1" row="10" clos="80"></textarea>
+            <textarea name="content" id="editor1" row="10" clos="80"></textarea>
         </div>
         <div >
             <td bgcolor="blue" width="100"></td>
@@ -38,11 +45,10 @@
         </div>
             <div class="form-group"></div>
 
-        <button type="submit" class="btn btn-primary">작성</button>
+        <button type="submit" class="btn btn-primary" id="check" name="check">작성</button>
         <button type="submit" class="btn btn-primary">목록</button>
 
-        <script> CKEDITOR.replace('editor1');
-        </script>
+        <script> CKEDITOR.replace('editor1');</script>
     </form>
 </div>
 <!-- 게시판 작성 끝 -->
