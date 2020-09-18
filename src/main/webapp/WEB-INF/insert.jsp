@@ -10,11 +10,15 @@
     <title>Insert Form</title>
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 
-    <script>
-        var insertCechk = document.getElementById("check").value;
-        if(insertCechk == true){
-            alert("게시글이 저장되었습니다");
-        }
+    <script type="text/javascript">
+        window.onload = function (){
+            var idt = document.getElementById("check");
+
+            idt.onclick = function (){
+                alert("게시글이 저장되었습니다")
+            }
+        };
+
     </script>
 </head>
 <body>
@@ -32,7 +36,7 @@
         </div>
         <div class="form-group">
             <label for="writer">작성자</label>
-            <input type="text" class="form-control" id="writer" name="writer" placeholder="내용을 입력하세요." value="${username}">
+            <input type="text" class="form-control" id="writer" name="writer" value="${member.username}" readonly="readonly">
         </div>
 
         <div class="form-group">

@@ -4,14 +4,13 @@
 <head>
     <title></title>
 
+
 </head>
-
-
 <body>
 
 <!-- 게시판 로그인 시작 -->
-<c:if test="${member == null}">
-<form role="form" method="get" autocomplete="off" action="/login">
+<c:if test="${msg == null}">
+<form role="form" method="post" autocomplete="off" action="/login">
 
     <p>
         <label for="userid">아이디</label>
@@ -20,16 +19,15 @@
 
     <p>
         <lable for="userpass">비밀번호</lable>
-        <input type="password" name="userpass" id="usesrpass"/>
+        <input type="password" name="userpass" id="userpass"/>
     </p>
-        <button type="submit">로그인</button>
+        <button type="submit" name="member" id="member">로그인</button>
 </form>
-        <button class="btn btn-primary" onclick="location.href='/register'">회원가입</button>
-
+    <button class="btn btn-primary" onclick="location.href='/register'">회원가입</button>
 </c:if>
 
 <c:if test="${msg == false}">
-    <p style="color: #f00;">로그인에 실패했습니다. 아이디 또는 패스워드를 다시 입력해주세요.</p>
+    <p style="color:#f00;">로그인에 실패했습니다. 아이디 또는 패스워드를 다시 입력해주세요.</p>
 </c:if>
 
 <c:if test="${member != null}">

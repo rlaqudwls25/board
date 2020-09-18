@@ -7,6 +7,16 @@
     <title>Insert title here</title>
 
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        window.onload = function (){
+            var idt = document.getElementById("check");
+
+            idt.onclick = function (){
+                alert("게시글이 저장되었습니다")
+            }
+        };
+
+    </script>
 </head>
 <body>
 <div style="text-align: center">
@@ -21,12 +31,14 @@
             <input type="text" class="form-control" id="subject" name="subject">
 </div>
         <div class="form-group">
+            <label for="writer">작성자</label>
+            <input type="text" class="form-control" id="writer" name="writer">
 
             <textarea name="editor1" id="editor1" rows="10" cols="80">${detail.content}</textarea>
         </div>
 
         <input type="hidden" name="bno" value="${bno}"/>
-        <button type="submit" class="btn btn-primary">수정</button>
+        <button type="submit" class="btn btn-primary" id="check" name="check">수정</button>
 
         <script> CKEDITOR.replace('editor1');
         </script>

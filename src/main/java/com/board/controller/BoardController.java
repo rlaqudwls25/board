@@ -7,7 +7,7 @@ import com.board.paging.Pagination;
 import com.board.service.BoardService;
 import com.board.service.CommentService;
 import com.mysql.cj.util.StringUtils;
-import com.sun.media.jfxmedia.logging.Logger;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,9 +123,15 @@ public class BoardController {
      * @throws Exception
      */
     @RequestMapping(value = "/insertProc", method = {RequestMethod.GET, RequestMethod.POST})
-    public String boardInsertProc(BoardDTO dto) throws Exception {
+    public String boardInsertProc(BoardDTO dto, HttpSession session, Model model) throws Exception {
 
         BoardDTO board = new BoardDTO();
+
+        Object loginInfo = session.getAttribute("member");
+
+        if(loginInfo == null){
+            model.addAttribute("msg", false);
+        }
 
         String fileName = null;
         MultipartFile uploadFile = dto.getUploadFile();

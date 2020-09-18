@@ -3,9 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -35,7 +32,6 @@
     function selChange() {
         var sel = document.getElementById('perPageNum').value;
         location.href="list?page=${pagination.page}&perPageNum="+sel;
-
     }
 </script>
 <body>
@@ -55,8 +51,6 @@
             <th>Date</th>
             <th>조회수</th>
           </tr>
-
-
         <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">
                 <td>${e.bno}</td>
@@ -87,8 +81,6 @@
     </c:forEach>
     <c:if test="${pagination.next && pagination.endPage >0}">
         <li>
-
-
             <a href='<c:url value="/list?page=${pagination.endPage+1}"/>'>
                 <i class="fa fa-chevron-right"></i></a>
         </li>
@@ -97,7 +89,6 @@
 </div>
 
 <!-- 게시판 리스트 끝 -->
-
 <%@ include file="bootstrap.jsp"%>
 </body>
 </html>
