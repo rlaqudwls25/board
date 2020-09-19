@@ -4,13 +4,39 @@
 <head>
     <title></title>
 
+<script>
+    // window.onload = function () {
+    //     var regCheck = document.getElementById("check");
+    //
+    //     regCheck.onclick = function (member) {
+    //         if(member == null){
+    //             alert("다시 한번 확인해주세요");
+    //         }else {
+    //             alert("로그인 되었습니다!");
+    //         }
+    //     }
+    // }
 
+    function checkId() {
+        if(frm.userid.value == ""){
+            alert("다시 한 번 확인해주세요");
+            frm.userid.focus();
+            return false;
+
+        }else if(frm.userpass.value == ""){
+            alert("값을 입력 해주세요");
+            frm.userpass.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
 </head>
 <body>
 
 <!-- 게시판 로그인 시작 -->
 <c:if test="${msg == null}">
-<form role="form" method="post" autocomplete="off" action="/login">
+<form name="frm" method="post" autocomplete="off" action="/login" onsubmit="return checkId()">
 
     <p>
         <label for="userid">아이디</label>
@@ -21,7 +47,7 @@
         <lable for="userpass">비밀번호</lable>
         <input type="password" name="userpass" id="userpass"/>
     </p>
-        <button type="submit" name="member" id="member">로그인</button>
+        <input type="submit" name="로그인"></input>
 </form>
     <button class="btn btn-primary" onclick="location.href='/register'">회원가입</button>
 </c:if>
@@ -35,7 +61,6 @@
 
     <a href="/logout">로그아웃</a>
     <a href="/modify">회원정보 수정</a>
-    <a href="/logout">로그아웃</a>
 </c:if>
 
     <button class="btn btn-primary" onclick="location.href='/list'">돌아가기</button>

@@ -41,6 +41,9 @@
 
 <!-- 게시판 리스트 시작 -->
 <div class="container">
+    <c:if test="${member != null}">
+        <p style="color:darkblue" >${member.username}님이 로그인 중입니다.</p>
+    </c:if>
     <button class ="btn btn-primary" onclick="location.href='/register'">회원가입</button>
     <button class ="btn btn-primary" onclick="location.href='/login'">로그인</button>
     <table  class="table table-hover">

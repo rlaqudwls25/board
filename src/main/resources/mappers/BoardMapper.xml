@@ -20,7 +20,7 @@
             ,content
             ,writer
             ,regDate
-            ,view_cnt
+            ,viewCnt
         FROM board
         ORDER BY bno DESC
     </select>
@@ -34,9 +34,9 @@
             ,content
             ,writer
             ,regDate
-            ,view_cnt
+            ,viewCnt
         FROM board
-        WHERE DEL_CHK ='N'
+        WHERE delChk ='N'
         ORDER BY bno DESC, regDate DESC
         LIMIT #{pageStart}, #{perPageNum}
         ]]>
@@ -48,7 +48,7 @@
             SELECT
                count(*)
             FROM board
-            WHERE DEL_CHK ='N'
+            WHERE delChk ='N'
         ]]>
     </select>
 
@@ -60,9 +60,9 @@
               , content
               , writer
               , regDate
-              , del_chk
-              , view_cnt
-              , file_name
+              , delChk
+              , viewCnt
+              , fileName
         FROM board
         WHERE bno = #{bno}
     </select>
@@ -75,9 +75,9 @@
               , content
               , writer
               , regDate
-              , del_chk
-              , file_name
-              , view_cnt)
+              , delChk
+              , fileName
+              , viewCnt)
         VALUES
             (#{bno}
                , #{subject}
@@ -107,7 +107,7 @@
     <!-- 게시판 조회수 -->
     <update id="viewCntUpdate" parameterType="int" >
         UPDATE board SET
-        view_cnt = view_cnt + 1
+        viewCnt = viewCnt + 1
         WHERE bno = #{bno}
     </update>
 

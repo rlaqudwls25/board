@@ -29,7 +29,7 @@ public class BoardDTO {
    private LocalDateTime regDate;
 
    // 삭제 체크
-   private String DEL_CHK;
+   private String delChk;
 
    // 첨부파일 제목
    private String fileName;

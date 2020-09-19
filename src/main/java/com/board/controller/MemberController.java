@@ -117,7 +117,7 @@ public class MemberController {
 
             if(login == null){
                 session.setAttribute("member", null);
-                rttr.addFlashAttribute("msg", true);
+                rttr.addFlashAttribute("msg", false);
             }else{
                 session.setAttribute("member", login);
             }

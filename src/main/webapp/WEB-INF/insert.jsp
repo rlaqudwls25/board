@@ -29,7 +29,7 @@
 <!-- 게시판 작성 시작-->
 <div class="container">
     <form action="/insertProc" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="DEL_CHK" value="N">
+        <input type="hidden" name="delChk" value="N">
         <div class="form-group">
             <label for="subject">제목</label>
             <input type="text" class="form-control" id="subject" name="subject" placeholder="제목을 입력하세요.">
