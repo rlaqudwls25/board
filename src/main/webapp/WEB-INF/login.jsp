@@ -5,19 +5,8 @@
     <title></title>
 
 <script>
-    // window.onload = function () {
-    //     var regCheck = document.getElementById("check");
-    //
-    //     regCheck.onclick = function (member) {
-    //         if(member == null){
-    //             alert("다시 한번 확인해주세요");
-    //         }else {
-    //             alert("로그인 되었습니다!");
-    //         }
-    //     }
-    // }
 
-    function checkId() {
+    function checkNull() {
         if(frm.userid.value == ""){
             alert("다시 한 번 확인해주세요");
             frm.userid.focus();
@@ -27,16 +16,21 @@
             alert("값을 입력 해주세요");
             frm.userpass.focus();
             return false;
+
+        }else if(frm.userid.value != ${session.member.userid}){
+            alert("아이디를 다시 확인해주세요");
+            frm.userid.focus();
+            return false;
         }
-        return true;
+
     }
 </script>
 </head>
 <body>
 
 <!-- 게시판 로그인 시작 -->
-<c:if test="${msg == null}">
-<form name="frm" method="post" autocomplete="off" action="/login" onsubmit="return checkId()">
+<c:if test="${msg == false || msg== null}">
+<form name="frm" method="post" autocomplete="off" action="/login" onsubmit="return checkNull()">
 
     <p>
         <label for="userid">아이디</label>
@@ -47,7 +41,7 @@
         <lable for="userpass">비밀번호</lable>
         <input type="password" name="userpass" id="userpass"/>
     </p>
-        <input type="submit" name="로그인"></input>
+        <input type="submit" name="로그인"/>
 </form>
     <button class="btn btn-primary" onclick="location.href='/register'">회원가입</button>
 </c:if>

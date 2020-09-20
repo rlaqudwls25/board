@@ -113,13 +113,22 @@ public class MemberController {
 
             HttpSession session = request.getSession();
 
-            MemberVO login = memberService.login(vo);
+            if(request.getMethod().equals("GET")){
+                if(session.getAttribute("member") == null){
+                    session.setAttribute("msg", null);
+                }
+            }
 
-            if(login == null){
-                session.setAttribute("member", null);
-                rttr.addFlashAttribute("msg", false);
-            }else{
-                session.setAttribute("member", login);
+            if(request.getMethod().equals("POST")) {
+                MemberVO login = memberService.login(vo);
+
+                if (login == null) {
+                    session.setAttribute("member", null);
+                    session.setAttribute("msg", false);
+                } else {
+                    session.setAttribute("member", login);
+                    session.setAttribute("msg", true);
+                }
             }
             return "/login";
         }
@@ -148,7 +157,6 @@ public class MemberController {
         Logger.info("get modify");
     }
 
-
     /**
      * 회원정보 수정 post
      * @throws Exception
@@ -158,7 +166,6 @@ public class MemberController {
 
         Logger.info("post modify");
         MemberVO a = (MemberVO)session.getAttribute("member");
-        //불순물이 껴서 (MemberVO)를 써준다.
 
         vo.setUserid(a.getUserid());
         memberService.modify(vo);

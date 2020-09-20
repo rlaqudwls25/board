@@ -33,9 +33,13 @@
         var sel = document.getElementById('perPageNum').value;
         location.href="list?page=${pagination.page}&perPageNum="+sel;
     }
+
+    function btn_off(){
+        btn = document.getElementById('btn');
+        btn.disabled = 'disabled';
+    }
 </script>
 <body>
-
 
 <h2>게시판</h2>
 
@@ -43,9 +47,15 @@
 <div class="container">
     <c:if test="${member != null}">
         <p style="color:darkblue" >${member.username}님이 로그인 중입니다.</p>
+        <button class="btn btn-primary" id="btn" disabled="disabled">로그인</button>
+        <button class="btn btn-primary" onclick="location.href = '/logout'">로그아웃</button>
+    </c:if>
+
+    <c:if test="${member == null}">
+        <button class="btn btn-primary" onclick="location.href='/login'">로그인</button>
     </c:if>
     <button class ="btn btn-primary" onclick="location.href='/register'">회원가입</button>
-    <button class ="btn btn-primary" onclick="location.href='/login'">로그인</button>
+
     <table  class="table table-hover">
           <tr>
             <th>No </th>
