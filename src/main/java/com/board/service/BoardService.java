@@ -28,7 +28,7 @@ public class BoardService {
      * @throws Exception
      */
     public List<BoardDTO> boardListService(PageVO page) throws Exception{
-        return mBoardMapper.boardList(page);
+        return mBoardMapper.boardListService(page);
     }
 
     /**

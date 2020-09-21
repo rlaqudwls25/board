@@ -56,22 +56,22 @@
     </c:if>
     <button class ="btn btn-primary" onclick="location.href='/register'">회원가입</button>
 
-    <table  class="table table-hover">
+    <table class="table table-hover">
           <tr>
-            <th>No </th>
-            <th>Subject</th>
-            <th>Writer</th>
-            <th>Date</th>
+            <th width="130">No</th>
+            <th width="130">Subject</th>
+            <th width="130">Writer</th>
+            <th width="200">Date</th>
             <th>조회수</th>
           </tr>
         <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">
-                <td>${e.bno}</td>
-                <td width="320">${e.subject} <c:if test="${e.recent == true}"><span style="color: red">[N]</span> </c:if></td>
-                <td width="200">${e.writer}
-                </td><fmt:parseDate value="${ e.regDate }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="date" />
-                <td width="300"> <fmt:formatDate pattern=".yyyy.MM.dd HH:mm" value="${ parsedDateTime }" /></td>
-                <td width="70">${e.viewCnt}</td>
+                <th>${e.bno}</th>
+                <th>${e.subject} <c:if test="${e.recent == true}"><span style="color: red">[N]</span> </c:if></th>
+                <th>${e.writer}</th>
+                <fmt:parseDate value="${e.regDate}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="date" />
+                <th><fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${parsedDateTime}"/></th>
+                <th>${e.viewCnt}</th>
             </tr>
         </c:forEach>
     </table>

@@ -18,10 +18,10 @@
 
         SELECT
            rid
-             ,bno
-             ,content
-             ,regid
-             ,now()
+             , bno
+             , content
+             , regid
+             , now()
         FROM comment
         WHERE bno = #{bno}
         ORDER BY rid DESC;
@@ -45,19 +45,20 @@
 
     <!-- 댓글 수정 -->
     <update id="commentUpdate" parameterType="com.board.domain.CommentVO">
-        UPDATE comment
-        SET
+        UPDATE commentSET
            CONTENT = #{content}
         WHERE rid = #{rid}
     </update>
 
     <!-- 댓글 Seq (Rid) 파라미터로 댓글 지우기 -->
     <delete id="commentDeleteByRid" parameterType="int">
-        DELETE FROM comment WHERE rid = #{rid}
+        DELETE FROM comment
+        WHERE rid = #{rid}
     </delete>
 
     <!-- 댓글 Seq (Bno) 파라미터로 댓글 지우기 -->
     <delete id="commentDeleteByBno" parameterType="int">
-        DELETE FROM comment WHERE bno = #{bno}
+        DELETE FROM comment
+        WHERE bno = #{bno}
     </delete>
 </mapper>

@@ -52,14 +52,19 @@
     // 댓글 수정
     function commentUpdate(rid, content) {
         var a ='';
+                    a += '<div class="input-group">';
+                    a += '<input type="text" class="form-control" id="up" name="content_' + rid + '" value="' + content + '" onkeypress="commentUpdateDetectKeyCode('+rid+')"/>';
+                    a += '<span class="input-group-btn"><button class="btn btn-primary" type="button" onclick="commentUpdateProc(' + rid + ');">수정</button> </span>';
+                    a += '</div>';
 
-        a += '<div class="input-group">';
-        a += '<input type="text" class="form-control" id="up" name="content_'+rid+'" value="'+content+'"/>';
-        a += '<span class="input-group-btn"><button class="btn btn-primary" type="button" onclick="commentUpdateProc('+rid+');">수정</button> </span>';
-        a += '</div>';
+                    $('.commentContent' + rid).html(a);
+    }
 
-        $('.commentContent'+rid).html(a);
-
+    function commentUpdateDetectKeyCode(rid){
+        if(window.event.keyCode == 13){
+            window.event.preventDefault();
+            commentUpdateProc(rid);
+        }
     }
 
     // 댓글 수정

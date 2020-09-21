@@ -12,13 +12,20 @@ public class PageVO {
     // 한 페이지당 보여줄 게시글의 수
     private int perPageNum;
 
+    // 첫 페이지
+    private int offset;
+
+    public void setOffset(){
+        this.offset = (this.page-1) * this.perPageNum;
+    }
+
     public int getPageStart() {
         return (this.page - 1) * perPageNum;
     }
 
     public PageVO() {
         this.page = 1;
-        this.perPageNum = 10;
+        this.perPageNum = 5;
     }
 
     public int getPage() {

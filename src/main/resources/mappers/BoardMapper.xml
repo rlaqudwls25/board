@@ -16,29 +16,29 @@
     <select id="boardList" resultType="com.board.domain.BoardDTO">
         SELECT
            bno
-            ,subject
-            ,content
-            ,writer
-            ,regDate
-            ,viewCnt
+            , subject
+            , content
+            , writer
+            , regDate
+            , viewCnt
         FROM board
         ORDER BY bno DESC
     </select>
 
     <!-- 게시판 목록 -->
-    <select id="boardListService" resultType="BoardDTO" parameterType="com.board.domain.BoardDTO">
+    <select id="boardListService" resultType="BoardDTO" parameterType="com.board.domain.PageVO">
         <![CDATA[
         SELECT
            bno
-            ,subject
-            ,content
-            ,writer
-            ,regDate
-            ,viewCnt
+            , subject
+            , content
+            , writer
+            , regDate
+            , viewCnt
         FROM board
         WHERE delChk ='N'
         ORDER BY bno DESC, regDate DESC
-        LIMIT #{pageStart}, #{perPageNum}
+        LIMIT #{offset}, #{perPageNum}
         ]]>
     </select>
 
@@ -113,7 +113,8 @@
 
     <!-- 게시판 삭제 -->
     <delete id="boardDelete" parameterType="int">
-        DELETE FROM board WHERE bno = #{bno}
+        DELETE FROM board
+        WHERE bno = #{bno}
     </delete>
 </mapper>
 

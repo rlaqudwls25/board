@@ -21,7 +21,7 @@
     <select id="idcheck" resultType="com.board.domain.MemberVO">
         SELECT
              userid
-        FROM member
+        FROM  member
         WHERE userid = #{userid}
     </select>
 

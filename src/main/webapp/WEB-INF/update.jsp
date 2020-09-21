@@ -28,11 +28,12 @@
     <form action="/updateProc" method="post">
         <div class="form-group">
             <label for="subject">제목</label>
-            <input type="text" class="form-control" id="subject" name="subject">
-</div>
+            <input type="text" class="form-control" name="subject" id="subject" value="${detail.subject}">
+<%--            <input type="text" class="form-control" id="subject" name="subject">--%>
+        </div>
         <div class="form-group">
             <label for="writer">작성자</label>
-            <input type="text" class="form-control" id="writer" name="writer">
+            <input type="text" class="form-control" id="writer" name="writer" value="${detail.writer}">
 
             <textarea name="editor1" id="editor1" rows="10" cols="80">${detail.content}</textarea>
         </div>

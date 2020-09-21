@@ -16,6 +16,26 @@
                 location.href='/delete/${bno}';
             }
         }
+
+
+        window.onload = function (){
+            document.getElementById('content').onkeypress = function (e){
+                if(e.keyCode ==13){
+                    e.preventDefault();
+                    var insertData = $('[name=commentInsertForm]').serialize();
+                    commentInsert(insertData);
+
+                }
+            };
+            // document.getElementById('up').onkeypress = function (e){
+            //     if(e.keyCode==13){
+            //         e.preventDefault();
+            //         var updateData = $('[name=content_8]').serialize();
+            //         commentUpdate(updateData);
+            //     }
+            // }
+
+        };
     </script>
 
 </head>
@@ -61,7 +81,6 @@
         <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
         <button class="btn btn-danger" onclick="del(${detail.bno})">삭제</button>
         <button class="btn btn-primary" onclick="location.href='/list'">목록</button>
-
     </div>
 </div>
 <!-- 게시글 상세 끝 -->

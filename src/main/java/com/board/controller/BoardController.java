@@ -55,6 +55,7 @@ public class BoardController {
         pagination.setTotalCount(100);
 
         pagination.setTotalCount(mBoardService.countBoardListTotal());
+        page.setOffset();
         List<BoardDTO> list = mBoardService.boardListService(page);
 
         model.addAttribute("replyVO", new CommentVO());
@@ -68,38 +69,19 @@ public class BoardController {
      * 게시판 상세
      * @param bno
      * @param model
-     * @param request
-     * @param response
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/detail/{bno}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String boardDetail(@PathVariable int bno, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String boardDetail(@PathVariable int bno, Model model) throws Exception {
 
-        model.addAttribute("detail", mBoardService.boardDetailService(bno));
+
         model.addAttribute("board", mBoardService.viewCntUpdate(bno));
+        model.addAttribute("detail", mBoardService.boardDetailService(bno));
 
-        Cookie cookies[] = request.getCookies();
-        Map mapCookie = new HashMap();
-        if(request.getCookies() != null){
-            for(int i=0; i<cookies.length; i++) {
-                Cookie obj = cookies[i];
-                mapCookie.put(obj.getName(),obj.getValue());
-            }
-        }
 
-        // 저장된 쿠키중에 viewCnt만 불러오기
-        String cookie_viewCnt = (String) mapCookie.get("viewCnt");
-        // 저장될 새로운 쿠키값 생성
-        String new_cookie_viewCnt = "|" + bno;
+        BoardDTO board = mBoardService.boardDetailService(bno);
 
-        if(StringUtils.indexOfIgnoreCase(cookie_viewCnt, new_cookie_viewCnt) == -1){
-            Cookie cookie = new Cookie("viewCnt", cookie_viewCnt + new_cookie_viewCnt);
-            response.addCookie(cookie);
-
-            BoardDTO board = mBoardService.boardDetailService(bno);
-
-        }
         return "detail";
     }
 
