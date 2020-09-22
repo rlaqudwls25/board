@@ -16,7 +16,16 @@
 
             idt.onclick = function (){
                 alert("게시글이 저장되었습니다")
+                if(subChk == true){
+                    alert("제목을 입력해주세요")
+                }
             }
+            // var sub = document.getElementById("subCheck");
+            // sub.onclick = function (subChk) {
+            //     if (subChk == true) {
+            //         alert("제목을 입력해주세요");
+            //     }
+            // }
         };
 
     </script>
@@ -48,6 +57,7 @@
         <input type="file" name="uploadFile"/></td>
         </div>
             <div class="form-group"></div>
+
 
         <button type="submit" class="btn btn-primary" id="check" name="check">작성</button>
         <button type="submit" class="btn btn-primary">목록</button>

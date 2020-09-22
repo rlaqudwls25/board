@@ -48,25 +48,25 @@
 <!-- 게시판 상세 시작 -->
 <div class="container">
     <form action="/insertProc" method="post" >
-        <div class="form-group">
+        <div class="writerInfo">
             <label>제목</label>
             <p>${detail.subject}</p>
         </div>
-        <div class="form-group">
+        <div class="writerInfo">
             <label>작성자</label>
             <p>${detail.writer}</p>
         </div>
-        <div class="form-group">
+        <div class="writerInfo">
             <label>작성날짜</label>
             <p>${detail.regDate}</p>
         </div>
-        <div class="form-group">
-            <label>내용</label>
-            <p>${detail.content}</p>
-        </div>
-        <div class="form-group">
+        <div class="writerInfo">
             <label>조회수</label>
             <p>${detail.viewCnt}</p>
+        </div>
+        <div class="writerInfo">
+            <label>내용</label>
+            <p>${detail.content}</p>
         </div>
 
             <c:if test="${detail.fileName ne null}">

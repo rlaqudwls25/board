@@ -19,10 +19,6 @@ public class PageVO {
         this.offset = (this.page-1) * this.perPageNum;
     }
 
-    public int getPageStart() {
-        return (this.page - 1) * perPageNum;
-    }
-
     public PageVO() {
         this.page = 1;
         this.perPageNum = 5;

@@ -48,8 +48,9 @@
     <c:if test="${member != null}">
         <p style="color:darkblue" >${member.username}님이 로그인 중입니다.</p>
         <button class="btn btn-primary" id="btn" disabled="disabled">로그인</button>
-        <button class="btn btn-primary" onclick="location.href = '/logout'">로그아웃</button>
+        <button class="btn btn-primary" onclick="location.href ='/logout'">로그아웃</button>
     </c:if>
+
 
     <c:if test="${member == null}">
         <button class="btn btn-primary" onclick="location.href='/login'">로그인</button>
@@ -75,7 +76,6 @@
             </tr>
         </c:forEach>
     </table>
-
     <button class ="btn btn-primary" onclick="location.href='/insert'">글쓰기</button>
 </div>
 <div style="text-align: center">

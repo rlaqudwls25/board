@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.w3c.dom.Text;
 
 
 /**
@@ -40,7 +41,6 @@ public class BoardDTO {
    // 조회수
    private int viewCnt;
 
-
    // 최근 게시물
    private boolean recent;
 
@@ -53,5 +53,20 @@ public class BoardDTO {
          return this.recent = false;
       }
    }
+
+   //제목 확인
+   private boolean subChk;
+
+   public boolean isSubChk(){
+      this.subChk = true;
+      if(subject == null){
+         return this.subChk = true;
+      }else{
+         return this.subChk = false;
+      }
+   }
+
+
+   //내용 확인
 }
 

@@ -74,8 +74,8 @@
               , subject
               , content
               , writer
-              , regDate
               , delChk
+              , regDate
               , fileName
               , viewCnt)
         VALUES
@@ -83,8 +83,8 @@
                , #{subject}
                , #{content}
                , #{writer}
-               , now()
                , 'N'
+               , now()
                , #{fileName}
                , 0)
     </insert>

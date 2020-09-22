@@ -45,7 +45,7 @@
 
     <!-- 댓글 수정 -->
     <update id="commentUpdate" parameterType="com.board.domain.CommentVO">
-        UPDATE commentSET
+        UPDATE comment SET
            CONTENT = #{content}
         WHERE rid = #{rid}
     </update>

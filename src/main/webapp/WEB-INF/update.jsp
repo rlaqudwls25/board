@@ -34,8 +34,9 @@
         <div class="form-group">
             <label for="writer">작성자</label>
             <input type="text" class="form-control" id="writer" name="writer" value="${detail.writer}">
-
-            <textarea name="editor1" id="editor1" rows="10" cols="80">${detail.content}</textarea>
+        </div>
+        <div class="form-group">
+            <textarea name="content" id="editor1" rows="10" cols="80">${detail.content}</textarea>
         </div>
 
         <input type="hidden" name="bno" value="${bno}"/>

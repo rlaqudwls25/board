@@ -99,7 +99,6 @@ public class BoardController {
 
     /**
      * 게시판 작성
-     * @param request
      * @param dto
      * @return
      * @throws Exception

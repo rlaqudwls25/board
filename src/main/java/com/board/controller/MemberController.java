@@ -145,7 +145,7 @@ public class MemberController {
 
         session.invalidate();
 
-        return "/list";
+        return "redirect:/list";
     }
 
     /**
