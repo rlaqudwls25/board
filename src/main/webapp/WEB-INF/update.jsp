@@ -16,6 +16,16 @@
             }
         };
 
+        function checkForm(){
+            var subChk = document.fm.subject;
+            if(subChk.value == (subChk.value.length == 0 )){
+                alert("제목을 입력해주세요");
+                return false;
+            }
+        }
+
+
+
     </script>
 </head>
 <body>
@@ -25,7 +35,7 @@
 
 <!-- 게시판 수정 -->
 <div class="container">
-    <form action="/updateProc" method="post">
+    <form action="/updateProc" method="post" id="fm">
         <div class="form-group">
             <label for="subject">제목</label>
             <input type="text" class="form-control" name="subject" id="subject" value="${detail.subject}">
