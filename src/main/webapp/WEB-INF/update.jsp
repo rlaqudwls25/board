@@ -9,23 +9,10 @@
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <script type="text/javascript">
         window.onload = function (){
-            var idt = document.getElementById("check");
-
             idt.onclick = function (){
                 alert("게시글이 저장되었습니다")
             }
         };
-
-        function checkForm(){
-            var subChk = document.fm.subject;
-            if(subChk.value == (subChk.value.length == 0 )){
-                alert("제목을 입력해주세요");
-                return false;
-            }
-        }
-
-
-
 
     </script>
 </head>

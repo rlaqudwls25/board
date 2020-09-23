@@ -11,21 +11,23 @@
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 
     <script type="text/javascript">
-        window.onload = function (){
-            var idt = document.getElementById("check");
 
-            idt.onclick = function (){
-                alert("게시글이 저장되었습니다")
+        function checkForm(){
+            var subject = document.getElementById('subject');
+            var data = CKEDITOR.instances.editor1.getData();
+
+            if(subject.value.length == 0){
+                alert("막혔어요");
+                return false;
             }
-
-            var sub = document.getElementById("subCheck");
-            sub.onclick = function (subChk) {
-                if (subChk == true) {
-                    alert("제목을 입력해주세요");
-                }
+            if(data.length == 0){
+                alert("막혔어요");
+                return false;
+            }else {
+                alert("저장되었습니다.");
+                return true;
             }
-        };
-
+        }
     </script>
 </head>
 <body>
@@ -35,7 +37,7 @@
 
 <!-- 게시판 작성 시작-->
 <div class="container">
-    <form action="/insertProc" method="post" enctype="multipart/form-data">
+    <form action="/insertProc" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
         <input type="hidden" name="delChk" value="N">
         <div class="form-group">
             <label for="subject">제목</label>
@@ -45,24 +47,22 @@
             <label for="writer">작성자</label>
             <input type="text" class="form-control" id="writer" name="writer" value="${member.username}" readonly="readonly">
         </div>
-
         <div class="form-group">
             <textarea name="content" id="editor1" row="10" clos="80"></textarea>
         </div>
-        <div >
+        <div>
             <td bgcolor="blue" width="100"></td>
             <td align="left">
         <input type="file" name="uploadFile"/></td>
         </div>
             <div class="form-group"></div>
-
-
-        <button type="submit" class="btn btn-primary" id="check" name="check">작성</button>
-        <button type="submit" class="btn btn-primary">목록</button>
-
+        <button type="submit" class="btn btn-primary" id="check" name="check" >작성</button>
         <script> CKEDITOR.replace('editor1');</script>
+
     </form>
+    <button class="btn btn-primary" onclick="location.href = '/list'">목록</button>
 </div>
+
 <!-- 게시판 작성 끝 -->
 
 <%@ include file="bootstrap.jsp"%>

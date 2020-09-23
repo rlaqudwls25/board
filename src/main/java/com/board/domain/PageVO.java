@@ -21,7 +21,7 @@ public class PageVO {
 
     public PageVO() {
         this.page = 1;
-        this.perPageNum = 5;
+        this.perPageNum = 10;
     }
 
     public int getPage() {
