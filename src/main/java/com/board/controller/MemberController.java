@@ -32,8 +32,11 @@ public class MemberController {
      * @throws Exception
      */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public void getRegister() throws Exception {
+    public String getRegister() throws Exception {
         Logger.info("get register");
+
+        return "/register";
+
     }
 
     /**
@@ -50,7 +53,6 @@ public class MemberController {
         String inputPass = vo.getUserpass();
 
         memberService.register(vo);
-
 
         return "redirect:/list";
     }

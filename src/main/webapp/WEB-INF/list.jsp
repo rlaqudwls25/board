@@ -60,10 +60,10 @@
     <table class="table table-hover">
           <tr>
             <th width="130">No</th>
-            <th width="130">Subject</th>
-            <th width="130">Writer</th>
+            <th width="200">Subject</th>
+            <th width="200">Writer</th>
             <th width="200">Date</th>
-            <th>조회수</th>
+            <th width="200">조회수</th>
           </tr>
         <c:forEach var ="e" items="${list}">
             <tr onclick="location.href='/detail/${e.bno}'">

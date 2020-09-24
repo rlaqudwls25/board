@@ -17,7 +17,6 @@
             }
         }
 
-
         window.onload = function (){
             document.getElementById('content').onkeypress = function (e){
                 if(e.keyCode ==13){
@@ -27,6 +26,7 @@
 
                 }
             };
+
             // document.getElementById('up').onkeypress = function (e){
             //     if(e.keyCode==13){
             //         e.preventDefault();
@@ -34,7 +34,6 @@
             //         commentUpdate(updateData);
             //     }
             // }
-
         };
     </script>
 

@@ -7,12 +7,19 @@
     <title>Insert title here</title>
 
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
     <script type="text/javascript">
-        window.onload = function (){
-            idt.onclick = function (){
-                alert("게시글이 저장되었습니다")
+        function allCheck(){
+            if(form.subject.value == ""){
+                alert("제목을 다시 확인해주세요 !");
+                return false;
             }
-        };
+            if(form.content.value == ""){
+                alert("내용을 다시 확인해주세요 !");
+                    return false;
+            }
+            return true;
+        }
 
     </script>
 </head>
@@ -23,7 +30,7 @@
 
 <!-- 게시판 수정 -->
 <div class="container">
-    <form action="/updateProc" method="post" id="fm">
+    <form name="form" action="/updateProc" method="post" id="fm" onsubmit="return allCheck()">
         <div class="form-group">
             <label for="subject">제목</label>
             <input type="text" class="form-control" name="subject" id="subject" value="${detail.subject}">
@@ -48,5 +55,21 @@
 
 <%@ include file="bootstrap.jsp"%>
 
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

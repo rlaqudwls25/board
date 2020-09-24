@@ -17,11 +17,11 @@
             var data = CKEDITOR.instances.editor1.getData();
 
             if(subject.value.length == 0){
-                alert("막혔어요");
+                alert("제목을 다시 입력해주세요!");
                 return false;
             }
             if(data.length == 0){
-                alert("막혔어요");
+                alert("내용을 다시 입력해주세요!");
                 return false;
             }else {
                 alert("저장되었습니다.");

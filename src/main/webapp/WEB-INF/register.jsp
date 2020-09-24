@@ -9,50 +9,79 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title></title>
-
     <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script>
+        function check(){
+            if(!checkUserId(form.userid.value)){
+                return false;
+            }else if(!checkPass(form.userid.value, form.userpass.value)){
+                return false;
+            }
+            alert("회원가입이 되었습니다");
+            return true;
+        }
 
-<%--    <script type="text/javascript">--%>
-<%--        window.onload = function (){--%>
-<%--            var join = document.getElementById("join");--%>
-<%----%>
-<%--            join.onclick = function (){--%>
-<%--                alert("회원가입이 되었습니다.");--%>
-<%--            }--%>
-<%--        };--%>
-<%--//     </script>--%>
+        function checkEmpty(){
+            if(form.userid.value == ""){
+                alert("아이디를 입력해주세요");
+                return false;
+            }
+            if(form.userpass.value == ""){
+                alert("비밀번호를 입력해주세요");
+                return false;
+            }
+            return true;
+        }
+
+        function checkUserId(id){
+            if(!checkEmpty(id)){
+                return false;
+            }
+            return true;
+        }
+
+        function checkPass(id, password){
+            if(!checkEmpty(password)){
+                return false;
+            }
+            if(id==password){
+                alert("아이디와 비밀번호를 같을 수 없습니다");
+                form.password.value="";
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 </head>
-
 <!-- 게시판 회원가입 -->
 <body>
-<form role="form" method="post" autocomplete="off">
-    <p>
-        <label for="userid">아이디</label>
-        <input type="text" id="userid" name="userid"/>
-
-        <button type="button" class="idcheck">아이디 확인</button>
+<form name="form" method="post" autocomplete="off" onsubmit="return check()">
+    <table width="700" border="1px" align="center">
+        <tr>
+            <th colspan="2">회원 기본 정보</th>
+        </tr>
+        <tr>
+            <td>아이디</td>
+            <td><input type="text" name="userid" >4~12자의 영문 대소문자와 숫자로만 입력</td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><input type="password" name="userpass">4~12자의 영문 대소문자와 숫자로만 입력</td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td><input type="text" name="username"></td>
+        </tr>
+    </table>
+    <p align="center">
+    <input type="submit" name="join" value="회원 가입">
+    <input type="reset" name="reset" value="다시 입력">
     </p>
-
-    <p class="result">
-        <span class="msg">아이디를 확인해주세요.</span>
-    </p>
-    <p>
-        <label for="userpass">패스워드</label>
-        <input type="password" id="userpass" name="userpass"/>
-    </p>
-    <p>
-        <label for="username">닉네임</label>
-        <input type="text" id="username" name="username"/>
-    </p>
-
-
-        <button type="submit" id="submit" disabled="disabled">가입</button>
 
 
 <%--    <button class="btn btn-primary" id="join" onclick="location.href='/login'">가입</button>--%>
-    <button class="btn btn-primary" onclick="location.href='/list'">목록</button>
+<%--    <button class="btn btn-primary" onclick="location.href='/list'">목록</button>--%>
 </form>
 <!-- 게시판 회원가입 끝-->
 

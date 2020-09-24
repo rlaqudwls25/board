@@ -33,6 +33,7 @@
               , username
         FROM member
         WHERE userid = #{userid}
+        AND userpass = #{userpass}
     </select>
 
     <!-- 회원정보 수정 -->
