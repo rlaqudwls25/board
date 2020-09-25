@@ -119,14 +119,10 @@ public class BoardController {
         // 확장자 구하기
         if (!uploadFile.isEmpty()) {
             String originalFileName = uploadFile.getOriginalFilename();
-            String ext = FilenameUtils.getExtension(originalFileName);
 
-            // uuid 구하기
-            UUID uuid = UUID.randomUUID();
-            fileName = uuid + "." + ext;
-            uploadFile.transferTo(new File("C:\\upload\\" + fileName));
+            uploadFile.transferTo(new File("C:\\upload\\" + originalFileName));
+            dto.setFileName(originalFileName);
         }
-        dto.setFileName(fileName);
 
         mBoardService.boardInsertService(dto);
 

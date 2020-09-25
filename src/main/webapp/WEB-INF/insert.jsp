@@ -41,7 +41,7 @@
         <input type="hidden" name="delChk" value="N">
         <div class="form-group">
             <label for="subject">제목</label>
-            <input type="text" class="form-control" id="subject" name="subject" placeholder="제목을 입력하세요.">
+            <input type="text" class="form-control" id="subject" name="subject" placeholder="제목을 입력하세요." size="10" maxlength="30">
         </div>
         <div class="form-group">
             <label for="writer">작성자</label>

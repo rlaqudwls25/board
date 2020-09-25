@@ -68,12 +68,12 @@
             <p>${detail.content}</p>
         </div>
 
-            <c:if test="${detail.fileName ne null}">
+        <c:if test="${detail.fileName ne null}">
             <tr>
                 <td bgcolor="white">첨부파일</td>
                 <td align="left"><a href="/fileDownload.do?fileName=${detail.fileName}">${detail.fileName}</a></td>
             </tr>
-            </c:if>
+        </c:if>
 
     </form>
     <div class="btn-group btn-group-sm" role="group" style="float:right;">
