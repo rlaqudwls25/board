@@ -36,7 +36,6 @@ public class MemberController {
         Logger.info("get register");
 
         return "/register";
-
     }
 
     /**

@@ -11,6 +11,7 @@ import com.mysql.cj.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +32,17 @@ import java.util.*;
  */
 @Slf4j
 @Controller
+
 public class BoardController {
+
+    @Value("${file}")
+    String uploadFileDir;
 
     @Autowired
     BoardService mBoardService;
     @Autowired
     CommentService mCommentService;
+
 
     /**
      * 게시판 리스트
@@ -120,7 +126,7 @@ public class BoardController {
         if (!uploadFile.isEmpty()) {
             String originalFileName = uploadFile.getOriginalFilename();
 
-            uploadFile.transferTo(new File("C:\\upload\\" + originalFileName));
+//            uploadFile.transferTo(new File("C:\\upload\\" + originalFileName));
             dto.setFileName(originalFileName);
         }
 
@@ -177,9 +183,4 @@ public class BoardController {
 
         return "redirect:/list";
     }
-
-//    @RequestMapping(value = "/write", method = RequestMethod.GET)
-//    public void getWrite(HttpSession session, Model model) throws Exception{
-//        Logger.info
-//    }
 }

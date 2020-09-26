@@ -4,36 +4,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<%--    <style>--%>
-<%--        #test_btn1{--%>
-<%--            border-top-left-radius: 5px;--%>
-<%--            border-bottom-left-radius: 5px;--%>
-<%--            margin-right:-4px;--%>
-<%--        }--%>
-<%--        #test_btn2{--%>
-<%--            border-top-right-radius: 5px;--%>
-<%--            border-bottom-right-radius: 5px;--%>
-<%--            margin-left:-3px;--%>
-<%--        }--%>
-<%--        #btn_group button{--%>
-<%--            border: 1px solid skyblue;--%>
-<%--            background-color: rgba(0,0,0,0);--%>
-<%--            color:blue;--%>
-<%--            padding: 5px;--%>
-<%--        }--%>
-<%--        #btn_group button:hover{--%>
-<%--            color:white;--%>
-<%--            background-color:skyblue;--%>
-<%--        }--%>
-<%--    </style>--%>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/new_main.css" type="text/css">
+    <h2>회원가입 페이지</h2>
 
     <script>
         function check(){
@@ -51,7 +24,7 @@
                 alert("아이디를 입력해주세요");
                 return false;
             }
-            if(form.userpass.value == ""){
+            if(form.password.value == ""){
                 alert("비밀번호를 입력해주세요");
                 return false;
             }
@@ -81,31 +54,75 @@
 </head>
 <!-- 게시판 회원가입 -->
 <body>
-
 <form name="form" method="post" autocomplete="off" onsubmit="return check()">
-    <table width="700" border="1px" align="center">
-        <tr>
-            <th colspan="2">회원 기본 정보</th>
-        </tr>
-        <tr>
-            <td>아이디</td>
-            <td><input type="text" name="userid" >4~12자의 영문 대소문자와 숫자로만 입력</td>
-        </tr>
-        <tr>
-            <td>비밀번호</td>
-            <td><input type="password" name="userpass">4~12자의 영문 대소문자와 숫자로만 입력</td>
-        </tr>
-        <tr>
-            <td>이름</td>
-            <td><input type="text" name="username"></td>
-        </tr>
-    </table>
-    <p align="center">
-    <button class="btn btn-primary" onclick="location.href='/register'">회원가입</button>
+    <div id="content">
+        <div>
+            <h3><label for="userid">아이디</label></h3>
+            <span class="box int_id">
+                <input type="text" id="userid" class="int" maxlength="10">
+            </span>
+            <span class="error_next_box"></span>
+        </div>
+        <div>
+            <h3><label for="password">비밀번호</label></h3>
+            <span class="box int_pass">
+                <input type="password" id="password" class="int" maxlength="20">
+            </span>
+            <span class="error_next_box"></span>
+        </div>
+        <div>
+            <h3>
+                <label for="yy">생년원일</label>
+            </h3>
+            <div id="bir_wrap">
+                <div id="bir_yy">
+                <span class="box">
+                    <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                </span>
+                </div>
+                <div id="bir_mm">
+                <span class="box">
+                    <select id="mm" class="sel">
+                        <option>월</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </span>
+                </div>
 
-<%--    <button type="button" class="btn btn-primary" onclick="location.href='/list'">목록</button>--%>
+                <div id="bir_dd">
+                <span class="box">
+                    <input type="text" id="dd" class="int" maxlength="2" placeholder="일(2자)">
+               </span>
+                </div>
+            </div>
+            <span class="error_next_box"></span>
+            <div>
+                <h3 class="join_title"><label for="gender">성별</label></h3>
+                <span class="box gender_code">
+                <select id="gender" class="sel">
+                    <option>성별</option>
+                    <option value="남">남</option>
+                    <option value="여">여</option>
+                </select>
+            </span>
+                <span class="error_next_box">필수 정보입니다.</span>
+        </div>
+        <div class="btn btn-primary">
+            <input type="submit" id="btnJoin" value="가입하기"/>
+        </div>
+    </div>
 
-    </p>
 </form>
 <!-- 게시판 회원가입 끝-->
 <script>
@@ -131,6 +148,5 @@
         });
     });
 </script>
-<%@ include file="bootstrap.jsp"%>
 </body>
 </html>
