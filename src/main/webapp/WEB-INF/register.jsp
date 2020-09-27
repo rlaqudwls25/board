@@ -118,11 +118,11 @@
             </span>
                 <span class="error_next_box">필수 정보입니다.</span>
         </div>
-        <div class="btn btn-primary">
+        <div class="btn_area">
             <input type="submit" id="btnJoin" value="가입하기"/>
         </div>
     </div>
-
+    </div>
 </form>
 <!-- 게시판 회원가입 끝-->
 <script>
