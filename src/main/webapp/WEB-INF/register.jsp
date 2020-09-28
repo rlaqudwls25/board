@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/new_main.css" type="text/css">
+<%--    <link rel="stylesheet" href="../css/new_main.css" type="text/css">--%>
     <h2>회원가입 페이지</h2>
 
     <script>

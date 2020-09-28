@@ -81,6 +81,8 @@ public class BoardController {
     @RequestMapping(value = "/detail/{bno}", method = {RequestMethod.GET, RequestMethod.POST})
     public String boardDetail(@PathVariable int bno, Model model) throws Exception {
 
+        BoardDTO boardDTO =  new BoardDTO();
+        boardDTO = mBoardService.boardDetailService(bno);
         model.addAttribute("board", mBoardService.viewCntUpdate(bno));
         model.addAttribute("detail", mBoardService.boardDetailService(bno));
 

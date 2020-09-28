@@ -38,6 +38,7 @@
     </script>
 
 </head>
+
 <body>
 
 <div style="text-align: center">
@@ -47,34 +48,32 @@
 <!-- 게시판 상세 시작 -->
 <div class="container">
     <form action="/insertProc" method="post" >
-        <div class="writerInfo">
+        <div>
             <label>제목</label>
             <p>${detail.subject}</p>
         </div>
-        <div class="writerInfo">
+        <div>
             <label>작성자</label>
             <p>${detail.writer}</p>
         </div>
-        <div class="writerInfo">
+        <div>
             <label>작성날짜</label>
             <p>${detail.regDate}</p>
         </div>
-        <div class="writerInfo">
+        <div>
             <label>조회수</label>
             <p>${detail.viewCnt}</p>
         </div>
-        <div class="writerInfo">
+        <div>
             <label>내용</label>
-            <p>${detail.content}</p>
+            ${detail.content}
         </div>
-
+        <div>
         <c:if test="${detail.fileName ne null}">
-            <tr>
-                <td bgcolor="white">첨부파일</td>
-                <td align="left"><a href="/fileDownload.do?fileName=${detail.fileName}">${detail.fileName}</a></td>
-            </tr>
+            <label>첨부파일</label>
+            <a href="/fileDownload.do?fileName=${detail.fileName}">${detail.fileName}</a>
         </c:if>
-
+        </div>
     </form>
     <div class="btn-group btn-group-sm" role="group" style="float:right;">
         <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
