@@ -12,7 +12,7 @@
         function check(){
             if(!checkUserId(form.userid.value)){
                 return false;
-            }else if(!checkPass(form.userid.value, form.userpass.value)){
+            }else if(!checkPass(form.userid.value, form.password.value)){
                 return false;
             }
             alert("회원가입이 되었습니다");
@@ -41,6 +41,7 @@
         function checkPass(id, password){
             if(!checkEmpty(password)){
                 return false;
+
             }
             if(id==password){
                 alert("아이디와 비밀번호를 같을 수 없습니다");
@@ -99,7 +100,6 @@
                     </select>
                 </span>
                 </div>
-
                 <div id="bir_dd">
                 <span class="box">
                     <input type="text" id="dd" class="int" maxlength="2" placeholder="일(2자)">

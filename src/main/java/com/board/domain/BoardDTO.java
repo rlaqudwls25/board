@@ -47,7 +47,7 @@ public class BoardDTO {
    public boolean isRecent() {
       this.recent = true;
       LocalDateTime currentTime = LocalDateTime.now();
-      if (regDate.getHour() - currentTime.getHour() < 24) {
+      if (regDate.getHour() - currentTime.getHour() < currentTime.getHour()) {
          return this.recent = true;
       } else {
          return this.recent = false;
@@ -65,8 +65,5 @@ public class BoardDTO {
          return this.subChk = false;
       }
    }
-
-
-   //내용 확인
 }
 
