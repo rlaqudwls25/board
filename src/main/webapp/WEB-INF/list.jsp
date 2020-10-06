@@ -29,6 +29,45 @@
 </style>
 
 <script>
+
+
+    // function snsShare(snsName, link, title){
+    //
+    //     if(title == null) return false;
+    //
+    //     var snsPopUp;
+    //     var _width = '500';
+    //     var _height = '450';
+    //     var _left = Math.cell((window.screen.width - _width)/2);
+    //     var _top = Math.cell((window.screen.height - _height)/2);
+    //
+    //     switch (snsName){
+    //         case 'facebook':
+    //         snsPopUp = window.open("http://www.facebook.com/sharer/sharer.php?u=" + link, '', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
+    //         break;
+    //
+    //         case 'twitter' :
+    //             snsPopUp = window.open("http://twitter.com/intent/tweet?url=" + link + "&text=" + title, '', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
+    //             break;
+    //
+    //         case 'kakao' :
+    //             snsPopUp = window.open("https://story.kakao.com/share?url=" + link, '', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
+    //             break;
+    //
+    //         case 'addurl' :
+    //             var dummy = document.createElement("textarea");
+    //             document.body.appendChild(dummy);
+    //             dummy.value = link;
+    //             dummy.select();
+    //             document.execCommand("copy");
+    //             document.body.removeChild(dummy);
+    //             oneBtnModal("URL이 클립보드에 복사되었습니다.");
+    //             break;
+    //     }
+    // }
+</script>
+
+<script>
     function selChange() {
         var sel = document.getElementById('perPageNum').value;
         location.href="list?page=${pagination.page}&perPageNum="+sel;
@@ -50,8 +89,6 @@
         <button class="btn btn-primary" id="btn" disabled="disabled">로그인</button>
         <button class="btn btn-primary" onclick="location.href ='/logout'">로그아웃</button>
     </c:if>
-
-
     <c:if test="${member == null}">
         <button class="btn btn-primary" onclick="location.href='/login'">로그인</button>
     </c:if>

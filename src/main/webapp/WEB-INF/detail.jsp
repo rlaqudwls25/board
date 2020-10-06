@@ -7,8 +7,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <style type="text/css">
+        #btn_share{
+            width: 15%;
+            height: 50px;
+            background: yellow;
+            font-family: Dotum,'돋움',Helvetica,sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            color: black;
+            text-align: center;
+        }
+    </style>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+
     <title>Detail</title>
+    <script>
+        function sendLinkKakao(){
+            Kakao.init('9d6029283b4625ca94caf8837cb5020e');
+            Kakao.Link.sendDefault({
+                objectType: 'feed',
+                content: {
+                    title: '게시글',
+                    description: '',
+                    imageUrl: '',
+                    link: {
+                        mobileWebUrl: 'http://localhost:8080/list',
+                        webUrl: 'http://localhost:8080/list'
+                    }
+                },
+                buttons: [
+                    {
+                        title: 'Web으로 보기',
+                        link: {
+                            mobileWebUrl: 'http://localhost:8080/list',
+                            webUrl: 'http://localhost:8080/list'
+                        }
+                    },
+                    {
+                        title: 'App으로 보기',
+                        link: {
+                            mobileWebUrl: 'http://localhost:8080/list',
+                            webUrl: 'http://localhost:8080/list'
+                        }
+                    }
+                ]
+            });
+        }
+    </script>
     <script>
         function del(bno) {
             var chk = confirm("정말 삭제하시겠습니까?");
@@ -74,6 +123,13 @@
             <a href="/fileDownload.do?fileName=${detail.fileName}">${detail.fileName}</a>
         </c:if>
         </div>
+        <button type="button" id="btn_share" onclick="sendLinkKakao();">카카오톡 공유</button>
+
+<%--        <span class="sociallink ml-1">--%>
+<%--    <a href="javascript:sendLinkKakao()" id="kakao-link-btn" title="카카오톡으로 공유">--%>
+<%--        <img src="{% static 'images/kakaotalk.png' %}" width=36 alt="Kakaotalk">--%>
+<%--    </a>--%>
+<%--</span>--%>
     </form>
     <div class="btn-group btn-group-sm" role="group" style="float:right;">
         <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
