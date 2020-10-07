@@ -7,27 +7,81 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <meta property="og:url"           content="http://localhost:8080/list" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="" />
 
-    <style type="text/css">
-        #btn_share{
-            width: 15%;
-            height: 50px;
-            background: yellow;
-            font-family: Dotum,'돋움',Helvetica,sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            color: black;
-            text-align: center;
-        }
-    </style>
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-
     <title>Detail</title>
+    <style>
+        #topMenu { height: 30px; width: 700px;
+        }
+        #topMenu ul {
+            /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
+            list-style-type: none; margin: 0px; padding: 0px;
+        }
+        #topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
+            color: white; background-color: #2d2d2d; float: left; line-height: 30px; vertical-align: middle; text-align: center; position: relative;
+        }
+        .menuLink, .submenuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
+            text-decoration:none; display: block; width: 80px; font-size: 12px; font-weight: bold; font-family: "Trebuchet MS", Dotum; }
+        .menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
+            color: white;
+        }
+        .topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */
+            color: red; background-color: #4d4d4d;
+        }
+        .longLink { /* 좀 더 긴 메뉴 스타일 설정 */
+            width: 130px;
+        }
+        .submenuLink{
+            color: #2d2d2d;
+            background-color: white;
+            border: solid 1px black;
+            margin-right: -1px;
+        }
+        .submenu{
+            position: absolute;
+            height: 0px;
+            overflow: hidden;
+            transition: height .2s;
+            -webkit-transition: height .2s;
+            -moz-transition: height .2s;
+            -o-transition: height .2s;
+            width: 770px; /* [변경] 가로 드랍다운 메뉴의 넓이 */ left: 0;
+
+        }
+        .submenu li {
+            display: inline-block;
+        }
+        .topMenuLi:hover .submenu {
+            height: 32px;
+        }
+        .submenuLink:hover {
+            color: red; background-color: #dddddd;
+        }
+    </style>
+
     <script>
+        // ( function (d,s, id){
+        //     var js, fjs = d.getElementsByTagName(s)[0];
+        //     if(d.getElementById(id)) return;
+        //     js = d.createElement(s); js.id = id;
+        //     js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        //     fjs.parentNode.insertBefore(js, fjs);
+        // }(document, 'script', 'facebook-jssdk'));
+
+        function test(){
+            window.open("http://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/list");
+        }
+    </script>
+
+    <script>
+        Kakao.init('9d6029283b4625ca94caf8837cb5020e');
         function sendLinkKakao(){
-            Kakao.init('9d6029283b4625ca94caf8837cb5020e');
             Kakao.Link.sendDefault({
                 objectType: 'feed',
                 content: {
@@ -65,7 +119,6 @@
                 location.href='/delete/${bno}';
             }
         }
-
         window.onload = function (){
             document.getElementById('content').onkeypress = function (e){
                 if(e.keyCode ==13){
@@ -75,19 +128,9 @@
 
                 }
             };
-
-            // document.getElementById('up').onkeypress = function (e){
-            //     if(e.keyCode==13){
-            //         e.preventDefault();
-            //         var updateData = $('[name=content_8]').serialize();
-            //         commentUpdate(updateData);
-            //     }
-            // }
         };
     </script>
-
 </head>
-
 <body>
 
 <div style="text-align: center">
@@ -123,20 +166,45 @@
             <a href="/fileDownload.do?fileName=${detail.fileName}">${detail.fileName}</a>
         </c:if>
         </div>
-        <button type="button" id="btn_share" onclick="sendLinkKakao();">카카오톡 공유</button>
-
-<%--        <span class="sociallink ml-1">--%>
-<%--    <a href="javascript:sendLinkKakao()" id="kakao-link-btn" title="카카오톡으로 공유">--%>
-<%--        <img src="{% static 'images/kakaotalk.png' %}" width=36 alt="Kakaotalk">--%>
-<%--    </a>--%>
-<%--</span>--%>
     </form>
     <div class="btn-group btn-group-sm" role="group" style="float:right;">
         <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
         <button class="btn btn-danger" onclick="del(${detail.bno})">삭제</button>
         <button class="btn btn-primary" onclick="location.href='/list'">목록</button>
     </div>
+    <div id="topMenu">
+        <ul>
+            <li class="topMenuLi">
+                <a class="menuLink">공유하기</a>
+                <ul class="submenu">
+                    <li>
+                        <a onclick="sendLinkKakao();" class="submenuLink">카카오톡</a>
+                    </li>
+                    <li>
+                        <a onclick="test();" class="submenuLink">페이스북</a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <br>
+<%--    <div>--%>
+<%--        <div id="shareMenu">--%>
+<%--            <ui>--%>
+<%--                <a id="kakao-link-btn"  onclick="sendLinkKakao();">--%>
+<%--                <img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="50" height="50" />--%>
+<%--                </a>--%>
+<%--            </ui>--%>
+<%--            <div class="fb-share-button">--%>
+<%--                data-href="http://localhost:8080/list"--%>
+<%--                data-layout="button_count">--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <br>--%>
+<%--        <br>--%>
+<%--    </div>--%>
 </div>
+
 <!-- 게시글 상세 끝 -->
 <div class="container">
     <label for="content">comment</label>
