@@ -10,6 +10,25 @@
     <title>Insert Form</title>
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 
+    <style type="text/css">
+        .btn-primary {
+            float: right;
+            border: 1px solid black;
+            padding: 5px 7px !important;
+            background: skyblue !important;
+            color: black !important;
+            border-radius: 5px;
+        }
+        .btn-primary2{
+            float: left;
+            border: 1px solid black;
+            padding: 5px 7px;
+            background: skyblue;
+            color: black;
+            border-radius: 5px;
+        }
+    </style>
+
     <script type="text/javascript">
 
         function checkForm(){
@@ -37,8 +56,10 @@
 
 <!-- 게시판 작성 시작-->
 <div class="container">
+    <button type="button" class="btn-primary" onclick="location.href = '/list'">목록</button>
     <form action="/insertProc" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
         <input type="hidden" name="delChk" value="N">
+        <br>
         <div class="form-group">
             <label for="subject">제목</label>
             <input type="text" class="form-control" id="subject" name="subject" placeholder="제목을 입력하세요." size="10" maxlength="30">
@@ -56,18 +77,12 @@
         <input type="file" name="uploadFile"/></td>
         </div>
             <div class="form-group"></div>
-        <button type="submit" class="btn btn-primary" id="check" name="check" >작성</button>
-        <button type="button" class="btn btn-primary" onclick="location.href = '/list'">목록</button>
+        <button type="submit" class="btn-primary2" id="check" name="check" >작성</button>
         <script> CKEDITOR.replace('editor1');</script>
-
     </form>
-
 </div>
-
 <!-- 게시판 작성 끝 -->
-
 <%@ include file="bootstrap.jsp"%>
-
 </body>
 </html>
 
