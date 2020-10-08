@@ -57,10 +57,11 @@
         </div>
             <div class="form-group"></div>
         <button type="submit" class="btn btn-primary" id="check" name="check" >작성</button>
+        <button type="button" class="btn btn-primary" onclick="location.href = '/list'">목록</button>
         <script> CKEDITOR.replace('editor1');</script>
 
     </form>
-    <button class="btn btn-primary" onclick="location.href = '/list'">목록</button>
+
 </div>
 
 <!-- 게시판 작성 끝 -->
