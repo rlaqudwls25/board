@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta property="og:url"           content="http://localhost:8080/list" />
+    <meta property="og:url"           content="http://localhost:8080/detail" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Your Website Title" />
     <meta property="og:description"   content="Your description" />
@@ -75,7 +75,7 @@
         // }(document, 'script', 'facebook-jssdk'));
 
         function test(){
-            window.open("http://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/list");
+            window.open("http://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/detail");
         }
     </script>
 
@@ -89,23 +89,23 @@
                     description: '',
                     imageUrl: '',
                     link: {
-                        mobileWebUrl: 'http://localhost:8080/list',
-                        webUrl: 'http://localhost:8080/list'
+                        mobileWebUrl: 'http://localhost:8080/detail/${detail.bno}',
+                        webUrl: 'http://localhost:8080/detail/${detail.bno}'
                     }
                 },
                 buttons: [
                     {
                         title: 'Web으로 보기',
                         link: {
-                            mobileWebUrl: 'http://localhost:8080/list',
-                            webUrl: 'http://localhost:8080/list'
+                            mobileWebUrl: 'http://localhost:8080/detail/${detail.bno}',
+                            webUrl: 'http://localhost:8080/detail/${detail.bno}'
                         }
                     },
                     {
                         title: 'App으로 보기',
                         link: {
-                            mobileWebUrl: 'http://localhost:8080/list',
-                            webUrl: 'http://localhost:8080/list'
+                            mobileWebUrl: 'http://localhost:8080/detail/${detail.bno}',
+                            webUrl: 'http://localhost:8080/detail/${detail.bno}'
                         }
                     }
                 ]
