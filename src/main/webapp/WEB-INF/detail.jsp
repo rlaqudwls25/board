@@ -17,17 +17,54 @@
 
     <title>Detail</title>
     <style>
-        #topMenu { height: 30px; width: 700px;
+
+        ul{
+            list-style: none;
+            padding: 15px;
+        }
+        .sns-url-layer{
+            padding-top: 30px;
+        }
+        .sns-layer{
+            margin-left: 1400px;
+            background: white;
+            width: 300px;
+            height: 200px;
+            padding: 0px -5px;
+            border: solid 1px black;
+        }
+        .sns-sub-layer{
+            width: 100%;
+            height: 40px;
+            background: lightgray;
+            border: solid 0px black;
+            padding: 10px;
+        }
+
+        #topMenu {
+            height: 30px;
+            width: 500px;
+            float: right;
         }
         #topMenu ul {
             /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
             list-style-type: none; margin: 0px; padding: 0px;
         }
+
+
         #topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
             color: white; background-color: #2d2d2d; float: left; line-height: 30px; vertical-align: middle; text-align: center; position: relative;
         }
         .menuLink, .submenuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
-            text-decoration:none; display: block; width: 80px; font-size: 12px; font-weight: bold; font-family: "Trebuchet MS", Dotum; }
+            text-decoration:none;
+            display: block;
+            width: 80px;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: "Trebuchet MS", Dotum;
+            cursor: pointer;
+
+        }
         .menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
             color: white;
         }
@@ -52,7 +89,6 @@
             -moz-transition: height .2s;
             -o-transition: height .2s;
             width: 770px; /* [변경] 가로 드랍다운 메뉴의 넓이 */ left: 0;
-
         }
         .submenu li {
             display: inline-block;
@@ -66,16 +102,17 @@
     </style>
 
     <script>
-        // ( function (d,s, id){
-        //     var js, fjs = d.getElementsByTagName(s)[0];
-        //     if(d.getElementById(id)) return;
-        //     js = d.createElement(s); js.id = id;
-        //     js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        //     fjs.parentNode.insertBefore(js, fjs);
-        // }(document, 'script', 'facebook-jssdk'));
-
         function test(){
             window.open("http://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/detail");
+        }
+
+        function CopyUrlToClipboard() {
+            var obShareUrl = document.getElementById("ShareUrl");
+            obShareUrl.value = window.document.location.href;  // 현재 URL 을 세팅해 줍니다.
+            obShareUrl.select();  // 해당 값이 선택되도록 select() 합니다
+            document.execCommand("copy"); // 클립보드에 복사합니다.
+            obShareUrl.blur(); // 선택된 것을 다시 선택안된것으로 바꿈니다.
+            alert("URL이 클립보드에 복사되었습니다");
         }
     </script>
 
@@ -125,7 +162,6 @@
                     e.preventDefault();
                     var insertData = $('[name=commentInsertForm]').serialize();
                     commentInsert(insertData);
-
                 }
             };
         };
@@ -136,6 +172,44 @@
 <div style="text-align: center">
 <h2>게시글 상세</h2>
 </div>
+
+<div class="sns-layer">
+    <div class="sns-sub-layer">
+        <strong>SNS공유하기</strong>
+    </div>
+    <ul>
+        <li>
+            <a onclick="sendLinkKakao();">
+                <img src="/img/kakaoimg.png" height="50" width="50"/>
+                <br>
+                <span>카카오톡</span>
+            </a>
+            <div class="sns-url-layer">
+            <input type="text" id = "ShareUrl">
+                        <span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>
+            </div>
+        </li>
+    </ul>
+</div>
+<%--<div id="topMenu">--%>
+<%--    <ul>--%>
+<%--        <li class="topMenuLi">--%>
+<%--            <a class="menuLink">공유하기</a>--%>
+<%--            <ul class="submenu">--%>
+<%--                <li>--%>
+<%--                    <a onclick="sendLinkKakao();" class="submenuLink">카카오톡</a>--%>
+<%--                </li>--%>
+<%--                <li>--%>
+<%--                    <a onclick="test();" class="submenuLink">페이스북</a>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
+<%--        </li>--%>
+<%--        <div>--%>
+<%--            <input type="text" id = "ShareUrl">--%>
+<%--            <span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>--%>
+<%--        </div>--%>
+<%--    </ul>--%>
+<%--</div>--%>
 
 <!-- 게시판 상세 시작 -->
 <div class="container">
@@ -171,20 +245,6 @@
         <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
         <button class="btn btn-danger" onclick="del(${detail.bno})">삭제</button>
         <button class="btn btn-primary" onclick="location.href='/list'">목록</button>
-    </div>
-    <div id="topMenu">
-        <ul>
-            <li class="topMenuLi">
-                <a class="menuLink">공유하기</a>
-                <ul class="submenu">
-                    <li>
-                        <a onclick="sendLinkKakao();" class="submenuLink">카카오톡</a>
-                    </li>
-                    <li>
-                        <a onclick="test();" class="submenuLink">페이스북</a>
-                </ul>
-            </li>
-        </ul>
     </div>
     <br>
     <br>
