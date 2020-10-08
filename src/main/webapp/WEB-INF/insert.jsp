@@ -14,23 +14,24 @@
         .btn-primary {
             float: right;
             border: 1px solid black;
+            font-weight: bold !important;
             padding: 5px 7px !important;
             background: skyblue !important;
             color: black !important;
-            border-radius: 5px;
+            border-radius: 7px;
         }
         .btn-primary2{
             float: left;
             border: 1px solid black;
+            font-weight: bold;
             padding: 5px 7px;
             background: skyblue;
             color: black;
-            border-radius: 5px;
+            border-radius: 7px;
         }
     </style>
 
     <script type="text/javascript">
-
         function checkForm(){
             var subject = document.getElementById('subject');
             var data = CKEDITOR.instances.editor1.getData();
