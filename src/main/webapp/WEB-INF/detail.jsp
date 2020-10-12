@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta property="og:url"           content="http://localhost:8080/detail" />
+    <meta property="og:url"           content="http://localhost:8080/list" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Your Website Title" />
     <meta property="og:description"   content="Your description" />
@@ -102,10 +102,47 @@
     </style>
 
     <script>
-        function test(){
-            window.open("http://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/detail");
-        }
+        // window.fbAsyncInit = function () {
+        //     FB.init({
+        //         appId: '718393278753548',
+        //         autoLogAppEvents: true,
+        //         xfbml: true,
+        //         // version: 'YOUR-APP-VERSION'
+        //     });
+        // };
 
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=718393278753548";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+<script>
+    function shareFacebook() {
+
+    let currentUrl = window.document.location.href;
+
+    FB.ui({
+    method: 'share',
+    href: currentUrl
+    }, function (response) {
+    if (response && !response.error_code) {
+    alert('공유 완료');
+    } else {
+    alert('공유 실패');
+    }
+    }
+    );
+    }
+</script>
+
+    <script>
         function CopyUrlToClipboard() {
             var obShareUrl = document.getElementById("ShareUrl");
             obShareUrl.value = window.document.location.href;  // 현재 URL 을 세팅해 줍니다.
@@ -115,6 +152,7 @@
             alert("URL이 클립보드에 복사되었습니다");
         }
     </script>
+
 
     <script>
         Kakao.init('9d6029283b4625ca94caf8837cb5020e');
@@ -181,9 +219,14 @@
         <li>
             <a onclick="sendLinkKakao();">
                 <img src="/img/kakaoimg.png" height="50" width="50"/>
-                <br>
                 <span>카카오톡</span>
             </a>
+
+            <a onclick="shareFacebook();">
+                <img src="/img/facebook.png" height="50" width="50"/>
+                <span>페이스북</span>
+            </a>
+
             <div class="sns-url-layer">
             <input type="text" id = "ShareUrl">
                         <span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>
@@ -191,29 +234,11 @@
         </li>
     </ul>
 </div>
-<%--<div id="topMenu">--%>
-<%--    <ul>--%>
-<%--        <li class="topMenuLi">--%>
-<%--            <a class="menuLink">공유하기</a>--%>
-<%--            <ul class="submenu">--%>
-<%--                <li>--%>
-<%--                    <a onclick="sendLinkKakao();" class="submenuLink">카카오톡</a>--%>
-<%--                </li>--%>
-<%--                <li>--%>
-<%--                    <a onclick="test();" class="submenuLink">페이스북</a>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
-<%--        </li>--%>
-<%--        <div>--%>
-<%--            <input type="text" id = "ShareUrl">--%>
-<%--            <span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>--%>
-<%--        </div>--%>
-<%--    </ul>--%>
-<%--</div>--%>
+
 
 <!-- 게시판 상세 시작 -->
 <div class="container">
-    <form action="/insertProc" method="post" >
+    <form action="/insertProc" method="post">
         <div>
             <label>제목</label>
             <p>${detail.subject}</p>
