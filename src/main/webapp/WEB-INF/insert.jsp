@@ -13,21 +13,22 @@
     <style type="text/css">
         .btn-primary {
             float: right;
-            border: 1px solid black;
-            font-weight: bold !important;
-            padding: 5px 7px !important;
-            background: skyblue !important;
-            color: black !important;
+            height: 35px;
+        /*    border: 1px solid black;*/
+        /*    font-weight: bold !important;*/
+        /*    padding: 5px 7px !important;*/
+        /*    background: skyblue !important;*/
+        /*    color: black !important;*/
             border-radius: 7px;
         }
         .btn-primary2{
-            float: left;
-            border: 1px solid black;
-            font-weight: bold;
-            padding: 5px 7px;
-            background: skyblue;
-            color: black;
-            border-radius: 7px;
+            /*float: left;*/
+            /*border: 1px solid black;*/
+            /*font-weight: bold;*/
+            /*padding: 5px 7px;*/
+            /*background: skyblue;*/
+            /*color: black;*/
+            /*border-radius: 7px;*/
         }
     </style>
 
@@ -78,7 +79,7 @@
         <input type="file" name="uploadFile"/></td>
         </div>
             <div class="form-group"></div>
-        <button type="submit" class="btn-primary2" id="check" name="check" >작성</button>
+        <button type="submit" class="btn-primary" id="check" name="check" style="float: left">작성</button>
         <script> CKEDITOR.replace('editor1');</script>
     </form>
 </div>

@@ -26,12 +26,12 @@
             padding-top: 30px;
         }
         .sns-layer{
-            margin-left: 1400px;
             background: white;
             width: 300px;
             height: 200px;
             padding: 0px -5px;
             border: solid 1px black;
+            border-radius: 7px;
         }
         .sns-sub-layer{
             width: 100%;
@@ -39,6 +39,7 @@
             background: lightgray;
             border: solid 0px black;
             padding: 10px;
+            border-radius: 7px;
         }
 
         #topMenu {
@@ -96,16 +97,50 @@
         .topMenuLi:hover .submenu {
             height: 32px;
         }
-        .submenuLink:hover {
-            color: red; background-color: #dddddd;
+        .btn-primary{
+            background: blue;
+
         }
     </style>
 
     <script>
-        function test(){
-            window.open("http://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/detail");
-        }
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '718393278753548',
+                xfbml      : true,
+                version    : 'v8.0'
+            });
+            FB.AppEvents.logPageView();
+        };
 
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=718393278753548";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function shareFacebook() {
+            let currentUrl = window.document.location.href;
+            console.log(currentUrl);
+            FB.ui({
+                    method: 'share',
+                    href: currentUrl ,
+                }, function (response) {
+                    if (response && !response.error_code) {
+                        alert('공유 완료');
+                    } else {
+                        alert('공유 실패');
+                    }
+                }
+            );
+        }
+    </script>
+    <script>
         function CopyUrlToClipboard() {
             var obShareUrl = document.getElementById("ShareUrl");
             obShareUrl.value = window.document.location.href;  // 현재 URL 을 세팅해 줍니다.
@@ -114,7 +149,9 @@
             obShareUrl.blur(); // 선택된 것을 다시 선택안된것으로 바꿈니다.
             alert("URL이 클립보드에 복사되었습니다");
         }
+
     </script>
+
 
     <script>
         Kakao.init('9d6029283b4625ca94caf8837cb5020e');
@@ -173,44 +210,6 @@
 <h2>게시글 상세</h2>
 </div>
 
-<div class="sns-layer">
-    <div class="sns-sub-layer">
-        <strong>SNS공유하기</strong>
-    </div>
-    <ul>
-        <li>
-            <a onclick="sendLinkKakao();">
-                <img src="/img/kakaoimg.png" height="50" width="50"/>
-                <br>
-                <span>카카오톡</span>
-            </a>
-            <div class="sns-url-layer">
-            <input type="text" id = "ShareUrl">
-                        <span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>
-            </div>
-        </li>
-    </ul>
-</div>
-<%--<div id="topMenu">--%>
-<%--    <ul>--%>
-<%--        <li class="topMenuLi">--%>
-<%--            <a class="menuLink">공유하기</a>--%>
-<%--            <ul class="submenu">--%>
-<%--                <li>--%>
-<%--                    <a onclick="sendLinkKakao();" class="submenuLink">카카오톡</a>--%>
-<%--                </li>--%>
-<%--                <li>--%>
-<%--                    <a onclick="test();" class="submenuLink">페이스북</a>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
-<%--        </li>--%>
-<%--        <div>--%>
-<%--            <input type="text" id = "ShareUrl">--%>
-<%--            <span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>--%>
-<%--        </div>--%>
-<%--    </ul>--%>
-<%--</div>--%>
-
 <!-- 게시판 상세 시작 -->
 <div class="container">
     <form action="/insertProc" method="post" >
@@ -241,6 +240,28 @@
         </c:if>
         </div>
     </form>
+    <br>
+    <div class="sns-layer">
+        <div class="sns-sub-layer">
+            <strong>SNS공유하기</strong>
+        </div>
+        <ul>
+            <li>
+                <a onclick="sendLinkKakao();">
+                    <img src="/img/kakaoimg.png" height="50" width="50"/>
+                    <span style="color: black">카카오톡</span>
+                </a>
+                <a onclick="shareFacebook();">
+                    <img src="/img/facebook.png" height="50" width="50"/>
+                    <span style="color: black">페이스북</span>
+                </a>
+                <div class="sns-url-layer">
+                    <input type="text" id = "ShareUrl">
+                    <span> <button class="btn-primary" onClick="CopyUrlToClipboard();">URL 복사</button></span>
+                </div>
+            </li>
+        </ul>
+    </div>
     <div class="btn-group btn-group-sm" role="group" style="float:right;">
         <button class="btn btn-primary" onclick="location.href='/update/${detail.bno}'">수정</button>
         <button class="btn btn-danger" onclick="del(${detail.bno})">삭제</button>
