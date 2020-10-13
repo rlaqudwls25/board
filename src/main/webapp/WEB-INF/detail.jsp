@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta property="og:url"           content="http://localhost:8080/detail" />
+    <meta property="og:url"           content="http://localhost:8080/detail/515" />s
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Your Website Title" />
     <meta property="og:description"   content="Your description" />
@@ -107,6 +107,7 @@
         window.fbAsyncInit = function() {
             FB.init({
                 appId      : '718393278753548',
+                autoLogAppEvents : true,
                 xfbml      : true,
                 version    : 'v8.0'
             });
@@ -120,17 +121,16 @@
             }
             js = d.createElement(s);
             js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=718393278753548";
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
         function shareFacebook() {
-            let currentUrl = window.document.location.href;
-            console.log(currentUrl);
             FB.ui({
                     method: 'share',
-                    href: currentUrl ,
-                }, function (response) {
+                    href: 'https://developers.facebook.com/docs/' ,
+                },
+                function (response) {
                     if (response && !response.error_code) {
                         alert('공유 완료');
                     } else {
@@ -140,6 +140,7 @@
             );
         }
     </script>
+
     <script>
         function CopyUrlToClipboard() {
             var obShareUrl = document.getElementById("ShareUrl");
@@ -151,7 +152,6 @@
         }
 
     </script>
-
 
     <script>
         Kakao.init('9d6029283b4625ca94caf8837cb5020e');
